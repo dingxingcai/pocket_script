@@ -21,7 +21,15 @@ Route::get('/test', function () {
 
 Route::any('/add/vip',"TestController@test");
 
-Route::get('user/{id}','TestController@user');
-Auth::routes();
+//用户登录
+Route::post('/user/login',"UserController@login");
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => ['user']],function (){
+
+    //修改密码
+    Route::post('user/changePwd',"UserController@changePwd");
+
+});
+
+

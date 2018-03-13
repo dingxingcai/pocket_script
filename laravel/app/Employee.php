@@ -11,5 +11,5 @@ class Employee extends Model
     protected  $table = 'employee';
 
     public $timestamps = false;
-    //
+
 }
