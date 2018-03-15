@@ -20,6 +20,7 @@ class Myjob implements ShouldQueue
      */
 
     private $key;
+    
 
     private $value;
 
