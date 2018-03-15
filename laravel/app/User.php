@@ -11,11 +11,9 @@ class User extends Authenticatable
 
     public $timestamps = false;
 
-    protected  $connection = 'mysql';
+    protected $connection = 'mysql';
 
     protected $table = 'users';
-
-
 
 
     /**

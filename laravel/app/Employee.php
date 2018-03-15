@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
 {
-    protected  $connection = 'sqlsrv';
+    protected $connection = 'sqlsrv';
 
-    protected  $table = 'employee';
+    protected $table = 'employee';
 
     public $timestamps = false;
 

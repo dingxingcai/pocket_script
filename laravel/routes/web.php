@@ -19,16 +19,16 @@ Route::get('/test', function () {
     return view('pocket.a');
 });
 
-Route::any('/add/vip',"TestController@test");
+Route::any('/add/vip', "TestController@test");
 
 //用户登录
-Route::post('/user/login',"UserController@login");
+Route::post('/user/login', "UserController@login");
 
 
-Route::group(['middleware' => ['user']],function (){
+Route::group(['middleware' => ['user']], function () {
 
     //修改密码
-    Route::post('user/changePwd',"UserController@changePwd");
+    Route::post('user/changePwd', "UserController@changePwd");
 
 });
 

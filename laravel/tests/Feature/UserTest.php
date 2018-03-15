@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Jobs\Myjob;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -19,7 +20,7 @@ class UserTest extends TestCase
     {
 
 
-        $s1 = Cache::add('8',['name'=>666,'sex'=>'男'],5);
+        $s1 = Cache::add('8', ['name' => 666, 'sex' => '男'], 5);
         $nr = Cache::get('8');
         $n = $nr['name'];
         $s = 666;
@@ -28,9 +29,9 @@ class UserTest extends TestCase
             'type' => 'hh'
         ];
 
-        $this->post('/add/vip',[
-            'name'=>'666',
-            'id' =>10,
+        $this->post('/add/vip', [
+            'name' => '666',
+            'id' => 10,
         ]);
         $key = md5($s);
 
@@ -38,26 +39,25 @@ class UserTest extends TestCase
 
     }
 
-    public function testLogin(){
-
-        $time1 = microtime(true);
-
-        $time2 = microtime(false);
+    public function testLogin()
+    {
 
 
-        $this->call('post','/user/login',[
-            'name'=>'admin',
-            'password'=>"123456",
+        $this->call('post', '/user/login', [
+            'name' => '50',
+            'password' => "666666",
         ]);
     }
 
-    public function testChangePwd(){
-        $this->call('post','/user/changePwd',[
-            'name' => 'admin',
-            'token' => '79737dd49618a13a3d9f1722db4ab2c6',
+    public function testChangePwd()
+    {
+        $this->call('post', '/user/changePwd', [
             'oldPwd' => '123456',
             'newPwd1' => '666666',
-            'newPwd2' => '666666'
+            'newPwd2' => '666666',
+            'token' => '84f7592882bbef6a9388c094ab07beeb'
         ]);
     }
+
+
 }
