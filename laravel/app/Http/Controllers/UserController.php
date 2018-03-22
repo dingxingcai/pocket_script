@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\Testjob;
 use App\User;
 use Illuminate\Http\Request;
 use DB;
 use Cache;
 use App\Library\Helper;
-use App\Jobs\Myjob;
-use Log;
-use Auth;
 use Exception;
 
 class UserController extends Controller
@@ -107,7 +103,7 @@ class UserController extends Controller
             'newPwd2' => 'required',
             'token' => 'required'
         ]);
-        $user = Auth::user();
+
         $oldPwd = trim($request->input('oldPwd'));
         $newPwd1 = trim($request->input('newPwd1'));
         $newPwd2 = trim($request->input('newPwd2'));
