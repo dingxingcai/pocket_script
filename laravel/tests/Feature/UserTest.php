@@ -44,8 +44,8 @@ class UserTest extends TestCase
 
 
         $this->call('post', '/user/login', [
-            'name' => '50',
-            'password' => "666666",
+            'name' => '99',
+            'password' => "123456",
         ]);
     }
 
@@ -55,7 +55,7 @@ class UserTest extends TestCase
             'oldPwd' => '123456',
             'newPwd1' => '666666',
             'newPwd2' => '666666',
-            'token' => '84f7592882bbef6a9388c094ab07beeb'
+            'token' => 'a102dfbe746a40a3e45d6e1399f6317b'
         ]);
     }
 

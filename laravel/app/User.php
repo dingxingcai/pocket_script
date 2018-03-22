@@ -24,4 +24,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
     ];
+
+    protected  $fillable = [
+        'password','uid','usercode','name' ,'telephone'
+    ];
 }
