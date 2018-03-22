@@ -32,14 +32,14 @@ class PostType extends GraphQLType
                 'type' => Type::string(),
                 'description' => 'email'
             ],
-            'user' => [
-                'args' => [
-                    'id' => Type::int(),
-                    'description' => 'user id'
-                ],
-                'type' => Type::listOf(GraphQl::type('user')),
-                'description' => 'description',
-            ],
+//            'user' => [
+//                'args' => [
+//                    'id' => Type::int(),
+//                    'description' => 'user id'
+//                ],
+//                'type' => Type::listOf(GraphQl::type('user')),
+//                'description' => 'description',
+//            ],
         ];
     }
 
