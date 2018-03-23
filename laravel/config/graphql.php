@@ -94,7 +94,9 @@ return [
             'query' => [
                 'user' => App\GraphQL\Query\UsersQuery::class,
                 'post' => App\GraphQL\Query\PostQuery::class,
-                'employee' => App\GraphQL\Query\EmployeeQuery::class
+                'employee' => App\GraphQL\Query\EmployeeQuery::class,
+                'billIndex' => App\GraphQL\Query\BillIndexQuery::class,
+                'retailBill' => App\GraphQL\Query\RetailBillQuery::class,
             ],
             'mutation' => [
                 'createUser' => App\GraphQL\Mutation\CreateUserMutation::class,
@@ -118,6 +120,8 @@ return [
         'user' => \App\GraphQL\Type\UserType::class,
         'post' => \App\GraphQL\Type\PostType::class,
         'employee' => \App\GraphQL\Type\EmployeeType::class,
+        'billIndex' => \App\GraphQL\Type\BillIndexType::class,
+        'retailBill' => \App\GraphQL\Type\RetailBillType::class,
     ],
 
     // This callable will be passed the Error object for each errors GraphQL catch.

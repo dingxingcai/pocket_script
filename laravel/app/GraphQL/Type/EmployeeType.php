@@ -72,5 +72,4 @@ class EmployeeType extends GraphQLType
     }
 
 
-
 }

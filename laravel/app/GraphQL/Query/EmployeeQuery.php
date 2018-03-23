@@ -36,44 +36,43 @@ class EmployeeQuery extends Query
             'FullName' => ['name' => 'FullName', Type::string()],
             'leveal' => ['name' => 'leveal', Type::int()],
             'Parid' => ['name' => 'Parid', Type::string()],
+            'offset' => ['name' => 'offset', Type::int()]
         ];
     }
 
     public function resolve($root, $args)
     {
 
-        $employee = new Employee();
         $query = Employee::query();
 
         if (isset($args['typeId'])) {
-            $employee = $query->where('typeId', $args['typeId']);
+             $query->where('typeId', $args['typeId']);
         }
 
         if (isset($args['UserCode'])) {
-            $employee = $query->where('UserCode', $args['UserCode']);
+             $query->where('UserCode', $args['UserCode']);
         }
 
         if (isset($args['Parid'])) {
-            $employee = $query->where('Parid', $args['Parid']);
+             $query->where('Parid', $args['Parid']);
         }
 
         if (isset($args['leveal'])) {
-            $employee = $query->where('leveal', $args['leveal']);
+            $query->where('leveal', $args['leveal']);
         }
 
         if (isset($args['FullName'])) {
-            $employee = $query->where('FullName', 'like', '%' . $args['FullName'] . '%');
+            $query->where('FullName', 'like', '%' . $args['FullName'] . '%');
         }
 
-
-        if (isset($args['offset'])) {
-            $limit = 5;
+        $limit = 5;
+        if (!isset($args['offset'])) {
+            $offset = 0;
+        } else{
             $offset = ($args['offset'] - 1) * $limit;
-            $employee = $query->orderBy('typeid', 'desc')->offset($offset)->limit($limit)->get();
-            return $employee;
-        } else {
-            return $employee->get();
         }
+
+        return $employee = $query->orderBy('typeid', 'desc')->offset($offset)->limit($limit)->get();
 
     }
 
