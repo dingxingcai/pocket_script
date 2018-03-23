@@ -60,8 +60,8 @@ class UserType extends GraphQLType
             ],
             'post' => [
                 'args' => [
-                    'id' => [
-                        'type' => Type::int(),
+                    'uid' => [
+                        'type' => Type::string(),
                         'description' => 'description'
                     ],
                     'email' => [
@@ -79,13 +79,15 @@ class UserType extends GraphQLType
     public function resolvePostField($root, $args)
     {
 
-        if (isset($args['id'])) {
-            return Post::where('id', $args['id'])->get();
+
+
+        if (isset($args['uid'])) {
+            return Post::where('uid', $args['uid'])->get();
         }
 
 //        return $root->posts;
 
-        return Post::get();
+        return Post::where('uid',$root->uid)->get();
     }
 
 
