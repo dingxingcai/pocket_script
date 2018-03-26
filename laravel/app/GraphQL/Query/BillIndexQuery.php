@@ -35,7 +35,7 @@ class BillIndexQuery extends Query
             'ktypeid' => ['name' => 'ktypeid', Type::string()],
             'VipCardID' => ['name' => 'VipCardID', Type::string()],
             'btypeid' => ['name' => 'btypeid', Type::string()],
-            'offset' => ['name' => 'offset' ,Type::int()]
+            'offset' => ['name' => 'offset', Type::int()]
         ];
     }
 
@@ -47,8 +47,8 @@ class BillIndexQuery extends Query
         if (isset($args['BillNumberId'])) {
             $billIndex = $query->where('BillNumberId', $args['BillNumberId']);
         }
-        if (isset($args['BillCoee'])) {
-            $billIndex = $query->where('BillCoee', $args['BillCoee']);
+        if (isset($args['BillCode'])) {
+            $billIndex = $query->where('BillCode', $args['BillCode']);
         }
         if (isset($args['BillType'])) {
             $billIndex = $query->where('BillType', $args['BillType']);
@@ -64,10 +64,10 @@ class BillIndexQuery extends Query
             $billIndex = $query->where('VipCardID', $args['VipCardID']);
         }
 
-        $limit = 5;
+        $limit = 30;
         if (!isset($args['offset'])) {
             $offset = 0;
-        } else{
+        } else {
             $offset = ($args['offset'] - 1) * $limit;
         }
 

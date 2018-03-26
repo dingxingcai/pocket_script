@@ -97,6 +97,7 @@ return [
                 'employee' => App\GraphQL\Query\EmployeeQuery::class,
                 'billIndex' => App\GraphQL\Query\BillIndexQuery::class,
                 'retailBill' => App\GraphQL\Query\RetailBillQuery::class,
+                'ptype' => App\GraphQL\Query\PtypeQuery::class
             ],
             'mutation' => [
                 'createUser' => App\GraphQL\Mutation\CreateUserMutation::class,
@@ -122,6 +123,7 @@ return [
         'employee' => \App\GraphQL\Type\EmployeeType::class,
         'billIndex' => \App\GraphQL\Type\BillIndexType::class,
         'retailBill' => \App\GraphQL\Type\RetailBillType::class,
+        'ptype' => \App\GraphQL\Type\PtypeType::class,
     ],
 
     // This callable will be passed the Error object for each errors GraphQL catch.

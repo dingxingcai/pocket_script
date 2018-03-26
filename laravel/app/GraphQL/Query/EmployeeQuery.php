@@ -65,7 +65,7 @@ class EmployeeQuery extends Query
             $query->where('FullName', 'like', '%' . $args['FullName'] . '%');
         }
 
-        $limit = 5;
+        $limit = 30;
         if (!isset($args['offset'])) {
             $offset = 0;
         } else{

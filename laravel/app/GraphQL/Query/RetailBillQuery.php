@@ -45,7 +45,7 @@ class RetailBillQuery extends Query
             $query->where('PtypeId',$args['PtypeId']);
         }
 
-        $limit = 5;
+        $limit = 30;
         if(!isset($args['offset'])){
             $offset = 0;
         }else{

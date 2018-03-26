@@ -61,7 +61,7 @@ class UsersQuery extends Query
 
 
         if (isset($args['offset'])) {
-            $limit = 5;
+            $limit = 30;
             $offset = ($args['offset'] - 1) * $limit;
             $user = $query->orderBy('id', 'desc')->offset($offset)->limit($limit)->get();
             return $user;
