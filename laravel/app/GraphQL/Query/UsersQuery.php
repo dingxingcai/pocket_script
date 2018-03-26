@@ -48,7 +48,7 @@ class UsersQuery extends Query
         }
 
         if (isset($args['uid'])) {
-            $user = $query->where('uid', $args['id']);
+            $user = $query->where('uid', $args['uid']);
         }
 
         if (isset($args['usercode'])) {
