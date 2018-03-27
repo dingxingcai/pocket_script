@@ -94,7 +94,6 @@ return [
             'query' => [
                 'user' => App\GraphQL\Query\UsersQuery::class,
                 'userInfo' => App\GraphQL\Query\UsersInfoQuery::class,
-                'post' => App\GraphQL\Query\PostQuery::class,
                 'employee' => App\GraphQL\Query\EmployeeQuery::class,
                 'billIndex' => App\GraphQL\Query\BillIndexQuery::class,
                 'retailBill' => App\GraphQL\Query\RetailBillQuery::class,
@@ -123,7 +122,6 @@ return [
     //
     'types' => [
         'user' => \App\GraphQL\Type\UserType::class,
-        'post' => \App\GraphQL\Type\PostType::class,
         'employee' => \App\GraphQL\Type\EmployeeType::class,
         'billIndex' => \App\GraphQL\Type\BillIndexType::class,
         'retailBill' => \App\GraphQL\Type\RetailBillType::class,
