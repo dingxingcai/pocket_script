@@ -8,6 +8,7 @@
 
 namespace App\GraphQL\Type;
 
+use App\RetailBill;
 use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Type as GraphQLType;
 use GraphQL;
@@ -107,13 +108,67 @@ class BillIndexType extends GraphQLType
                 'type' => Type::float(),
                 'description' => '折扣率'
             ],
-            'offset' => [
+            'page' => [
                 'type' => Type::int(),
-                'description' => '分页数据'
+                'description' => '页码数'
+            ],
+            'limit' => [
+                'type' => Type::int(),
+                'description' => '分页限制'
+            ],
+            'retailBill' => [    //关联retailBill
+                'args' => [
+                    'PtypeId' => [
+                        'type' => Type::string(),
+                        'description' => 'PtypeId'
+                    ]
+                ],
+                'type' => Type::listOf(GraphQL::type('retailBill')),
+                'description' => 'RetailBill' ,
+            ],
+            'nVipCardSign' => [    //关联 nVipCardSign
+                'type' => Type::listOf(GraphQL::type('nVipCardSign')),
+                'description' => 'nVipCardSign'
             ]
 
 
         ];
     }
+
+    public function resolveRetailBillField($root, $args)
+    {
+        if(isset($args['PtypeId'])){
+            return RetailBill::where('PtypeId', $args['PtypeId'])->get();
+        }
+        return RetailBill::where('BillNumberId', $root->BillNumberId)->get();
+    }
+
+    public function resolvenVipCardSignField($root , $args){
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

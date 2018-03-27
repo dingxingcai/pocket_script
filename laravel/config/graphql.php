@@ -107,7 +107,7 @@ return [
                 'deleteUser' => App\GraphQL\Mutation\deleteUserMutation::class,
                 'userLogin' => App\GraphQL\Mutation\UserLoginMutation::class,
 
-             ],
+            ],
             'middleware' => []
         ],
     ],

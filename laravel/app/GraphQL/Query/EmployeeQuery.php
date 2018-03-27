@@ -44,7 +44,7 @@ class EmployeeQuery extends Query
 
     public function resolve($root, $args)
     {
-        Helper::checkLogin($args['token']);
+//        Helper::checkLogin($args['token']);
 
 
         $query = Employee::query();

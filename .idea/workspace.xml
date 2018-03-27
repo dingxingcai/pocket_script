@@ -2,22 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa3a494e-ffc3-45bc-80e9-72bb273e942c" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/laravel/app/GraphQL/Query/UsersInfoQuery.php" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" afterPath="$PROJECT_DIR$/.idea/php.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/pocket.iml" afterPath="$PROJECT_DIR$/.idea/pocket.iml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/laravel/app/Exceptions/Handler.php" afterPath="$PROJECT_DIR$/laravel/app/Exceptions/Handler.php" />
-      <change beforePath="$PROJECT_DIR$/laravel/app/GraphQL/Mutation/UserLoginMutation.php" afterPath="$PROJECT_DIR$/laravel/app/GraphQL/Mutation/UserLoginMutation.php" />
+      <change beforePath="$PROJECT_DIR$/laravel/app/GraphQL/Query/BillIndexQuery.php" afterPath="$PROJECT_DIR$/laravel/app/GraphQL/Query/BillIndexQuery.php" />
       <change beforePath="$PROJECT_DIR$/laravel/app/GraphQL/Query/EmployeeQuery.php" afterPath="$PROJECT_DIR$/laravel/app/GraphQL/Query/EmployeeQuery.php" />
+      <change beforePath="$PROJECT_DIR$/laravel/app/GraphQL/Query/PostQuery.php" afterPath="" />
       <change beforePath="$PROJECT_DIR$/laravel/app/GraphQL/Query/UsersQuery.php" afterPath="$PROJECT_DIR$/laravel/app/GraphQL/Query/UsersQuery.php" />
-      <change beforePath="$PROJECT_DIR$/laravel/app/GraphQL/Type/EmployeeType.php" afterPath="$PROJECT_DIR$/laravel/app/GraphQL/Type/EmployeeType.php" />
-      <change beforePath="$PROJECT_DIR$/laravel/app/Http/Kernel.php" afterPath="$PROJECT_DIR$/laravel/app/Http/Kernel.php" />
-      <change beforePath="$PROJECT_DIR$/laravel/app/Library/Helper.php" afterPath="$PROJECT_DIR$/laravel/app/Library/Helper.php" />
-      <change beforePath="$PROJECT_DIR$/laravel/app/User.php" afterPath="$PROJECT_DIR$/laravel/app/User.php" />
-      <change beforePath="$PROJECT_DIR$/laravel/composer.json" afterPath="$PROJECT_DIR$/laravel/composer.json" />
-      <change beforePath="$PROJECT_DIR$/laravel/composer.lock" afterPath="$PROJECT_DIR$/laravel/composer.lock" />
-      <change beforePath="$PROJECT_DIR$/laravel/config/app.php" afterPath="$PROJECT_DIR$/laravel/config/app.php" />
-      <change beforePath="$PROJECT_DIR$/laravel/config/auth.php" afterPath="$PROJECT_DIR$/laravel/config/auth.php" />
+      <change beforePath="$PROJECT_DIR$/laravel/app/GraphQL/Type/BillIndexType.php" afterPath="$PROJECT_DIR$/laravel/app/GraphQL/Type/BillIndexType.php" />
+      <change beforePath="$PROJECT_DIR$/laravel/app/GraphQL/Type/PostType.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/laravel/app/GraphQL/Type/UserType.php" afterPath="$PROJECT_DIR$/laravel/app/GraphQL/Type/UserType.php" />
       <change beforePath="$PROJECT_DIR$/laravel/config/graphql.php" afterPath="$PROJECT_DIR$/laravel/config/graphql.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,57 +24,53 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="EmployeeType.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/laravel/app/GraphQL/Type/EmployeeType.php">
+      <file leaf-file-name="BillIndexQuery.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/laravel/app/GraphQL/Query/BillIndexQuery.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="13" column="12" lean-forward="true" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
+            <state relative-caret-position="279">
+              <caret line="46" column="5" lean-forward="false" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserLoginMutation.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/laravel/app/GraphQL/Mutation/UserLoginMutation.php">
+      <file leaf-file-name="graphql.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/laravel/config/graphql.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="33" column="5" lean-forward="true" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
-              <folding>
-                <element signature="e#123#136#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UsersInfoQuery.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/laravel/app/GraphQL/Query/UsersInfoQuery.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="17" column="20" lean-forward="false" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="20" />
-              <folding>
-                <element signature="e#120#133#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="auth.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/laravel/config/auth.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="74" column="34" lean-forward="true" selection-start-line="74" selection-start-column="34" selection-end-line="74" selection-end-column="34" />
+            <state relative-caret-position="267">
+              <caret line="101" column="29" lean-forward="false" selection-start-line="101" selection-start-column="17" selection-end-line="101" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Helper.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/laravel/app/Library/Helper.php">
+      <file leaf-file-name="RetailBillType.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/laravel/app/GraphQL/Type/RetailBillType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="35" column="1" lean-forward="true" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
+            <state relative-caret-position="449">
+              <caret line="39" column="31" lean-forward="false" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RetailBillQuery.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/laravel/app/GraphQL/Query/RetailBillQuery.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="31" column="20" lean-forward="false" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BillIndexType.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/laravel/app/GraphQL/Type/BillIndexType.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="551">
+              <caret line="146" column="0" lean-forward="false" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
               <folding>
-                <element signature="e#114#124#0#PHP" expanded="true" />
+                <element signature="e#119#138#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -91,11 +79,9 @@
       <file leaf-file-name="EmployeeQuery.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/laravel/app/GraphQL/Query/EmployeeQuery.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="49" column="35" lean-forward="true" selection-start-line="49" selection-start-column="35" selection-end-line="49" selection-end-column="35" />
-              <folding>
-                <element signature="e#120#137#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="392">
+              <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -103,9 +89,11 @@
       <file leaf-file-name="UserType.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/laravel/app/GraphQL/Type/UserType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="37" column="39" lean-forward="true" selection-start-line="37" selection-start-column="39" selection-end-line="37" selection-end-column="39" />
-              <folding />
+            <state relative-caret-position="511">
+              <caret line="59" column="14" lean-forward="true" selection-start-line="59" selection-start-column="14" selection-end-line="59" selection-end-column="14" />
+              <folding>
+                <element signature="e#119#132#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -113,30 +101,18 @@
       <file leaf-file-name="UsersQuery.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/laravel/app/GraphQL/Query/UsersQuery.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="731">
-              <caret line="48" column="21" lean-forward="false" selection-start-line="48" selection-start-column="21" selection-end-line="48" selection-end-column="21" />
-              <folding>
-                <element signature="e#120#133#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="graphql.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/laravel/config/graphql.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="95" column="25" lean-forward="false" selection-start-line="95" selection-start-column="17" selection-end-line="95" selection-end-column="25" />
+            <state relative-caret-position="595">
+              <caret line="47" column="5" lean-forward="false" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Kernel.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/laravel/app/Http/Kernel.php">
+      <file leaf-file-name="UsersInfoQuery.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/laravel/app/GraphQL/Query/UsersInfoQuery.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="43" column="10" lean-forward="false" selection-start-line="43" selection-start-column="10" selection-end-line="43" selection-end-column="10" />
+            <state relative-caret-position="493">
+              <caret line="39" column="29" lean-forward="false" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -156,35 +132,35 @@
         <option value="$PROJECT_DIR$/laravel/app/GraphQL/Type/PostType.php" />
         <option value="$PROJECT_DIR$/laravel/app/Billindex.php" />
         <option value="$PROJECT_DIR$/laravel/app/BillIndex.php" />
-        <option value="$PROJECT_DIR$/laravel/app/GraphQL/Type/BillIndexType.php" />
         <option value="$PROJECT_DIR$/laravel/app/RetailBill.php" />
         <option value="$PROJECT_DIR$/laravel/app/GraphQL/Type/RetailBillType.php" />
         <option value="$PROJECT_DIR$/laravel/tests/Feature/UserTest.php" />
         <option value="$PROJECT_DIR$/laravel/app/Ptype.php" />
         <option value="$PROJECT_DIR$/laravel/app/GraphQL/Type/PtypeType.php" />
         <option value="$PROJECT_DIR$/laravel/app/GraphQL/Query/RetailBillQuery.php" />
-        <option value="$PROJECT_DIR$/laravel/app/GraphQL/Query/BillIndexQuery.php" />
         <option value="$PROJECT_DIR$/laravel/app/NVipCardSign.php" />
         <option value="$PROJECT_DIR$/laravel/app/GraphQL/Query/PtypeQuery.php" />
         <option value="$PROJECT_DIR$/laravel/app/GraphQL/Type/NVipCardSignType.php" />
         <option value="$PROJECT_DIR$/laravel/app/NVipCardSet.php" />
         <option value="$PROJECT_DIR$/laravel/app/GraphQL/Query/NVipCardSignQuery.php" />
-        <option value="$PROJECT_DIR$/laravel/app/GraphQL/Type/UserType.php" />
         <option value="$PROJECT_DIR$/laravel/routes/web.php" />
         <option value="$PROJECT_DIR$/laravel/resources/views/pocket/a.blade.php" />
-        <option value="$PROJECT_DIR$/laravel/config/app.php" />
-        <option value="$PROJECT_DIR$/laravel/config/auth.php" />
-        <option value="$PROJECT_DIR$/laravel/app/User.php" />
-        <option value="$PROJECT_DIR$/laravel/app/Http/Middleware/RefreshToken.php" />
         <option value="$PROJECT_DIR$/laravel/app/Exceptions/Handler.php" />
         <option value="$PROJECT_DIR$/laravel/app/Http/Kernel.php" />
-        <option value="$PROJECT_DIR$/laravel/app/GraphQL/Query/UsersQuery.php" />
         <option value="$PROJECT_DIR$/laravel/app/GraphQL/Type/EmployeeType.php" />
-        <option value="$PROJECT_DIR$/laravel/app/GraphQL/Query/EmployeeQuery.php" />
         <option value="$PROJECT_DIR$/laravel/app/GraphQL/Mutation/UserLoginMutation.php" />
         <option value="$PROJECT_DIR$/laravel/app/GraphQL/Query/UsersInfoQuery.php" />
-        <option value="$PROJECT_DIR$/laravel/config/graphql.php" />
         <option value="$PROJECT_DIR$/laravel/app/Library/Helper.php" />
+        <option value="$PROJECT_DIR$/laravel/config/auth.php" />
+        <option value="$PROJECT_DIR$/laravel/config/app.php" />
+        <option value="$PROJECT_DIR$/laravel/app/User.php" />
+        <option value="$PROJECT_DIR$/laravel/app/Http/Middleware/RefreshToken.php" />
+        <option value="$PROJECT_DIR$/laravel/app/GraphQL/Query/BillIndexQuery.php" />
+        <option value="$PROJECT_DIR$/laravel/app/GraphQL/Query/UsersQuery.php" />
+        <option value="$PROJECT_DIR$/laravel/config/graphql.php" />
+        <option value="$PROJECT_DIR$/laravel/app/GraphQL/Query/EmployeeQuery.php" />
+        <option value="$PROJECT_DIR$/laravel/app/GraphQL/Type/UserType.php" />
+        <option value="$PROJECT_DIR$/laravel/app/GraphQL/Type/BillIndexType.php" />
       </list>
     </option>
   </component>
@@ -362,7 +338,7 @@
               <item name="laravel" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="GraphQL" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Query" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Type" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
@@ -377,7 +353,7 @@
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="SearchEverywhereHistoryKey" value="Authen&#9;FILE&#9;file:///Users/dxc1993/mine/laravel/pocket/laravel/vendor/rebing/graphql-laravel/src/example/Auth/Authenticate.php&#10;.env&#9;FILE&#9;file:///Users/dxc1993/mine/laravel/pocket/laravel/.env" />
+    <property name="SearchEverywhereHistoryKey" value="User&#9;FILE&#9;file:///Users/dxc1993/mine/laravel/pocket/laravel/app/User.php&#10;Authen&#9;FILE&#9;file:///Users/dxc1993/mine/laravel/pocket/laravel/vendor/rebing/graphql-laravel/src/example/Auth/Authenticate.php&#10;.env&#9;FILE&#9;file:///Users/dxc1993/mine/laravel/pocket/laravel/.env" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -437,7 +413,7 @@
       <workItem from="1521709958167" duration="2573000" />
       <workItem from="1521718569789" duration="1177000" />
       <workItem from="1521803436872" duration="2000" />
-      <workItem from="1521980918746" duration="29286000" />
+      <workItem from="1521980918746" duration="35132000" />
     </task>
     <task id="LOCAL-00001" summary="删除一个迁移">
       <created>1521712318474</created>
@@ -509,7 +485,35 @@
       <option name="project" value="LOCAL" />
       <updated>1522129967347</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="03-27 15:17">
+      <created>1522135060515</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1522135060515</updated>
+    </task>
+    <task id="LOCAL-00012" summary="03-27 15:17">
+      <created>1522135910304</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1522135910304</updated>
+    </task>
+    <task id="LOCAL-00013" summary="03-27 15:17">
+      <created>1522136037896</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1522136037896</updated>
+    </task>
+    <task id="LOCAL-00014" summary="03-27 15:17">
+      <created>1522136207137</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1522136207137</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -524,18 +528,18 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45448000" />
+    <option name="totallyTimeSpent" value="51294000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-268" y="-1080" width="1920" height="1080" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21092077" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22162741" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32833788" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41601562" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5644531" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20019531" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -558,11 +562,11 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3299285" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41503906" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17089844" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20019531" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21092077" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20019531" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22162741" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -615,7 +619,8 @@
     <MESSAGE value="03-26 14:41" />
     <MESSAGE value="03-27 09:41" />
     <MESSAGE value="03-27 13:52" />
-    <option name="LAST_COMMIT_MESSAGE" value="03-27 13:52" />
+    <MESSAGE value="03-27 15:17" />
+    <option name="LAST_COMMIT_MESSAGE" value="03-27 15:17" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -657,26 +662,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/app/GraphQL/Type/BillIndexType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1717">
-          <caret line="108" column="14" lean-forward="false" selection-start-line="108" selection-start-column="14" selection-end-line="108" selection-end-column="14" />
-          <folding>
-            <element signature="e#119#152#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/app/GraphQL/Type/RetailBillType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="56" column="14" lean-forward="false" selection-start-line="56" selection-start-column="14" selection-end-line="56" selection-end-column="14" />
-          <folding>
-            <element signature="e#119#166#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -728,26 +713,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/app/GraphQL/Query/RetailBillQuery.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="47" column="19" lean-forward="false" selection-start-line="47" selection-start-column="19" selection-end-line="47" selection-end-column="19" />
-          <folding>
-            <element signature="e#120#139#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/app/GraphQL/Query/BillIndexQuery.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="35" column="41" lean-forward="false" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
-          <folding>
-            <element signature="e#120#138#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/laravel/app/Wert.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -764,28 +729,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/app/GraphQL/Type/PostType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding>
-            <element signature="e#119#132#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/laravel/app/NVipCardSign.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/app/GraphQL/Query/PostQuery.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="20" column="6" lean-forward="true" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
           <folding />
         </state>
       </provider>
@@ -847,7 +794,7 @@
         <state relative-caret-position="291">
           <caret line="60" column="17" lean-forward="false" selection-start-line="60" selection-start-column="17" selection-end-line="60" selection-end-column="17" />
           <folding>
-            <element signature="e#40#53#0#PHP" expanded="true" />
+            <element signature="e#40#53#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -857,7 +804,7 @@
         <state relative-caret-position="411">
           <caret line="31" column="3" lean-forward="false" selection-start-line="31" selection-start-column="3" selection-end-line="31" selection-end-column="3" />
           <folding>
-            <element signature="e#7#389#0#PHP" expanded="true" />
+            <element signature="e#7#389#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -904,14 +851,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/config/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="152" column="62" lean-forward="false" selection-start-line="152" selection-start-column="62" selection-end-line="152" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/laravel/.env">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="471">
@@ -920,28 +859,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/app/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="490">
-          <caret line="37" column="5" lean-forward="true" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
-          <folding>
-            <element signature="e#23#63#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/laravel/config/jwt.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1978">
           <caret line="152" column="14" lean-forward="true" selection-start-line="152" selection-start-column="14" selection-end-line="152" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Middleware/RefreshToken.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="35" column="28" lean-forward="true" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
           <folding />
         </state>
       </provider>
@@ -956,16 +877,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/laravel/app/Http/Kernel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
+        <state relative-caret-position="325">
           <caret line="43" column="10" lean-forward="false" selection-start-line="43" selection-start-column="10" selection-end-line="43" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/app/GraphQL/Type/UserType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="37" column="39" lean-forward="true" selection-start-line="37" selection-start-column="39" selection-end-line="37" selection-end-column="39" />
           <folding />
         </state>
       </provider>
@@ -978,14 +891,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/config/auth.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="74" column="34" lean-forward="true" selection-start-line="74" selection-start-column="34" selection-end-line="74" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/laravel/app/GraphQL/Type/EmployeeType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -994,12 +899,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/app/GraphQL/Query/EmployeeQuery.php">
+    <entry file="file://$PROJECT_DIR$/laravel/app/Library/Helper.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="49" column="35" lean-forward="true" selection-start-line="49" selection-start-column="35" selection-end-line="49" selection-end-column="35" />
+        <state relative-caret-position="323">
+          <caret line="24" column="10" lean-forward="true" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="10" />
           <folding>
-            <element signature="e#120#137#0#PHP" expanded="true" />
+            <element signature="e#114#124#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1009,45 +914,133 @@
         <state relative-caret-position="476">
           <caret line="33" column="5" lean-forward="true" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
           <folding>
-            <element signature="e#123#136#0#PHP" expanded="true" />
+            <element signature="e#123#136#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/app/GraphQL/Query/UsersInfoQuery.php">
+    <entry file="file://$PROJECT_DIR$/laravel/config/auth.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="17" column="20" lean-forward="false" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="20" />
+        <state relative-caret-position="743">
+          <caret line="46" column="10" lean-forward="true" selection-start-line="46" selection-start-column="10" selection-end-line="46" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="2" selection-end-line="37" selection-end-column="7" />
           <folding>
-            <element signature="e#120#133#0#PHP" expanded="true" />
+            <element signature="e#23#63#0#PHP" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Middleware/RefreshToken.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="34" lean-forward="false" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/config/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="36" column="36" lean-forward="false" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/laravel/app/GraphQL/Query/UsersQuery.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="48" column="21" lean-forward="false" selection-start-line="48" selection-start-column="21" selection-end-line="48" selection-end-column="21" />
+        <state relative-caret-position="595">
+          <caret line="47" column="5" lean-forward="false" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/GraphQL/Query/UsersInfoQuery.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="39" column="29" lean-forward="false" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/GraphQL/Query/EmployeeQuery.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/GraphQL/Query/RetailBillQuery.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="31" column="20" lean-forward="false" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/GraphQL/Type/RetailBillType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="449">
+          <caret line="39" column="31" lean-forward="false" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/GraphQL/Query/BillIndexQuery.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="46" column="5" lean-forward="false" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/GraphQL/Query/PostQuery.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="20" column="6" lean-forward="true" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/GraphQL/Type/PostType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="37" column="14" lean-forward="true" selection-start-line="37" selection-start-column="14" selection-end-line="37" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/GraphQL/Type/UserType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="511">
+          <caret line="59" column="14" lean-forward="true" selection-start-line="59" selection-start-column="14" selection-end-line="59" selection-end-column="14" />
           <folding>
-            <element signature="e#120#133#0#PHP" expanded="true" />
+            <element signature="e#119#132#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/laravel/config/graphql.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="95" column="25" lean-forward="false" selection-start-line="95" selection-start-column="17" selection-end-line="95" selection-end-column="25" />
+        <state relative-caret-position="267">
+          <caret line="101" column="29" lean-forward="false" selection-start-line="101" selection-start-column="17" selection-end-line="101" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/app/Library/Helper.php">
+    <entry file="file://$PROJECT_DIR$/laravel/app/GraphQL/Type/BillIndexType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="35" column="1" lean-forward="true" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
+        <state relative-caret-position="551">
+          <caret line="146" column="0" lean-forward="false" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
           <folding>
-            <element signature="e#114#124#0#PHP" expanded="true" />
+            <element signature="e#119#138#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

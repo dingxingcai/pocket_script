@@ -64,22 +64,8 @@ class UserType extends GraphQLType
             ],
             'token' => [
                 'type' => Type::string(),
-                'description' => '登录时候返回的token'
-            ]
-//            'post' => [
-//                'args' => [
-//                    'uid' => [
-//                        'type' => Type::string(),
-//                        'description' => 'description'
-//                    ],
-//                    'email' => [
-//                        'type' => Type::string(),
-//                        'description' => 'email'
-//                    ]
-//                ],
-//                'type' => Type::listOf(GraphQL::type('post')),
-//                'description' => 'description'
-//            ],
+                'description' => '用户token'
+            ],
 
         ];
     }
