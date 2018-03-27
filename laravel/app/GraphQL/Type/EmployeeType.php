@@ -66,6 +66,10 @@ class EmployeeType extends GraphQLType
                 'type' => Type::int(),
                 'description' => '页码数据'
             ],
+            'token' => [
+                'type' => Type::string(),
+                'description' => 'token'
+            ]
 
 
         ];

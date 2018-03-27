@@ -93,6 +93,7 @@ return [
         'default' => [
             'query' => [
                 'user' => App\GraphQL\Query\UsersQuery::class,
+                'userInfo' => App\GraphQL\Query\UsersInfoQuery::class,
                 'post' => App\GraphQL\Query\PostQuery::class,
                 'employee' => App\GraphQL\Query\EmployeeQuery::class,
                 'billIndex' => App\GraphQL\Query\BillIndexQuery::class,

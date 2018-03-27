@@ -22,6 +22,7 @@
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/fideloper/proxy" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/filp/whoops" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/fzaninotto/faker" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/guzzlehttp/guzzle" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/guzzlehttp/promises" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/guzzlehttp/psr7" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/hamcrest/hamcrest-php" />
@@ -29,10 +30,12 @@
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/jakub-onderka/php-console-highlighter" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/laravel/framework" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/laravel/tinker" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/lcobucci/jwt" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/league/flysystem" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/mockery/mockery" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/monolog/monolog" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/myclabs/deep-copy" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/namshi/jose" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/nesbot/carbon" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/nikic/php-parser" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/nunomaduro/collision" />
@@ -79,7 +82,9 @@
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/symfony/http-foundation" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/symfony/http-kernel" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/symfony/polyfill-php56" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/symfony/polyfill-php72" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/symfony/polyfill-util" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/symfony/process" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/symfony/routing" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/symfony/thanks" />
@@ -87,6 +92,7 @@
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/symfony/var-dumper" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/theseer/tokenizer" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/tijsverkoyen/css-to-inline-styles" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/tymon/jwt-auth" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/vlucas/phpdotenv" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/webmozart/assert" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/webonyx/graphql-php" />

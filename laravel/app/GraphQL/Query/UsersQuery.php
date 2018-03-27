@@ -46,6 +46,7 @@ class UsersQuery extends Query
 
     public function resolve($root, $args)
     {
+        print_r($args);exit;
         $query = User::query();
         $user = new User();
         if (isset($args['id'])) {

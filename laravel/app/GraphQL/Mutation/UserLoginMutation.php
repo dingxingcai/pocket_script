@@ -48,6 +48,7 @@ class UserLoginMutation extends Mutation
 
     public function resolve($root, $args)
     {
+
         $name = $args['name'];
         $password = $args['password'];
 
@@ -80,8 +81,9 @@ class UserLoginMutation extends Mutation
             //将用户的信息存入cache中,默认时间是24小时
             $token = Helper::token($user->uid);
             $data = [
-                'name' => $name,
-                'uid' => $user->uid
+                'usercode' => $name,
+                'uid' => $user->uid,
+                'username' => $user->name,
             ];
             Cache::add($token, $data, 1440);
 
@@ -107,8 +109,9 @@ class UserLoginMutation extends Mutation
                 //相同的，存入cache中,默认时间是24小时
                 $token = Helper::token($user->uid);
                 $data = [
-                    'name' => $name,
-                    'uid' => $user->uid
+                    'usercode' => $name,
+                    'uid' => $user->uid,
+                    'username' => $user->name,
                 ];
                 Cache::add($token, $data, 1440);
 

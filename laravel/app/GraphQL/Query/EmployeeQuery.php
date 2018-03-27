@@ -13,6 +13,7 @@ use App\User;
 use GraphQL;
 use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Query;
+use App\Library\Helper;
 
 class EmployeeQuery extends Query
 {
@@ -36,25 +37,28 @@ class EmployeeQuery extends Query
             'FullName' => ['name' => 'FullName', Type::string()],
             'leveal' => ['name' => 'leveal', Type::int()],
             'Parid' => ['name' => 'Parid', Type::string()],
-            'offset' => ['name' => 'offset', Type::int()]
+            'offset' => ['name' => 'offset', Type::int()],
+            'token' => ['name' => 'token', Type::string()]
         ];
     }
 
     public function resolve($root, $args)
     {
+        Helper::checkLogin($args['token']);
+
 
         $query = Employee::query();
 
         if (isset($args['typeId'])) {
-             $query->where('typeId', $args['typeId']);
+            $query->where('typeId', $args['typeId']);
         }
 
         if (isset($args['UserCode'])) {
-             $query->where('UserCode', $args['UserCode']);
+            $query->where('UserCode', $args['UserCode']);
         }
 
         if (isset($args['Parid'])) {
-             $query->where('Parid', $args['Parid']);
+            $query->where('Parid', $args['Parid']);
         }
 
         if (isset($args['leveal'])) {
@@ -68,7 +72,7 @@ class EmployeeQuery extends Query
         $limit = 30;
         if (!isset($args['offset'])) {
             $offset = 0;
-        } else{
+        } else {
             $offset = ($args['offset'] - 1) * $limit;
         }
 
