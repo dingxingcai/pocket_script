@@ -87,6 +87,8 @@ class UserLoginMutation extends Mutation
             ];
             Cache::add($token, $data, 1440);
 
+            $token = \JWTAuth::fromUser($user);
+
 
         } else { //表示没有存在users表里面的
             $employee = DB::connection('sqlsrv')->table('employee')->where('UserCode', $name)->first();

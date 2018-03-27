@@ -16,6 +16,10 @@ use Rebing\GraphQL\Support\SelectFields;
 
 class BillIndexQuery extends Query
 {
+    public function authorize(array $args)
+    {
+        return !\Auth::guest();
+    }
 
     protected $attributes = [
         'name' => 'billIndexQuery'
