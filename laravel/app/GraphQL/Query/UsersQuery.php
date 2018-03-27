@@ -12,6 +12,10 @@ use App\User;
 use GraphQL;
 use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Query;
+use Cache;
+use Exception;
+use DB;
+use App\Library\Helper;
 
 class UsersQuery extends Query
 {
@@ -35,12 +39,13 @@ class UsersQuery extends Query
             'usercode' => ['name' => 'usercode', Type::string()],
             'name' => ['name' => 'name', Type::string()],
             'offset' => ['name' => 'offset', Type::int()],
+            'password' => ['name' => 'password', Type::string()],
+            'login' => ['name' => 'login', Type::string()],
         ];
     }
 
     public function resolve($root, $args)
     {
-
         $query = User::query();
         $user = new User();
         if (isset($args['id'])) {
@@ -68,7 +73,6 @@ class UsersQuery extends Query
         } else {
             return $user->get();
         }
-
     }
 
 

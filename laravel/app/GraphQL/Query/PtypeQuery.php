@@ -42,26 +42,26 @@ class PtypeQuery extends Query
 
     public function resolve($root, $args)
     {
-        $billIndex = new Ptype();
+
         $query = Ptype::query();
         if (isset($args['typeId'])) {
-            $billIndex = $query->where('typeId', $args['typeId']);
+            $query->where('typeId', $args['typeId']);
         }
         if (isset($args['Parid'])) {
-            $billIndex = $query->where('Parid', $args['Parid']);
+            $query->where('Parid', $args['Parid']);
         }
         if (isset($args['leveal'])) {
-            $billIndex = $query->where('leveal', $args['leveal']);
+            $query->where('leveal', $args['leveal']);
         }
 
         if (isset($args['UserCode'])) {
-            $billIndex = $query->where('UserCode', $args['UserCode']);
+            $query->where('UserCode', $args['UserCode']);
         }
         if (isset($args['FullName'])) {
-            $billIndex = $query->where('FullName','like', '%'.$args['FullName'].'%');
+            $query->where('FullName', 'like', '%' . $args['FullName'] . '%');
         }
         if (isset($args['EntryCode'])) {
-            $billIndex = $query->where('EntryCode', $args['EntryCode']);
+            $query->where('EntryCode', $args['EntryCode']);
         }
 
         $limit = 30;
@@ -71,6 +71,6 @@ class PtypeQuery extends Query
             $offset = ($args['offset'] - 1) * $limit;
         }
 
-        return $billIndex->orderBy('typeId','desc')->limit($limit)->offset($offset)->get();
+        return $query->orderBy('typeId', 'desc')->limit($limit)->offset($offset)->get();
     }
 }

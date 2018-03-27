@@ -97,13 +97,15 @@ return [
                 'employee' => App\GraphQL\Query\EmployeeQuery::class,
                 'billIndex' => App\GraphQL\Query\BillIndexQuery::class,
                 'retailBill' => App\GraphQL\Query\RetailBillQuery::class,
-                'ptype' => App\GraphQL\Query\PtypeQuery::class
+                'ptype' => App\GraphQL\Query\PtypeQuery::class,
+                'nVipCardSign' => App\GraphQL\Query\NVipCardSignQuery::class,
             ],
             'mutation' => [
                 'createUser' => App\GraphQL\Mutation\CreateUserMutation::class,
                 'updateUser' => App\GraphQL\Mutation\updateUserMutation::class,
                 'deleteUser' => App\GraphQL\Mutation\deleteUserMutation::class,
-            ],
+                'userLogin' => App\GraphQL\Mutation\UserLoginMutation::class,
+             ],
             'middleware' => []
         ],
     ],
@@ -124,6 +126,7 @@ return [
         'billIndex' => \App\GraphQL\Type\BillIndexType::class,
         'retailBill' => \App\GraphQL\Type\RetailBillType::class,
         'ptype' => \App\GraphQL\Type\PtypeType::class,
+        'nVipCardSign' => \App\GraphQL\Type\NVipCardSignType::class,
     ],
 
     // This callable will be passed the Error object for each errors GraphQL catch.

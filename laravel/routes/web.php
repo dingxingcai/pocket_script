@@ -19,7 +19,6 @@ Route::get('/test', function () {
     return view('pocket.a');
 });
 
-Route::any('/add/vip', "TestController@test");
 
 //用户登录
 Route::post('/user/login', "UserController@login");

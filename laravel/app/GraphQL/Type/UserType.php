@@ -58,20 +58,28 @@ class UserType extends GraphQLType
                 'type' => Type::int(),
                 'description' => '分页数量'
             ],
-            'post' => [
-                'args' => [
-                    'uid' => [
-                        'type' => Type::string(),
-                        'description' => 'description'
-                    ],
-                    'email' => [
-                        'type' => Type::string(),
-                        'description' => 'email'
-                    ]
-                ],
-                'type' => Type::listOf(GraphQL::type('post')),
-                'description' => 'description'
+            'login' => [
+                'type' => Type::string(),
+                'description' => '登录的标识'
             ],
+            'token' => [
+                'type' => Type::string(),
+                'description' => '登录时候返回的token'
+            ]
+//            'post' => [
+//                'args' => [
+//                    'uid' => [
+//                        'type' => Type::string(),
+//                        'description' => 'description'
+//                    ],
+//                    'email' => [
+//                        'type' => Type::string(),
+//                        'description' => 'email'
+//                    ]
+//                ],
+//                'type' => Type::listOf(GraphQL::type('post')),
+//                'description' => 'description'
+//            ],
 
         ];
     }
