@@ -24,7 +24,7 @@ class UsersInfoQuery extends Query
     }
 
     protected $attributes = [
-        'name' => 'user'
+        'name' => 'userInfo'
     ];
 
     public function type()

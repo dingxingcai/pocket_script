@@ -49,6 +49,7 @@ class UserLoginMutation extends Mutation
     public function resolve($root, $args)
     {
 
+
         $name = $args['name'];
         $password = $args['password'];
 
@@ -124,7 +125,8 @@ class UserLoginMutation extends Mutation
         }
 
         $user->token = $token;
-
+//        print_r($user);exit;
+//        print_r($token);exit;
         return $user;
     }
 }

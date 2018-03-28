@@ -16,7 +16,7 @@ use GraphQL\Type\Definition\InputType;
 
 class UserType extends GraphQLType
 {
-    protected $inputObject=true;
+    protected $inputObject=false;
 
     protected $attributes = [
         'name' => 'user',
@@ -56,14 +56,6 @@ class UserType extends GraphQLType
                 'type' => Type::string(),
                 'description' => 'telephone'
             ],
-            'offset' => [
-                'type' => Type::int(),
-                'description' => '分页数量'
-            ],
-            'login' => [
-                'type' => Type::string(),
-                'description' => '登录的标识'
-            ],
             'token' => [
                 'type' => Type::string(),
                 'description' => '用户token'
@@ -72,19 +64,19 @@ class UserType extends GraphQLType
         ];
     }
 
-    public function resolvePostField($root, $args)
-    {
-
-
-
-        if (isset($args['uid'])) {
-            return Post::where('uid', $args['uid'])->get();
-        }
-
-//        return $root->posts;
-
-        return Post::where('uid',$root->uid)->get();
-    }
+//    public function resolvePostField($root, $args)
+//    {
+//
+//
+//
+//        if (isset($args['uid'])) {
+//            return Post::where('uid', $args['uid'])->get();
+//        }
+//
+////        return $root->posts;
+//
+//        return Post::where('uid',$root->uid)->get();
+//    }
 
 
 }
