@@ -12,4 +12,9 @@ class BillIndex extends Model
 
     public $timestamps = false;
 
+
+    public function retailBills()
+    {
+        return $this->hasMany(RetailBill::class, 'BillNumberId', 'BillNumberId');
+    }
 }

@@ -11,4 +11,6 @@ class RetailBill extends Model
     public $table = 'retailbill';
 
     public $timestamps = false;
+
+
 }
