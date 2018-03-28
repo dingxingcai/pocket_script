@@ -59,5 +59,27 @@ class UserTest extends TestCase
         ]);
     }
 
+    public function testList()
+    {
+        $res = $this->call('post', '/graphql', [
+            'query' => 'mutation($goods:[retailBill], $vip:user){testObject(goods:$goods, vip:$vip){name,token,usercode}}',
+            'variables'=>'{"goods":[{"PtypeId":1, "Qty":10},{"PtypeId":2, "Qty":2}], "vip":{"id":1001}}'
+        ]);
+    }
 
+    public function testGraph()
+    {
+        $res = $this->call('post', '/graphql', [
+            'query' => 'mutation($vip:user){testObject(vip:$vip){name,token,usercode}}',
+            'variables'=>'{"vip":{"id":1}}'
+        ]);
+    }
+
+    public function testGraphNormal()
+    {
+        $res = $this->call('post', '/graphql', [
+            'query' => 'mutation($vip:String){testObject(vip:$vip){name,token,usercode}}',
+            'variables'=>'{"vip":"18611367408"}'
+        ]);
+    }
 }
