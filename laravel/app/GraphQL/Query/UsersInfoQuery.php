@@ -46,7 +46,8 @@ class UsersInfoQuery extends Query
     {
         /** @var \App\User $user */
         $user = \JWTAuth::parseToken()->authenticate();
-        return $user;
+
+        return [$user];
     }
 
 
