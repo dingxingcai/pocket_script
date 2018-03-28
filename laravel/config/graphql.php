@@ -107,6 +107,7 @@ return [
                 'updateUser' => App\GraphQL\Mutation\updateUserMutation::class,
                 'deleteUser' => App\GraphQL\Mutation\deleteUserMutation::class,
                 'userLogin' => App\GraphQL\Mutation\UserLoginMutation::class,
+                'testObject' => App\GraphQL\Mutation\TestObjectMutation::class,
 
             ],
             'middleware' => []

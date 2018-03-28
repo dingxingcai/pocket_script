@@ -12,9 +12,11 @@ use App\Post;
 use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Type as GraphQLType;
 use GraphQL;
+use GraphQL\Type\Definition\InputType;
 
 class UserType extends GraphQLType
 {
+    protected $inputObject=true;
 
     protected $attributes = [
         'name' => 'user',
