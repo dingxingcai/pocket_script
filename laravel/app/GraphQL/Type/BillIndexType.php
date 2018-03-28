@@ -18,7 +18,7 @@ class BillIndexType extends GraphQLType
 {
     protected $attributes = [
         'name' => 'billindex',
-        'description' => 'billindex'
+        'description' => 'billIndex'
     ];
 
     public function fields()

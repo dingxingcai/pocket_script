@@ -52,6 +52,7 @@ class BillIndexOrderQuery extends Query
 
         /** @var \App\User $user */
         $user = \JWTAuth::parseToken()->authenticate();
+//        $user = User::find(44);
         $query = BillIndex::where('BillType', 305);
         if (isset($args['BillNumberId'])) {
             $query->where('BillNumberId', $args['BillNumberId']);

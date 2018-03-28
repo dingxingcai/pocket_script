@@ -16,7 +16,7 @@ use GraphQL\Type\Definition\InputType;
 
 class UserType extends GraphQLType
 {
-    protected $inputObject=false;
+    protected $inputObject = false;
 
     protected $attributes = [
         'name' => 'user',
@@ -63,20 +63,6 @@ class UserType extends GraphQLType
 
         ];
     }
-
-//    public function resolvePostField($root, $args)
-//    {
-//
-//
-//
-//        if (isset($args['uid'])) {
-//            return Post::where('uid', $args['uid'])->get();
-//        }
-//
-////        return $root->posts;
-//
-//        return Post::where('uid',$root->uid)->get();
-//    }
 
 
 }
