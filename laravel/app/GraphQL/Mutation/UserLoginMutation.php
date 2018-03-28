@@ -79,13 +79,13 @@ class UserLoginMutation extends Mutation
             $user->save();
 
             //将用户的信息存入cache中,默认时间是24小时
-            $token = Helper::token($user->uid);
-            $data = [
-                'usercode' => $name,
-                'uid' => $user->uid,
-                'username' => $user->name,
-            ];
-            Cache::add($token, $data, 1440);
+//            $token = Helper::token($user->uid);
+//            $data = [
+//                'usercode' => $name,
+//                'uid' => $user->uid,
+//                'username' => $user->name,
+//            ];
+//            Cache::add($token, $data, 1440);
 
             $token = \JWTAuth::fromUser($user);
 
@@ -108,15 +108,15 @@ class UserLoginMutation extends Mutation
                 $user->save();
 
 
-                //相同的，存入cache中,默认时间是24小时
-                $token = Helper::token($user->uid);
-                $data = [
-                    'usercode' => $name,
-                    'uid' => $user->uid,
-                    'username' => $user->name,
-                ];
-                Cache::add($token, $data, 1440);
-
+//                //相同的，存入cache中,默认时间是24小时
+//                $token = Helper::token($user->uid);
+//                $data = [
+//                    'usercode' => $name,
+//                    'uid' => $user->uid,
+//                    'username' => $user->name,
+//                ];
+//                Cache::add($token, $data, 1440);
+                $token = \JWTAuth::fromUser($user);
 
             } else {
                 throw  new Exception('对不起，您的账号不存在或已经被删除');

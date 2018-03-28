@@ -14,11 +14,11 @@ use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Query;
 use GraphQL;
 
-class PtypeQuery extends Query
+class PtypeListQuery extends Query
 {
 
     protected $attributes = [
-        'name' => 'ptype'
+        'name' => 'ptypeListQuery'
     ];
 
     public function type()
@@ -64,13 +64,8 @@ class PtypeQuery extends Query
             $query->where('EntryCode', $args['EntryCode']);
         }
 
-        $limit = 30;
-        if (!isset($args['offset'])) {
-            $offset = 0;
-        } else {
-            $offset = ($args['offset'] - 1) * $limit;
-        }
+        return $query->orderBy('typeId', 'desc')->paginate($args['limit'], ['*'], 'page', $args['page']);
 
-        return $query->orderBy('typeId', 'desc')->limit($limit)->offset($offset)->get();
+
     }
 }

@@ -8,6 +8,7 @@
 
 namespace App\GraphQL\Type;
 
+use App\GoodsStock;
 use Rebing\GraphQL\Support\Type as GraphQLType;
 use GraphQL\Type\Definition\Type;
 use GraphQL;
@@ -70,8 +71,18 @@ class PtypeType extends GraphQLType
             'offset' => [
                 'type' => Type::int(),
                 'description' => '分页码数'
+            ],
+            'goodsStock' => [
+                'type' => Type::listOf(GraphQL::type('goodsStock')),
+                'description' => '关联商品库存'
             ]
         ];
+    }
+
+    public function resolveGoodsStockField($root, $args)
+    {
+        return GoodsStock::where('PtypeId', $root->typeId)->where('KtypeId', '0002200004')->get();
+
     }
 
 }

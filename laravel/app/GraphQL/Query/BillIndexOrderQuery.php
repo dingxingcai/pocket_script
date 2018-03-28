@@ -15,7 +15,7 @@ use Rebing\GraphQL\Support\Query;
 use GraphQL;
 use Rebing\GraphQL\Support\SelectFields;
 
-class BillIndexQuery extends Query
+class BillIndexOrderQuery extends Query
 {
     public function authorize(array $args)
     {
@@ -23,19 +23,18 @@ class BillIndexQuery extends Query
     }
 
     protected $attributes = [
-        'name' => 'billIndexQuery'
+        'name' => 'billIndexOrderQuery'
     ];
 
     public function type()
     {
-//        return Type::listOf(GraphQL::type('billIndex'));
         return GraphQL::paginate('billIndex');
     }
 
     public function args()
     {
         return [
-            'BillNumberId' => ['name' => 'BillNumberId', Type::int()],
+            'BillNumberId' => ['name' => 'BillNumberId', Type::string()],
             'BillCode' => ['name' => 'BillCode', Type::string()],
             'BillType' => ['name' => 'BillType', Type::string()],
             'etypeid' => ['name' => 'etypeid', Type::string()],
@@ -53,7 +52,6 @@ class BillIndexQuery extends Query
 
         /** @var \App\User $user */
         $user = \JWTAuth::parseToken()->authenticate();
-
         $query = BillIndex::where('BillType', 305);
         if (isset($args['BillNumberId'])) {
             $query->where('BillNumberId', $args['BillNumberId']);
@@ -75,7 +73,7 @@ class BillIndexQuery extends Query
             $query->where('VipCardID', $args['VipCardID']);
         }
 
-        $query->whereHas('retailBills', function  ($q) use ($user) {
+        $query->whereHas('retailBills', function ($q) use ($user) {
             $q->where('ETypeID', '=', $user->uid);
         });
 

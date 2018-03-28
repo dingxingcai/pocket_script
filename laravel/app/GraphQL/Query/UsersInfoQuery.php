@@ -18,6 +18,11 @@ use App\Library\Helper;
 class UsersInfoQuery extends Query
 {
 
+    public function authorize(array $args)
+    {
+        return !\Auth::guest();
+    }
+
     protected $attributes = [
         'name' => 'user'
     ];
@@ -39,8 +44,9 @@ class UsersInfoQuery extends Query
 
     public function resolve($root, $args)
     {
-        $user = Helper::checkLogin($args['token']);
-        return User::where('uid',$user['uid'])->get();
+        /** @var \App\User $user */
+        $user = \JWTAuth::parseToken()->authenticate();
+        return $user;
     }
 
 
