@@ -19,7 +19,7 @@ class ModelTest extends TestCase
             'BillType', 305
         )->whereHas('retailBills', function ($q){
             $q->where('ETypeID', '=', '000010023900012');
-        })->limit(10)->get()
+        })->limit(1)->get()
         ;
 
         $count = $query->count();

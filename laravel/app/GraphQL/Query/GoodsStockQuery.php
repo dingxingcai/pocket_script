@@ -9,21 +9,22 @@
 namespace App\GraphQL\Query;
 
 use App\BillIndex;
+use App\GoodsStock;
 use App\Ptype;
 use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Query;
 use GraphQL;
 
-class PtypeQuery extends Query
+class GoodsStockQuery extends Query
 {
 
     protected $attributes = [
-        'name' => 'ptype'
+        'name' => 'goodsStock'
     ];
 
     public function type()
     {
-        return Type::listOf(GraphQL::type('ptype'));
+        return Type::listOf(GraphQL::type('goodsStock'));
     }
 
     public function args()
@@ -43,7 +44,7 @@ class PtypeQuery extends Query
     public function resolve($root, $args)
     {
 
-        $query = Ptype::query();
+        $query = GoodsStock::query();
         if (isset($args['typeId'])) {
             $query->where('typeId', $args['typeId']);
         }
@@ -71,6 +72,6 @@ class PtypeQuery extends Query
             $offset = ($args['offset'] - 1) * $limit;
         }
 
-        return $query->orderBy('typeId', 'desc')->limit($limit)->offset($offset)->get();
+        return $query->orderBy('PtypeId', 'desc')->limit($limit)->offset($offset)->get();
     }
 }

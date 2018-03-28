@@ -8,6 +8,7 @@
 
 namespace App\GraphQL\Type;
 
+use App\Ptype;
 use Rebing\GraphQL\Support\Type as GraphQLType;
 use GraphQL\Type\Definition\Type;
 use GraphQL;
@@ -58,8 +59,24 @@ class RetailBillType extends GraphQLType
             'offset' => [
                 'type' => Type::int(),
                 'description' => '分页数据'
+            ],
+            'ptype' => [
+                'type' => Type::listOf(GraphQL::type('ptype')),
+                'description' => '关联商品信息'
             ]
         ];
+
+
     }
+
+
+    public function resolvePtypeField($root, $args)
+    {
+
+        return Ptype::where('typeId', $root->PtypeId)->get();
+
+
+    }
+
 
 }

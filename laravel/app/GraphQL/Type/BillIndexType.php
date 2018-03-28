@@ -8,6 +8,7 @@
 
 namespace App\GraphQL\Type;
 
+use App\NVipCardSign;
 use App\RetailBill;
 use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Type as GraphQLType;
@@ -108,6 +109,10 @@ class BillIndexType extends GraphQLType
                 'type' => Type::float(),
                 'description' => '折扣率'
             ],
+            'token' => [
+                'type' => Type::string(),
+                'description' => 'token'
+            ],
             'page' => [
                 'type' => Type::int(),
                 'description' => '页码数'
@@ -117,14 +122,8 @@ class BillIndexType extends GraphQLType
                 'description' => '分页限制'
             ],
             'retailBill' => [    //关联retailBill
-                'args' => [
-                    'PtypeId' => [
-                        'type' => Type::string(),
-                        'description' => 'PtypeId'
-                    ]
-                ],
                 'type' => Type::listOf(GraphQL::type('retailBill')),
-                'description' => 'RetailBill' ,
+                'description' => 'RetailBill',
             ],
             'nVipCardSign' => [    //关联 nVipCardSign
                 'type' => Type::listOf(GraphQL::type('nVipCardSign')),
@@ -137,38 +136,20 @@ class BillIndexType extends GraphQLType
 
     public function resolveRetailBillField($root, $args)
     {
-        if(isset($args['PtypeId'])){
+        if (isset($args['PtypeId'])) {
             return RetailBill::where('PtypeId', $args['PtypeId'])->get();
         }
         return RetailBill::where('BillNumberId', $root->BillNumberId)->get();
     }
 
-    public function resolvenVipCardSignField($root , $args){
+    public function resolvenVipCardSignField($root, $args)
+    {
 
+        if ($root->VipCardID !== -1) {
+            return NVipCardSign::where('vipCardID', $root->VipCardID)->get();
+        }
+        return null;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

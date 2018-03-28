@@ -38,13 +38,14 @@ class EmployeeQuery extends Query
             'leveal' => ['name' => 'leveal', Type::int()],
             'Parid' => ['name' => 'Parid', Type::string()],
             'offset' => ['name' => 'offset', Type::int()],
-            'token' => ['name' => 'token', Type::string()]
+            'token' => ['name' => 'token', Type::string()],
+            'test' => ['name' => 'test', Type::string()],
         ];
     }
 
     public function resolve($root, $args)
     {
-//        Helper::checkLogin($args['token']);
+
 
 
         $query = Employee::query();
