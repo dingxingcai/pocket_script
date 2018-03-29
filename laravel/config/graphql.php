@@ -131,6 +131,7 @@ return [
         'ptype' => \App\GraphQL\Type\PtypeType::class,
         'nVipCardSign' => \App\GraphQL\Type\NVipCardSignType::class,
         'goodsStock' => \App\GraphQL\Type\GoodsStockType::class,
+        'pTypePrice' => \App\GraphQL\Type\PtypePriceType::class,
     ],
 
     // This callable will be passed the Error object for each errors GraphQL catch.

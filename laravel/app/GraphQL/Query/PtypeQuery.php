@@ -23,8 +23,10 @@ class PtypeQuery extends Query
 
     public function type()
     {
-        return Type::listOf(GraphQL::type('ptype'));
+//        return Type::listOf(GraphQL::type('ptype'));
+        return GraphQL::paginate('ptype');
     }
+
 
     public function args()
     {
@@ -35,7 +37,8 @@ class PtypeQuery extends Query
             'UserCode' => ['name' => 'etypeid', Type::string()],
             'FullName' => ['name' => 'FullName', Type::string()],
             'EntryCode' => ['name' => 'EntryCode', Type::string()],
-            'offset' => ['name' => 'offset', Type::int()]
+            'limit' => ['name' => 'limit', Type::int()],
+            'page' => ['name' => 'page', Type::int()],
         ];
     }
 
@@ -64,13 +67,8 @@ class PtypeQuery extends Query
             $query->where('EntryCode', $args['EntryCode']);
         }
 
-        $limit = 30;
-        if (!isset($args['offset'])) {
-            $offset = 0;
-        } else {
-            $offset = ($args['offset'] - 1) * $limit;
-        }
+        return $query->orderBy('typeId', 'desc')->paginate($args['limit'], ['*'], 'page', $args['page']);
 
-        return $query->orderBy('typeId', 'desc')->limit($limit)->offset($offset)->get();
+
     }
 }

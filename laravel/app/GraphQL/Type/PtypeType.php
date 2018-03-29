@@ -9,6 +9,7 @@
 namespace App\GraphQL\Type;
 
 use App\GoodsStock;
+use App\PtypePrice;
 use Rebing\GraphQL\Support\Type as GraphQLType;
 use GraphQL\Type\Definition\Type;
 use GraphQL;
@@ -68,21 +69,42 @@ class PtypeType extends GraphQLType
                 'type' => Type::int(),
                 'description' => '图片id'
             ],
-            'offset' => [
+            'page' => [
                 'type' => Type::int(),
-                'description' => '分页码数'
+                'description' => '页码数'
+            ],
+            'limit' => [
+                'type' => Type::int(),
+                'description' => '分页大小'
             ],
             'goodsStock' => [
+//                'args' => [
+//                    'KtypeId' => [
+//                        'type' => Type::string(),
+//                        'description' => '仓库id'
+//                    ]
+//                ],
                 'type' => Type::listOf(GraphQL::type('goodsStock')),
                 'description' => '关联商品库存'
+            ],
+            'pTypePrice' => [
+                'type' => Type::listOf(GraphQL::type('pTypePrice')),
+                'description' => '关联用户的价格'
             ]
         ];
     }
 
     public function resolveGoodsStockField($root, $args)
     {
-        return GoodsStock::where('PtypeId', $root->typeId)->where('KtypeId', '0002200004')->get();
 
+        return GoodsStock::where('PtypeId', $root->typeId)->where('KtypeId', '0002000001')->get();
+
+    }
+
+    public function resolvePtypePriceField($root, $args)
+    {
+//        print_r($root);exit;
+        return PtypePrice::where('PTypeID', $root->typeId)->get();
     }
 
 }
