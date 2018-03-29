@@ -97,8 +97,13 @@ class PtypeType extends GraphQLType
     public function resolveGoodsStockField($root, $args)
     {
 
-        return GoodsStock::where('PtypeId', $root->typeId)->where('KtypeId', '0002000001')->get();
-
+        $stock =  GoodsStock::where('PtypeId', $root->typeId)->where('KtypeId', '0003000003')->get();
+        if($stock->count() == 0){
+            $stock = new GoodsStock();
+            $stock->Qty = 0;
+            $stock = [$stock];
+        }
+        return $stock;
     }
 
     public function resolvePtypePriceField($root, $args)
