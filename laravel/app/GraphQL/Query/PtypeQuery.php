@@ -17,6 +17,11 @@ use GraphQL;
 class PtypeQuery extends Query
 {
 
+    public function authorize(array $args)
+    {
+        return !\Auth::guest();
+    }
+
     protected $attributes = [
         'name' => 'ptype'
     ];
@@ -37,6 +42,7 @@ class PtypeQuery extends Query
             'UserCode' => ['name' => 'etypeid', Type::string()],
             'FullName' => ['name' => 'FullName', Type::string()],
             'EntryCode' => ['name' => 'EntryCode', Type::string()],
+            'search' => ['name' => 'search', Type::string()],
             'limit' => ['name' => 'limit', Type::int()],
             'page' => ['name' => 'page', Type::int()],
         ];
@@ -65,6 +71,13 @@ class PtypeQuery extends Query
         }
         if (isset($args['EntryCode'])) {
             $query->where('EntryCode', $args['EntryCode']);
+        }
+
+        if (isset($args['search'])) {
+            $query->where('FullName', 'like', '%' . $args['search'] . '%');
+            $query->orWhere('EntryCode', 'like', '%' . $args['search'] . '%');
+            $query->orWhere('UserCode', 'like', '%' . $args['search'] . '%');
+            $query->orWhere('Standard', 'like', '%' . $args['search'] . '%');
         }
 
         return $query->orderBy('typeId', 'desc')->paginate($args['limit'], ['*'], 'page', $args['page']);
