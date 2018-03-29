@@ -73,7 +73,7 @@ class PtypeQuery extends Query
             $query->where('EntryCode', $args['EntryCode']);
         }
 
-        if (isset($args['search'])) {
+        if (isset($args['search']) && !empty($args['search'])) {
             $query->where('FullName', 'like', '%' . $args['search'] . '%');
             $query->orWhere('EntryCode', 'like', '%' . $args['search'] . '%');
             $query->orWhere('UserCode', 'like', '%' . $args['search'] . '%');
