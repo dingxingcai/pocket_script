@@ -8,6 +8,9 @@
 
 namespace App\Library;
 
+use App\Employee;
+use App\PosInfo;
+use App\PosType;
 use Cache;
 use Exception;
 
@@ -31,6 +34,25 @@ class Helper
         }
 
         return $user;
+    }
+
+    //获取posInfo信息
+    public static function posInfo()
+    {
+
+        $user = \JWTAuth::parseToken()->authenticate();
+
+        //查找用户的父id
+        $parid = Employee::select('Parid')->where('typeId', $user->uid)->first();
+
+        //查找posType
+        $posType = PosType::where('etypeId', $parid->Parid)->first();
+
+        //pos信息
+        $posInfo = PosInfo::where('UserCode', $posType->posCode)->first();
+
+        return $posInfo;
+
     }
 
 }

@@ -9,6 +9,7 @@
 namespace App\GraphQL\Type;
 
 use App\GoodsStock;
+use App\Library\Helper;
 use App\PtypePrice;
 use Rebing\GraphQL\Support\Type as GraphQLType;
 use GraphQL\Type\Definition\Type;
@@ -78,12 +79,6 @@ class PtypeType extends GraphQLType
                 'description' => '分页大小'
             ],
             'goodsStock' => [
-//                'args' => [
-//                    'KtypeId' => [
-//                        'type' => Type::string(),
-//                        'description' => '仓库id'
-//                    ]
-//                ],
                 'type' => Type::listOf(GraphQL::type('goodsStock')),
                 'description' => '关联商品库存'
             ],
@@ -96,9 +91,9 @@ class PtypeType extends GraphQLType
 
     public function resolveGoodsStockField($root, $args)
     {
-
-        $stock =  GoodsStock::where('PtypeId', $root->typeId)->where('KtypeId', '0003000003')->get();
-        if($stock->count() == 0){
+        $info = Helper::posInfo();
+        $stock = GoodsStock::where('PtypeId', $root->typeId)->where('KtypeId', $info->ktypeid)->get();
+        if ($stock->count() == 0) {
             $stock = new GoodsStock();
             $stock->Qty = 0;
             $stock = [$stock];
