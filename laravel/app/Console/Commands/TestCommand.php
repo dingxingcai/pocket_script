@@ -38,7 +38,7 @@ class TestCommand extends Command
      */
     public function handle()
     {
-        $employee = Employee::select()->where('typeid','00000')->get();
+        $employee = Employee::select()->where('typeid', '00000')->get();
         echo $employee;
     }
 }
