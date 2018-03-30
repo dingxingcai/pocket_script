@@ -104,7 +104,7 @@ class PtypeType extends GraphQLType
     public function resolvePtypePriceField($root, $args)
     {
 //        print_r($root);exit;
-        return PtypePrice::where('PTypeID', $root->typeId)->where('RetailPrice', '>', 0)->get();
+        return PtypePrice::where('PTypeID', $root->typeId)->get();
     }
 
 }
