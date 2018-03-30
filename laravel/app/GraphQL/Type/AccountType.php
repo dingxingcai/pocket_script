@@ -18,6 +18,7 @@ class AccountType extends GraphQLType
 {
     protected $inputObject = false;
 
+
     protected $attributes = [
         'name' => 'account',
         'description' => '收款账户'
