@@ -27,6 +27,6 @@ class CreateTablePosType extends Migration
      */
     public function down()
     {
-        //
+
     }
 }

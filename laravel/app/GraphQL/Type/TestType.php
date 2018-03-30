@@ -28,6 +28,7 @@ class TestType extends GraphQLType
     public function fields()
     {
         return [
+
             'money' => [
                 'type' => Type::float(),
                 'description' => 'money'
@@ -46,8 +47,8 @@ class TestType extends GraphQLType
                 'type' => Type::listOf(GraphQL::type('user')),
 //                'type' => GraphQL::type('user'),
                 'description' => 'user',
-                'query' => function(array $aryay, $query){
-                    return $query->where('user.id',$aryay['id']);
+                'query' => function (array $aryay, $query) {
+                    return $query->where('user.id', $aryay['id']);
                 }
             ],
             'tst' => [
@@ -57,28 +58,6 @@ class TestType extends GraphQLType
                     return $args['money'] == 0.01;
                 }
             ]
-
-
-        ];
-    }
-
-    public function resolveUserField($root, $args)
-    {
-
-        if (isset($args['id'])) {
-            $user = User::find($args['id']);
-            return [
-
-                'id' => $args['id'],
-                'name' => $user->usercode
-
-            ];
-        }
-
-        return [
-
-            'id' => 6,
-            'name' => 6
 
         ];
     }

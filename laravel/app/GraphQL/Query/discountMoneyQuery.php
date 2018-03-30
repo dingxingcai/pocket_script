@@ -44,15 +44,17 @@ class discountMoneyQuery extends Query
     public function resolve($root, $args)
     {
 
-        //查看是否是vip
-        $vipCardSign = NVipCardSign::select('VipCardTypeID')->where('VipCardCode', $args['vipNo'])->first();
         $isVip = false;
         $name = "非会员";
         $discount = 1;
-        if ($vipCardSign) {
-            $isVip = true;
-            $discount = Helper::getVipCount($vipCardSign->VipCardTypeID);
-            $name = Helper::getVipName($vipCardSign->VipCardTypeID);
+        //查看是否是vip
+        if (isset($args['vipNo']) && !empty($args['vipNo'])) {
+            $vipCardSign = NVipCardSign::select('VipCardTypeID')->where('VipCardCode', $args['vipNo'])->first();
+            if ($vipCardSign) {
+                $isVip = true;
+                $discount = Helper::getVipCount($vipCardSign->VipCardTypeID);
+                $name = Helper::getVipName($vipCardSign->VipCardTypeID);
+            }
         }
 
         $goods = $args['goods'];

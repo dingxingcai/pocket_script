@@ -111,6 +111,7 @@ return [
                 'deleteUser' => App\GraphQL\Mutation\deleteUserMutation::class,
                 'userLogin' => App\GraphQL\Mutation\UserLoginMutation::class,
                 'testObject' => App\GraphQL\Mutation\TestObjectMutation::class,
+                'confirmOrder' => \App\GraphQL\Mutation\ConfirmOrderMutation::class,
 
             ],
             'middleware' => []
@@ -139,6 +140,7 @@ return [
         'test' => \App\GraphQL\Type\TestType::class,
         'goodsQty' => \App\GraphQL\Type\GoodsQtyType::class,
         'discountMoney' => \App\GraphQL\Type\DiscontMoneyType::class,
+        'return' => \App\GraphQL\Type\ReturnStringType::class
     ],
 
     // This callable will be passed the Error object for each errors GraphQL catch.
