@@ -48,7 +48,7 @@ class discountMoneyQuery extends Query
         $vipCardSign = NVipCardSign::select('VipCardTypeID')->where('VipCardCode', $args['vipNo'])->first();
         $isVip = false;
         $discount = 1;
-        if ($vipCardSign->count() > 0) {
+        if ($vipCardSign) {
             $isVip = true;
             $discount = Helper::getVipInfo($vipCardSign->VipCardTypeID);
         }
@@ -57,7 +57,7 @@ class discountMoneyQuery extends Query
         $totalMoney = 0;
         $totalDisMoney = 0;
         foreach ($goods as $good) {
-            $price = PtypePrice::select('RetailPrice')->where('PtypeID', $good['pTypeId'])->first();
+            $price = PtypePrice::select('RetailPrice')->where('PtypeID', $good['typeId'])->first();
             if (!$price) {
                 throw new Exception('商品不存在');
             }

@@ -28,7 +28,7 @@ class GoodsQtyType extends GraphQLType
     public function fields()
     {
         return [
-            'pTypeId' => [
+            'typeId' => [
                 'type' => Type::string(),
                 'description' => '商品id'
             ],
