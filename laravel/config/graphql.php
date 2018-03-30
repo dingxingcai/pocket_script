@@ -101,6 +101,8 @@ return [
                 'nVipCardSign' => App\GraphQL\Query\NVipCardSignQuery::class,
                 'billIndexOrderQuery' => App\GraphQL\Query\BillIndexOrderQuery::class,
                 'goodsStock' => App\GraphQL\Query\GoodsStockQuery::class,
+                'account' => App\GraphQL\Query\AccountQuery::class,
+                'test' => App\GraphQL\Query\TestQuery::class,
             ],
             'mutation' => [
                 'createUser' => App\GraphQL\Mutation\CreateUserMutation::class,
@@ -132,6 +134,8 @@ return [
         'nVipCardSign' => \App\GraphQL\Type\NVipCardSignType::class,
         'goodsStock' => \App\GraphQL\Type\GoodsStockType::class,
         'pTypePrice' => \App\GraphQL\Type\PtypePriceType::class,
+        'account' => \App\GraphQL\Type\AccountType::class,
+        'test' => \App\GraphQL\Type\TestType::class,
     ],
 
     // This callable will be passed the Error object for each errors GraphQL catch.
