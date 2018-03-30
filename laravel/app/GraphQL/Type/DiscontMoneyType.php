@@ -44,6 +44,10 @@ class DiscontMoneyType extends GraphQLType
                 'type' => Type::boolean(),
                 'description' => '是否是会员'
             ],
+            'name' => [
+                'type' => Type::string(),
+                'description' => '会员名称'
+            ]
         ];
     }
 

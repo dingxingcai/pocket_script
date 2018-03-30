@@ -47,10 +47,12 @@ class discountMoneyQuery extends Query
         //查看是否是vip
         $vipCardSign = NVipCardSign::select('VipCardTypeID')->where('VipCardCode', $args['vipNo'])->first();
         $isVip = false;
+        $name = "非会员";
         $discount = 1;
         if ($vipCardSign) {
             $isVip = true;
-            $discount = Helper::getVipInfo($vipCardSign->VipCardTypeID);
+            $discount = Helper::getVipCount($vipCardSign->VipCardTypeID);
+            $name = Helper::getVipName($vipCardSign->VipCardTypeID);
         }
 
         $goods = $args['goods'];
@@ -71,7 +73,8 @@ class discountMoneyQuery extends Query
             'totalMoney' => round($totalMoney, 2),
             'discountMoney' => round($totalDisMoney, 2),
             'isVip' => $isVip,
-            'discount' => $discount
+            'discount' => $discount,
+            'name' => $name
         ];
 
 

@@ -56,7 +56,7 @@ class Helper
     }
 
     //获取会员折扣
-    public static function getVipInfo($type)
+    public static function getVipCount($type)
     {
         $account = [
             1 => 0.99,
@@ -68,5 +68,20 @@ class Helper
 
         return $account[$type];
     }
+
+    //获取会员折扣
+    public static function getVipName($type)
+    {
+        $account = [
+            1 => "蓝口袋",
+            2 => "青口袋",
+            3 => "银口袋",
+            4 => "金口袋",
+            0 => "黑口袋"
+        ];
+
+        return $account[$type];
+    }
+
 
 }
