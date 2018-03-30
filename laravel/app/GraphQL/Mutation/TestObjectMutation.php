@@ -42,10 +42,10 @@ class TestObjectMutation extends Mutation
 
     public function resolve($root, $args)
     {
-        $goods = $args['goods'];
-        $vip = $args['vip'];
+//        $goods = $args['goods'];
+//        $vip = $args['vip'];
 
-        print_r($vip);
+        print_r($args);
         exit;
     }
 }

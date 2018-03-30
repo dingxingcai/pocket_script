@@ -16,7 +16,7 @@ use GraphQL;
 
 class RetailBillType extends GraphQLType
 {
-    protected $inputObject=false;
+    protected $inputObject=true;
 
     protected $attributes = [
         'name' => 'retailBill',

@@ -56,14 +56,14 @@ class Helper
     }
 
     //获取会员折扣
-    public function getVipInfo($type)
+    public static function getVipInfo($type)
     {
         $account = [
             1 => 0.99,
             2 => 0.98,
             3 => 0.95,
             4 => 0.90,
-            5 => 0.88
+            0 => 0.88
         ];
 
         return $account[$type];

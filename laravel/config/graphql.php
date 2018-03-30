@@ -103,6 +103,7 @@ return [
                 'goodsStock' => App\GraphQL\Query\GoodsStockQuery::class,
                 'account' => App\GraphQL\Query\AccountQuery::class,
                 'test' => App\GraphQL\Query\TestQuery::class,
+                'discountMoney' => App\GraphQL\Query\discountMoneyQuery::class,
             ],
             'mutation' => [
                 'createUser' => App\GraphQL\Mutation\CreateUserMutation::class,
@@ -136,6 +137,8 @@ return [
         'pTypePrice' => \App\GraphQL\Type\PtypePriceType::class,
         'account' => \App\GraphQL\Type\AccountType::class,
         'test' => \App\GraphQL\Type\TestType::class,
+        'goodsQty' => \App\GraphQL\Type\GoodsQtyType::class,
+        'discountMoney' => \App\GraphQL\Type\DiscontMoneyType::class,
     ],
 
     // This callable will be passed the Error object for each errors GraphQL catch.
