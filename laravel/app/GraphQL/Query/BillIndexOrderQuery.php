@@ -17,10 +17,10 @@ use Rebing\GraphQL\Support\SelectFields;
 
 class BillIndexOrderQuery extends Query
 {
-//    public function authorize(array $args)
-//    {
-//        return !\Auth::guest();
-//    }
+    public function authorize(array $args)
+    {
+        return !\Auth::guest();
+    }
 
     protected $attributes = [
         'name' => 'billIndexOrderQuery'
@@ -52,8 +52,8 @@ class BillIndexOrderQuery extends Query
     {
 
         /** @var \App\User $user */
-//        $user = \JWTAuth::parseToken()->authenticate();
-        $user = User::find(44);
+        $user = \JWTAuth::parseToken()->authenticate();
+//        $user = User::find(44);
         $query = BillIndex::where('BillType', 305);
         if (isset($args['BillNumberId'])) {
             $query->where('BillNumberId', $args['BillNumberId']);
