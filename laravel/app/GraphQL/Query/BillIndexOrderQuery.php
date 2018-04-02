@@ -17,10 +17,10 @@ use Rebing\GraphQL\Support\SelectFields;
 
 class BillIndexOrderQuery extends Query
 {
-    public function authorize(array $args)
-    {
-        return !\Auth::guest();
-    }
+//    public function authorize(array $args)
+//    {
+//        return !\Auth::guest();
+//    }
 
     protected $attributes = [
         'name' => 'billIndexOrderQuery'
@@ -42,7 +42,8 @@ class BillIndexOrderQuery extends Query
             'VipCardID' => ['name' => 'VipCardID', Type::string()],
             'btypeid' => ['name' => 'btypeid', Type::string()],
             'limit' => ['name' => 'limit', Type::int()],
-            'page' => ['name' => 'page', Type::int()]
+            'page' => ['name' => 'page', Type::int()],
+            'search' => ['name' => 'search', Type::string()]
         ];
     }
 
@@ -51,19 +52,18 @@ class BillIndexOrderQuery extends Query
     {
 
         /** @var \App\User $user */
-        $user = \JWTAuth::parseToken()->authenticate();
-//        $user = User::find(44);
+//        $user = \JWTAuth::parseToken()->authenticate();
+        $user = User::find(44);
         $query = BillIndex::where('BillType', 305);
         if (isset($args['BillNumberId'])) {
             $query->where('BillNumberId', $args['BillNumberId']);
         }
-        if (isset($args['BillCode'])) {
-            $query->where('BillCode', $args['BillCode']);
-        }
         if (isset($args['BillType'])) {
             $query->where('BillType', $args['BillType']);
         }
-
+        if (isset($args['search']) && !empty($args['search'])) {
+            $query->where('BillCode', 'like', '%' . $args['search'] . '%');
+        }
         if (isset($args['etypeid'])) {
             $query->where('etypeid', $args['etypeid']);
         }
