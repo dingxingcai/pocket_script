@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Employee;
 use App\User;
 use Illuminate\Http\Request;
 use DB;
 use Cache;
 use App\Library\Helper;
 use Exception;
+use Illuminate\Support\Facades\Response;
 
 class UserController extends Controller
 {
@@ -131,6 +133,14 @@ class UserController extends Controller
         }
 
         return response()->json();
+
+    }
+
+    public function getInfo(Request $request)
+    {
+        $uid = "50-0308";
+        $employee = Employee::where('UserCode',$uid)->first();
+        return Response::json($employee);
 
     }
 }
