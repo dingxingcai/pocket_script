@@ -70,14 +70,14 @@ class PtypeType extends GraphQLType
                 'type' => Type::int(),
                 'description' => '图片id'
             ],
-            'page' => [
-                'type' => Type::int(),
-                'description' => '页码数'
-            ],
-            'limit' => [
-                'type' => Type::int(),
-                'description' => '分页大小'
-            ],
+//            'page' => [
+//                'type' => Type::int(),
+//                'description' => '页码数'
+//            ],
+//            'limit' => [
+//                'type' => Type::int(),
+//                'description' => '分页大小'
+//            ],
             'goodsStock' => [
                 'type' => Type::listOf(GraphQL::type('goodsStock')),
                 'description' => '关联商品库存'
@@ -92,7 +92,7 @@ class PtypeType extends GraphQLType
     public function resolveGoodsStockField($root, $args)
     {
         $info = Helper::posInfo();
-        $stock = GoodsStock::where('PtypeId', $root->typeId)->where('KtypeId', $info->ktypeid)->get();
+        $stock = GoodsStock::selet('Qty')->where('PtypeId', $root->typeId)->where('KtypeId', $info->ktypeid)->get();
         if ($stock->count() == 0) {
             $stock = new GoodsStock();
             $stock->Qty = 0;
@@ -104,7 +104,7 @@ class PtypeType extends GraphQLType
     public function resolvePtypePriceField($root, $args)
     {
 //        print_r($root);exit;
-        return PtypePrice::where('PTypeID', $root->typeId)->get();
+        return PtypePrice::select('RetailPrice')->where('PTypeID', $root->typeId)->get();
     }
 
 }

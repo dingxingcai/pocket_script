@@ -113,14 +113,6 @@ class BillIndexType extends GraphQLType
                 'type' => Type::string(),
                 'description' => 'token'
             ],
-            'page' => [
-                'type' => Type::int(),
-                'description' => '页码数'
-            ],
-            'limit' => [
-                'type' => Type::int(),
-                'description' => '分页限制'
-            ],
             'retailBill' => [    //关联retailBill
                 'type' => Type::listOf(GraphQL::type('retailBill')),
                 'description' => 'RetailBill',

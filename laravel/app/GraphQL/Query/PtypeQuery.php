@@ -52,7 +52,7 @@ class PtypeQuery extends Query
     public function resolve($root, $args)
     {
 
-        $query = Ptype::query();
+        $query = Ptype::select('typeId', 'UserCode', 'FullName', 'Standard', 'Type', 'EntryCode');
         if (isset($args['typeId'])) {
             $query->where('typeId', $args['typeId']);
         }

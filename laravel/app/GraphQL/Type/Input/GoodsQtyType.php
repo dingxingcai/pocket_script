@@ -6,7 +6,7 @@
  * Time: 17:32
  */
 
-namespace App\GraphQL\Type;
+namespace App\GraphQL\Type\Input;
 
 use App\Post;
 use GraphQL\Type\Definition\Type;
@@ -35,6 +35,10 @@ class GoodsQtyType extends GraphQLType
             'Qty' => [
                 'type' => Type::int(),
                 'description' => '商品数量'
+            ],
+            'FullName' => [
+                'type' => Type::string(),
+                'description' => '商品名称'
             ]
         ];
     }
