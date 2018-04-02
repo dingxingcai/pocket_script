@@ -46,8 +46,8 @@ class UsersInfoQuery extends Query
     {
         /** @var \App\User $user */
         $user = \JWTAuth::parseToken()->authenticate();
-
-        return [$user];
+        $user1 = User::where('uid',$user->uid)->first();
+        return [$user1];
     }
 
 
