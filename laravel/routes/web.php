@@ -25,7 +25,7 @@ Route::post('/user/login', "UserController@login");
 
 
 //测试
-Route::post('/user/test', "UserController@getInfo");
+Route::any('/user/test', "UserController@getInfo");
 
 
 Route::group(['middleware' => ['user']], function () {
