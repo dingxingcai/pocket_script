@@ -97,7 +97,6 @@ return [
                 'employee' => App\GraphQL\Query\EmployeeQuery::class,
                 'billIndex' => App\GraphQL\Query\BillIndexQuery::class,
                 'retailBill' => App\GraphQL\Query\RetailBillQuery::class,
-                'ptype' => App\GraphQL\Query\PtypeQuery::class,
                 'nVipCardSign' => App\GraphQL\Query\NVipCardSignQuery::class,
                 'billIndexOrderQuery' => App\GraphQL\Query\BillIndexOrderQuery::class,
 //                'billIndexOrderQuery1' => App\GraphQL\Query\BillIndexOrderQuery1::class,
