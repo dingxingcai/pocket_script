@@ -105,6 +105,7 @@ return [
                 'account' => App\GraphQL\Query\AccountQuery::class,
                 'test' => App\GraphQL\Query\TestQuery::class,
                 'discountMoney' => App\GraphQL\Query\discountMoneyQuery::class,
+                'ptypeListQuery' => App\GraphQL\Query\PtypeListQuery::class
             ],
             'mutation' => [
                 'createUser' => App\GraphQL\Mutation\CreateUserMutation::class,
@@ -135,6 +136,7 @@ return [
 //        'billList' => \App\GraphQL\Type\BillListType::class,
         'retailBill' => \App\GraphQL\Type\RetailBillType::class,
         'ptype' => \App\GraphQL\Type\PtypeType::class,
+        'ptype1' => \App\GraphQL\Type\PtypeType1::class,
         'nVipCardSign' => \App\GraphQL\Type\NVipCardSignType::class,
         'goodsStock' => \App\GraphQL\Type\GoodsStockType::class,
         'pTypePrice' => \App\GraphQL\Type\PtypePriceType::class,

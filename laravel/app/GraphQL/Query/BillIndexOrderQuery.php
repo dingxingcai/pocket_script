@@ -15,6 +15,11 @@ use Rebing\GraphQL\Support\Query;
 use GraphQL;
 use Rebing\GraphQL\Support\SelectFields;
 
+
+/*
+ * 订单列表搜索
+ * */
+
 class BillIndexOrderQuery extends Query
 {
     public function authorize(array $args)

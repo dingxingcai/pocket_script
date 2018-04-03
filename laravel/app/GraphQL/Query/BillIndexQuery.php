@@ -75,7 +75,7 @@ class BillIndexQuery extends Query
             $query->where('VipCardID', $args['VipCardID']);
         }
 
-        $query->whereHas('retailBills', function  ($q) use ($user) {
+        $query->whereHas('retailBills', function ($q) use ($user) {
             $q->where('ETypeID', '=', $user->uid);
         });
 

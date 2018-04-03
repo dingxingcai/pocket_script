@@ -14,6 +14,11 @@ use Rebing\GraphQL\Support\Type as GraphQLType;
 use GraphQL;
 use GraphQL\Type\Definition\InputType;
 
+
+/*
+ * 付款账户type
+ * */
+
 class AccountType extends GraphQLType
 {
     protected $inputObject = false;

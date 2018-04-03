@@ -23,6 +23,11 @@ use Exception;
 use App\Library\Helper;
 use GraphQL\Type\Definition\ObjectType;
 
+
+/*
+ * 移动端下单
+ * */
+
 class ConfirmOrderMutation extends Mutation
 {
 
@@ -60,8 +65,7 @@ class ConfirmOrderMutation extends Mutation
         $posInfo = Helper::posInfo();
         /** @var \App\User $user */
         $user = \JWTAuth::parseToken()->authenticate();
-//        $user = User::find(66);
-//        $posInfo = PosInfo::where('posId', 6)->first();
+
         $vipCardId = -1;
         $discount = 1;
         //查看是否是vip
@@ -88,11 +92,6 @@ class ConfirmOrderMutation extends Mutation
             }
 
             $goodsPrices [] = [
-//                $good['typeId'] => [
-//                    'price' => $price->RetailPrice,
-//                    'Qty' => $good['Qty'],
-//                ];
-
                 'typeId' => $good['typeId'],
                 'price' => $price->RetailPrice,
                 'Qty' => $good['Qty'],

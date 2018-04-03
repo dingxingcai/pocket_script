@@ -18,9 +18,17 @@ use Rebing\GraphQL\Support\Query;
 use App\Library\Helper;
 use Exception;
 
+/*
+ * 下单计算折扣
+ * */
 
 class discountMoneyQuery extends Query
 {
+
+    public function authorize(array $args)
+    {
+        return !\Auth::guest();
+    }
 
     protected $attributes = [
         'name' => 'discountMoney'

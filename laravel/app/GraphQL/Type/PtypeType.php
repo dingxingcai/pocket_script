@@ -92,7 +92,8 @@ class PtypeType extends GraphQLType
     public function resolveGoodsStockField($root, $args)
     {
         $info = Helper::posInfo();
-        $stock = GoodsStock::selet('Qty')->where('PtypeId', $root->typeId)->where('KtypeId', $info->ktypeid)->get();
+        $stock = GoodsStock::select('Qty')->where('PtypeId', $root->typeId)->where('KtypeId', $info->ktypeid)->get();
+
         if ($stock->count() == 0) {
             $stock = new GoodsStock();
             $stock->Qty = 0;

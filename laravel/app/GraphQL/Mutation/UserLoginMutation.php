@@ -17,6 +17,11 @@ use Cache;
 use Exception;
 use App\Library\Helper;
 
+
+/*
+ * 用户登录
+ * */
+
 class UserLoginMutation extends Mutation
 {
 
@@ -79,15 +84,6 @@ class UserLoginMutation extends Mutation
             $user->loginat = date('Y-m-d H:i:s', time());
             $user->save();
 
-            //将用户的信息存入cache中,默认时间是24小时
-//            $token = Helper::token($user->uid);
-//            $data = [
-//                'usercode' => $name,
-//                'uid' => $user->uid,
-//                'username' => $user->name,
-//            ];
-//            Cache::add($token, $data, 1440);
-
             $token = \JWTAuth::fromUser($user);
 
 
@@ -108,15 +104,6 @@ class UserLoginMutation extends Mutation
                 $user->name = $employee->FullName;
                 $user->save();
 
-
-//                //相同的，存入cache中,默认时间是24小时
-//                $token = Helper::token($user->uid);
-//                $data = [
-//                    'usercode' => $name,
-//                    'uid' => $user->uid,
-//                    'username' => $user->name,
-//                ];
-//                Cache::add($token, $data, 1440);
                 $token = \JWTAuth::fromUser($user);
 
             } else {
@@ -125,8 +112,7 @@ class UserLoginMutation extends Mutation
         }
 
         $user->token = $token;
-//        print_r($user);exit;
-//        print_r($token);exit;
+
         return $user;
     }
 }

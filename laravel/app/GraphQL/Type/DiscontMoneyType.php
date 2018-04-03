@@ -14,6 +14,11 @@ use Rebing\GraphQL\Support\Type as GraphQLType;
 use GraphQL;
 use GraphQL\Type\Definition\InputType;
 
+
+/*
+ * 计算折扣返回数据
+ * */
+
 class DiscontMoneyType extends GraphQLType
 {
     protected $inputObject = false;

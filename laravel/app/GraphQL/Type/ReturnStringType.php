@@ -15,6 +15,10 @@ use Rebing\GraphQL\Support\Type as GraphQLType;
 use GraphQL;
 use GraphQL\Type\Definition\InputType;
 
+/*
+ * 正常提示返回信息
+ * */
+
 class ReturnStringType extends GraphQLType
 {
     protected $inputObject = false;

@@ -15,8 +15,18 @@ use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Query;
 use App\Library\Helper;
 
+
+/*
+ * 查询收款账户
+ * */
+
 class AccountQuery extends Query
 {
+
+    public function authorize(array $args)
+    {
+        return !\Auth::guest();
+    }
 
     protected $attributes = [
         'name' => 'account'

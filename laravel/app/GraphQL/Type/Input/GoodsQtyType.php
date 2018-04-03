@@ -14,6 +14,10 @@ use Rebing\GraphQL\Support\Type as GraphQLType;
 use GraphQL;
 use GraphQL\Type\Definition\InputType;
 
+/*
+ * 下单时输入的商品信息
+ * */
+
 class GoodsQtyType extends GraphQLType
 {
     protected $inputObject = true;

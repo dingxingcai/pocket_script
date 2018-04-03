@@ -14,6 +14,11 @@ use Rebing\GraphQL\Support\Type as GraphQLType;
 use GraphQL;
 use GraphQL\Type\Definition\InputType;
 
+
+/*
+ * 用户信息
+ * */
+
 class UserType extends GraphQLType
 {
     protected $inputObject = false;

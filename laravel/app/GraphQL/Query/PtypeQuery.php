@@ -14,6 +14,11 @@ use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Query;
 use GraphQL;
 
+
+/*
+ * 商品列表查询 （待替换）
+ * */
+
 class PtypeQuery extends Query
 {
 
