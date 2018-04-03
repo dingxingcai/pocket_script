@@ -57,15 +57,18 @@ class PtypeListQuery extends Query
         $posInfo = Helper::posInfo();
 
         $query = DB::connection('sqlsrv')->table('ptype')
-            ->leftjoin('Ptype_Price', 'ptype.typeId', '=', 'Ptype_Price.PTypeID')
-            ->leftjoin('GoodsStocks', 'GoodsStocks.PtypeId', '=', 'ptype.typeId')
+            ->join('Ptype_Price', 'ptype.typeId', '=', 'Ptype_Price.PTypeID')
+            ->join('GoodsStocks', 'GoodsStocks.PtypeId', '=', 'ptype.typeId')
             ->select('ptype.typeId', 'ptype.UserCode', 'ptype.FullName', 'ptype.Standard', 'ptype.Area', 'ptype.EntryCode', 'ptype.CreateDate', 'Ptype_Price.RetailPrice', 'GoodsStocks.Qty')
             ->where('GoodsStocks.KtypeId', $posInfo->ktypeid);
         if (isset($args['search']) && !empty($args['search'])) {
-            $query->where('Ptype.FullName', 'like', '%' . $args['search'] . '%');
-            $query->orWhere('Ptype.EntryCode', 'like', '%' . $args['search'] . '%');
-            $query->orWhere('Ptype.UserCode', 'like', '%' . $args['search'] . '%');
-            $query->orWhere('Ptype.Standard', 'like', '%' . $args['search'] . '%');
+            $query->where(function ($query) use ($args) {
+                $query->where('Ptype.FullName', 'like', '%' . $args['search'] . '%')
+                    ->orWhere('Ptype.UserCode', 'like', '%' . $args['search'] . '%')
+                    ->where('Ptype.EntryCode', 'like', '%' . $args['search'] . '%')
+                    ->orWhere('Ptype.Standard', 'like', '%' . $args['search'] . '%');
+            });
+
         }
         $ptypes = $query->orderBy('ptype.typeId', 'desc')->paginate($args['limit'], ['*'], 'page', $args['page']);
 
