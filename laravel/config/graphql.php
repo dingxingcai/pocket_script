@@ -136,7 +136,6 @@ return [
 //        'billList' => \App\GraphQL\Type\BillListType::class,
         'retailBill' => \App\GraphQL\Type\RetailBillType::class,
         'ptype' => \App\GraphQL\Type\PtypeType::class,
-        'ptype1' => \App\GraphQL\Type\PtypeType1::class,
         'nVipCardSign' => \App\GraphQL\Type\NVipCardSignType::class,
         'goodsStock' => \App\GraphQL\Type\GoodsStockType::class,
         'pTypePrice' => \App\GraphQL\Type\PtypePriceType::class,

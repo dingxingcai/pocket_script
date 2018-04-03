@@ -30,14 +30,6 @@ class PtypeType extends GraphQLType
                 'type' => Type::string(),
                 'description' => '商品id'
             ],
-            'Parid' => [
-                'type' => Type::string(),
-                'description' => '父级id'
-            ],
-            'leveal' => [
-                'type' => Type::int(),
-                'description' => '级别'
-            ],
             'UserCode' => [
                 'type' => Type::string(),
                 'description' => '商品编码'
@@ -47,10 +39,6 @@ class PtypeType extends GraphQLType
                 'description' => '名称'
             ],
             'Standard' => [
-                'type' => Type::string(),
-                'description' => '规格'
-            ],
-            'Type' => [
                 'type' => Type::string(),
                 'description' => '规格'
             ],
@@ -66,46 +54,14 @@ class PtypeType extends GraphQLType
                 'type' => Type::string(),
                 'description' => '创建日期'
             ],
-            'pid' => [
+            'Qty' => [
                 'type' => Type::int(),
-                'description' => '图片id'
+                'description' => '商品的库存'
             ],
-//            'page' => [
-//                'type' => Type::int(),
-//                'description' => '页码数'
-//            ],
-//            'limit' => [
-//                'type' => Type::int(),
-//                'description' => '分页大小'
-//            ],
-            'goodsStock' => [
-                'type' => Type::listOf(GraphQL::type('goodsStock')),
-                'description' => '关联商品库存'
-            ],
-            'pTypePrice' => [
-                'type' => Type::listOf(GraphQL::type('pTypePrice')),
-                'description' => '关联用户的价格'
+            'RetailPrice' => [
+                'type' => Type::float(),
+                'description' => '商品的价格'
             ]
         ];
     }
-
-    public function resolveGoodsStockField($root, $args)
-    {
-        $info = Helper::posInfo();
-        $stock = GoodsStock::select('Qty')->where('PtypeId', $root->typeId)->where('KtypeId', $info->ktypeid)->get();
-
-        if ($stock->count() == 0) {
-            $stock = new GoodsStock();
-            $stock->Qty = 0;
-            $stock = [$stock];
-        }
-        return $stock;
-    }
-
-    public function resolvePtypePriceField($root, $args)
-    {
-//        print_r($root);exit;
-        return PtypePrice::select('RetailPrice')->where('PTypeID', $root->typeId)->get();
-    }
-
 }

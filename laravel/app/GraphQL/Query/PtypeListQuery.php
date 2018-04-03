@@ -34,7 +34,7 @@ class PtypeListQuery extends Query
 
     public function type()
     {
-        return GraphQL::paginate('ptype1');
+        return GraphQL::paginate('ptype');
     }
 
     public function args()
