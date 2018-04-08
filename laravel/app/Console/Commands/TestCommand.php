@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Employee;
 use Illuminate\Console\Command;
+use Log;
 
 class TestCommand extends Command
 {
@@ -38,7 +39,6 @@ class TestCommand extends Command
      */
     public function handle()
     {
-        $employee = Employee::select()->where('typeid', '00000')->get();
-        echo $employee;
+        Log::info("这是测试的定时任务", ['name' => time()]);
     }
 }
