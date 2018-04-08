@@ -63,9 +63,9 @@ class PtypeListQuery extends Query
             ->where('GoodsStocks.KtypeId', $posInfo->ktypeid);
         if (isset($args['search']) && !empty($args['search'])) {
             $query->where(function ($query) use ($args) {
-                $query->where('Ptype.FullName', 'like', '%' . $args['search'] . '%')
+                $query->orWhere('Ptype.FullName', 'like', '%' . $args['search'] . '%')
                     ->orWhere('Ptype.UserCode', 'like', '%' . $args['search'] . '%')
-                    ->where('Ptype.EntryCode', 'like', '%' . $args['search'] . '%')
+                    ->orWhere('Ptype.EntryCode', 'like', '%' . $args['search'] . '%')
                     ->orWhere('Ptype.Standard', 'like', '%' . $args['search'] . '%');
             });
 
