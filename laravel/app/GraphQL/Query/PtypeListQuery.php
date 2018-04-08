@@ -71,7 +71,7 @@ class PtypeListQuery extends Query
             });
 
         }
-        $ptypes = $query->orderBy('ptype.typeId', 'desc')->paginate($args['limit'], ['*'], 'page', $args['page']);
+        $ptypes = $query->orderBy('GoodsStocks.Qty', 'desc')->paginate($args['limit'], ['*'], 'page', $args['page']);
 
         return $ptypes;
 
