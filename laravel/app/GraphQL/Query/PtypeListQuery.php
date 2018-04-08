@@ -60,7 +60,8 @@ class PtypeListQuery extends Query
             ->join('Ptype_Price', 'ptype.typeId', '=', 'Ptype_Price.PTypeID')
             ->join('GoodsStocks', 'GoodsStocks.PtypeId', '=', 'ptype.typeId')
             ->select('ptype.typeId', 'ptype.UserCode', 'ptype.FullName', 'ptype.Standard', 'ptype.Area', 'ptype.EntryCode', 'ptype.CreateDate', 'Ptype_Price.RetailPrice', 'GoodsStocks.Qty')
-            ->where('GoodsStocks.KtypeId', $posInfo->ktypeid);
+            ->where('GoodsStocks.KtypeId', $posInfo->ktypeid)
+            ->where('Ptype_Price.RetailPrice', '>', 0);
         if (isset($args['search']) && !empty($args['search'])) {
             $query->where(function ($query) use ($args) {
                 $query->orWhere('Ptype.FullName', 'like', '%' . $args['search'] . '%')
