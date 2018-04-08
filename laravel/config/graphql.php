@@ -104,7 +104,10 @@ return [
                 'account' => App\GraphQL\Query\AccountQuery::class,
                 'test' => App\GraphQL\Query\TestQuery::class,
                 'discountMoney' => App\GraphQL\Query\discountMoneyQuery::class,
-                'ptypeListQuery' => App\GraphQL\Query\PtypeListQuery::class
+                'ptypeListQuery' => App\GraphQL\Query\PtypeListQuery::class,
+                'vip' => App\GraphQL\Query\VipQuery::class,
+                'dayOrder' => App\GraphQL\Query\DayOrderQuery::class,
+                'totalOrder' => App\GraphQL\Query\TotalOrderQuery::class,
             ],
             'mutation' => [
                 'createUser' => App\GraphQL\Mutation\CreateUserMutation::class,
@@ -113,6 +116,7 @@ return [
                 'userLogin' => App\GraphQL\Mutation\UserLoginMutation::class,
                 'testObject' => App\GraphQL\Mutation\TestObjectMutation::class,
                 'confirmOrder' => \App\GraphQL\Mutation\ConfirmOrderMutation::class,
+                'changePwd' => \App\GraphQL\Mutation\ChangePwdMutation::class,
 
             ],
             'middleware' => []
@@ -142,7 +146,11 @@ return [
         'test' => \App\GraphQL\Type\TestType::class,
         'goodsQty' => \App\GraphQL\Type\Input\GoodsQtyType::class,
         'discountMoney' => \App\GraphQL\Type\DiscontMoneyType::class,
-        'return' => \App\GraphQL\Type\ReturnStringType::class
+        'return' => \App\GraphQL\Type\ReturnStringType::class,
+        'autoPost' => \App\GraphQL\Type\AutoPostType::class,
+        'vip' => \App\GraphQL\Type\VipType::class,
+        'dayOrder' => \App\GraphQL\Type\DayOrderType::class,
+        'totalOrder' => \App\GraphQL\Type\TotalOrderType::class,
     ],
 
     // This callable will be passed the Error object for each errors GraphQL catch.
