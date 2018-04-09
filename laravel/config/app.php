@@ -40,7 +40,6 @@ return [
     */
 
 
-
     'debug' => env('APP_DEBUG', true),
 
     /*
@@ -152,6 +151,7 @@ return [
         Rebing\GraphQL\GraphQLServiceProvider::class,
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
 
+
         /*
          * Package Service Providers...
          */
@@ -164,6 +164,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Graphiql\GraphiqlServiceProvider::class,
+        Jacobcyl\AliOSS\AliOssServiceProvider::class,
 
     ],
 

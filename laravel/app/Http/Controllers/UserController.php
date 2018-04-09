@@ -10,6 +10,8 @@ use Cache;
 use App\Library\Helper;
 use Exception;
 use Illuminate\Support\Facades\Response;
+use App\Library\Curl;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -138,9 +140,59 @@ class UserController extends Controller
 
     public function getInfo(Request $request)
     {
-        $uid = "50-0308";
-        $employee = Employee::where('UserCode',$uid)->first();
-        return Response::json($employee);
+        $url1 = 'https://api.cloudconvert.com/process';
+        $param1 = [
+            'apikey' => 'BZ8NOi8NKDxEqVJJEtC3pswwMuO2SQC3rIbFksvzuCUQM4f3KmlXV_j0tfXkYaGw1y3dJ1dnitkX3TzlR4V-kg',
+            'inputformat' => 'website',
+            'outputformat' => 'jpg'
+        ];
+        $result1 = Curl::curl($url1, $param1, true, true);
+        if ($result1 === false) {
+            throw new Exception('获取URL错误');
+        }
+
+        $url2 = $result1['url'];
+        $param2 = [
+            'wait' => true,
+            'input' => 'url',
+            'file' => 'http://md.sylicod.com/chart/#/?code=2',
+            'filename' => 'test.website',
+            'outputformat' => 'jpg'
+        ];
+
+        $result2 = Curl::curl('https:' . $url2, $param2, true, true);
+        if ($result2 === false) {
+            throw new Exception('获取图片地址错误');
+        }
+        $url3 = $result2['output'];
+        $imageUrl = 'https:' . $url3['url'];
+        $ext = file_get_contents($imageUrl);
+        $fileName = date('YmsHis', time()) . '.jpg';
+        Storage::put("market/{$fileName}", $ext);
+        $url = Storage::url("market/{$fileName}");
+        $dingdingUrl = 'https://oapi.dingtalk.com/robot/send?access_token=7ad3bfda982a862b96ec5d27312726dbb51018d90f6f531b1ab7cdd77dcdcc3b';
+        $dingdingParam = [
+            'msgtype' => 'markdown',
+            'markdown' => [
+                'title' => '会员订单测试',
+                'text' => "![screenshot]({$url})"
+            ],
+            'at' => [
+                'atMobiles' => ['18502140603'],
+                'isAtAll' => false,
+            ]
+
+
+        ];
+
+        $result3 = Curl::curl($dingdingUrl, json_encode($dingdingParam), true, true, true);
+
+        if ($result3['errcode'] != 0) {
+            throw new Exception('发送钉钉消息失败');
+        }
+
+        return true;
 
     }
+    
 }

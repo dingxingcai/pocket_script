@@ -15,6 +15,10 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         //
         \App\Console\Commands\Upload::class,
+        \App\Console\Commands\TestCommand::class,
+        \App\Console\Commands\Vip::class,
+        \App\Console\Commands\DayOrder::class,
+        \App\Console\Commands\TotalOrder::class,
     ];
 
     /**
@@ -25,8 +29,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('TestCommand')
-            ->everyMinute();
+        $schedule->command('command:vip')->dailyAt("08:59");
+        $schedule->command('command:dayOrder')->dailyAt("08:59");
+        $schedule->command('command:totalOrder')->dailyAt("08:59");
     }
 
     /**

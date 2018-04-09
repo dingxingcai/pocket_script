@@ -20,10 +20,12 @@ class UserTest extends TestCase
     {
 
 
-        $s1 = Cache::add('8', ['name' => 666, 'sex' => '男'], 5);
-        $nr = Cache::get('8');
-        $n = $nr['name'];
+//        $s1 = Cache::add('8', ['name' => 666, 'sex' => '男'], 5);
+//        $nr = Cache::get('8');
+//        $n = $nr['name'];
         $s = 666;
+        $url = "www.baidu.com/user?test=666&a=gddsf";
+        $url = urlencode($url);
         $m = [
             'name' => '666',
             'type' => 'hh'
@@ -43,7 +45,7 @@ class UserTest extends TestCase
     {
 
 
-        $this->call('post', '/user/login', [
+        $this->call('post', '/user/test', [
             'name' => '99',
             'password' => "123456",
         ]);

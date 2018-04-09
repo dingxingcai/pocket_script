@@ -51,7 +51,7 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
         ],
 
@@ -62,6 +62,17 @@ return [
             'region' => env('AWS_DEFAULT_REGION'),
             'bucket' => env('AWS_BUCKET'),
             'url' => env('AWS_URL'),
+        ],
+        'oss' => [
+            'driver' => 'oss',
+            'access_id' => env('OSS_ACCESS_ID'),
+            'access_key' => env('OSS_ACCESS_KEY'),
+            'bucket' => 'pn-activity',
+            'endpoint' => 'oss-cn-shenzhen.aliyuncs.com', // OSS 外网节点或自定义外部域名
+            'cdnDomain' => '', // 如果isCName为true, getUrl会判断cdnDomain是否设定来决定返回的url，如果cdnDomain未设置，则使用endpoint来生成url，否则使用cdn
+            'ssl' => false, // true to use 'https://' and false to use 'http://'. default is false,
+            'isCName' => false, // 是否使用自定义域名,true: 则Storage.url()会使用自定义的cdn或域名生成文件url， false: 则使用外部节点生成url
+            'debug' => false,
         ],
 
     ],
