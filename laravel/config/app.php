@@ -111,7 +111,7 @@ return [
 
 
     //钉钉URL
-    'dingdingUrl' => 'https://oapi.dingtalk.com/robot/send?access_token=7ad3bfda982a862b96ec5d27312726dbb51018d90f6f531b1ab7cdd77dcdcc3b',
+    'dingdingUrl' => 'https://oapi.dingtalk.com/robot/send?access_token=409ba5c092db95fe4c21f22dbf78cdef4fd443eace1bac11dc2e3c049b225052',
 
     //云转换apikey
     'apikey' => 'KxsT_Zjl3C521Y9RoUpSDtHZrRvFA3CZunFPYB7PjjGH6dWeDY9Df1fAoCAU8XtsnvbpLl3HDKF0VHf1zoklhw',

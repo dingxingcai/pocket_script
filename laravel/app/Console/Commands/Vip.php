@@ -44,7 +44,7 @@ class Vip extends Command
     {
         $url1 = 'https://api.cloudconvert.com/process';
         $param1 = [
-            'apikey' => 'BZ8NOi8NKDxEqVJJEtC3pswwMuO2SQC3rIbFksvzuCUQM4f3KmlXV_j0tfXkYaGw1y3dJ1dnitkX3TzlR4V-kg',
+            'apikey' => config('app.apikey'),
             'inputformat' => 'website',
             'outputformat' => 'jpg'
         ];
