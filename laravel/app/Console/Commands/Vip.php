@@ -69,8 +69,9 @@ class Vip extends Command
         $url3 = $result2['output'];
         $imageUrl = 'https:' . $url3['url'];
         $ext = file_get_contents($imageUrl);
-        $fileName = date('YmdHis', time()) . '.jpg';
-        Storage::put("market/{$fileName}", $ext);
+        $fileName = date('YmdHis', time()).mt_rand(1000,9999) . '.jpg';
+        $return = Storage::put("market/{$fileName}", $ext);
+        Log::info('一周门店总单数',[$return]);
         $url = Storage::url("market/{$fileName}");
         if (empty($url)) {
             throw new Exception('获取的阿里云图片地址为空');

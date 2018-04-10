@@ -167,7 +167,7 @@ class UserController extends Controller
         $url3 = $result2['output'];
         $imageUrl = 'https:' . $url3['url'];
         $ext = file_get_contents($imageUrl);
-        $fileName = date('YmsHis', time()) . '.jpg';
+        $fileName = date('YmdHis', time()).mt_rand(1000,9999) . '.jpg';
         Storage::put("market/{$fileName}", $ext);
         $url = Storage::url("market/{$fileName}");
         if (empty($url)) {
