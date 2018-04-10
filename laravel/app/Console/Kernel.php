@@ -29,9 +29,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('command:vip')->dailyAt("09:37");
-        $schedule->command('command:dayOrder')->dailyAt("09:37");
-        $schedule->command('command:totalOrder')->dailyAt("09:37");
+        $schedule->command('command:vip')->dailyAt("12:00");
+        $schedule->command('command:dayOrder')->dailyAt("12:00");
+        $schedule->command('command:totalOrder')->dailyAt("12:00");
     }
 
     /**

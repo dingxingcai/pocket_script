@@ -109,6 +109,13 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
+
+    //钉钉URL
+    'dingdingUrl' => 'https://oapi.dingtalk.com/robot/send?access_token=7ad3bfda982a862b96ec5d27312726dbb51018d90f6f531b1ab7cdd77dcdcc3b',
+
+    //云转换apikey
+    'apikey' => 'BZ8NOi8NKDxEqVJJEtC3pswwMuO2SQC3rIbFksvzuCUQM4f3KmlXV_j0tfXkYaGw1y3dJ1dnitkX3TzlR4V-kg',
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers

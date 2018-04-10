@@ -140,45 +140,50 @@ class UserController extends Controller
 
     public function getInfo(Request $request)
     {
-//        $url1 = 'https://api.cloudconvert.com/process';
-//        $param1 = [
-//            'apikey' => 'BZ8NOi8NKDxEqVJJEtC3pswwMuO2SQC3rIbFksvzuCUQM4f3KmlXV_j0tfXkYaGw1y3dJ1dnitkX3TzlR4V-kg',
-//            'inputformat' => 'website',
-//            'outputformat' => 'jpg'
-//        ];
-//        $result1 = Curl::curl($url1, $param1, true, true);
-//        if ($result1 === false) {
-//            throw new Exception('获取URL错误');
-//        }
-//
-//        $url2 = $result1['url'];
-//        $param2 = [
-//            'wait' => true,
-//            'input' => 'url',
-//            'file' => 'http://md.sylicod.com/chart/#/?code=2',
-//            'filename' => 'test.website',
-//            'outputformat' => 'jpg'
-//        ];
-//
-//        $result2 = Curl::curl('https:' . $url2, $param2, true, true);
-//        if ($result2 === false) {
-//            throw new Exception('获取图片地址错误');
-//        }
-//        $url3 = $result2['output'];
-//        $imageUrl = 'https:' . $url3['url'];
-//        $ext = file_get_contents($imageUrl);
-//        $fileName = date('YmsHis', time()) . '.jpg';
-//        Storage::put("market/{$fileName}", $ext);
-//        $url = Storage::url("market/{$fileName}");
-        $dingdingUrl = 'https://oapi.dingtalk.com/robot/send?access_token=300b7306d68e52ad00766e3813e21218b9d97aa11ed5bf7eb0ec72408080afc5';
+        $url1 = 'https://api.cloudconvert.com/process';
+        $param1 = [
+            'apikey' => config('app.apikey'),
+            'inputformat' => 'website',
+            'outputformat' => 'jpg'
+        ];
+        $result1 = Curl::curl($url1, $param1, true, true);
+        if ($result1 === false || !isset($result1['url'])) {
+            throw new Exception('获取URL错误');
+        }
+
+        $url2 = $result1['url'];
+        $param2 = [
+            'wait' => true,
+            'input' => 'url',
+            'file' => 'http://md.sylicod.com/chart/#/?code=3',
+            'filename' => 'test.website',
+            'outputformat' => 'jpg'
+        ];
+
+        $result2 = Curl::curl('https:' . $url2, $param2, true, true);
+        if ($result2 === false || !isset($result2['output'])) {
+            throw new Exception('获取图片地址错误');
+        }
+        $url3 = $result2['output'];
+        $imageUrl = 'https:' . $url3['url'];
+        $ext = file_get_contents($imageUrl);
+        $fileName = date('YmsHis', time()) . '.jpg';
+        Storage::put("market/{$fileName}", $ext);
+        $url = Storage::url("market/{$fileName}");
+        if (empty($url)) {
+            throw new Exception('获取的阿里云图片地址为空');
+        }
+        $dingdingUrl = config('app.dingdingUrl');
         $dingdingParam = [
-            'msgtype' => 'link',
-            'link' => [
-                'title' => '测试link消息标题',
-                'text' => "测试的，你点呀",
-                'picUrl' => 'http://sem.tanzhouedu.com/it/c++/pc3/img/course1.jpg',
-                'messageUrl' => 'http://laravelacademy.org/post/8484.html',
+            'msgtype' => 'markdown',
+            'markdown' => [
+                'title' => '一周门店总单数',
+                'text' => "![screenshot]({$url})"
             ],
+            'at' => [
+                'atMobiles' => [''],
+                'isAtAll' => false,
+            ]
 
 
         ];

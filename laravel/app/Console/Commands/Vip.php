@@ -49,7 +49,7 @@ class Vip extends Command
             'outputformat' => 'jpg'
         ];
         $result1 = Curl::curl($url1, $param1, true, true);
-        if ($result1 === false) {
+        if ($result1 === false || !isset($result1['url'])) {
             throw new Exception('获取URL错误');
         }
 
@@ -63,7 +63,7 @@ class Vip extends Command
         ];
 
         $result2 = Curl::curl('https:' . $url2, $param2, true, true);
-        if ($result2 === false) {
+        if ($result2 === false || !isset($result2['output'])) {
             throw new Exception('获取图片地址错误');
         }
         $url3 = $result2['output'];
@@ -72,7 +72,10 @@ class Vip extends Command
         $fileName = date('YmdHis', time()) . '.jpg';
         Storage::put("market/{$fileName}", $ext);
         $url = Storage::url("market/{$fileName}");
-        $dingdingUrl = 'https://oapi.dingtalk.com/robot/send?access_token=300b7306d68e52ad00766e3813e21218b9d97aa11ed5bf7eb0ec72408080afc5';
+        if (empty($url)) {
+            throw new Exception('获取的阿里云图片地址为空');
+        }
+        $dingdingUrl = config('app.dingdingUrl');
         $dingdingParam = [
             'msgtype' => 'markdown',
             'markdown' => [
