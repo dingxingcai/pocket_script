@@ -76,7 +76,7 @@ class TotalOrder extends Command
             'msgtype' => 'markdown',
             'markdown' => [
                 'title' => '一周门店总单数',
-                'text' => "![screenshot]({$url})"
+                'text' => "({$url})"
             ],
             'at' => [
                 'atMobiles' => [''],
