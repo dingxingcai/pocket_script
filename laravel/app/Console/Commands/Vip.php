@@ -80,7 +80,7 @@ class Vip extends Command
             'msgtype' => 'markdown',
             'markdown' => [
                 'title' => '一周内新增会员数量',
-                'text' => "({$url})"
+                'text' => "![screenshot]({$url})"
             ],
             'at' => [
                 'atMobiles' => [''],

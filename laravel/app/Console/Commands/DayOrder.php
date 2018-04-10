@@ -79,7 +79,7 @@ class DayOrder extends Command
             'msgtype' => 'markdown',
             'markdown' => [
                 'title' => '各门店当日销售情况',
-                'text' => "({$url})"
+                'text' => "![screenshot]({$url})"
             ],
             'at' => [
                 'atMobiles' => [''],
