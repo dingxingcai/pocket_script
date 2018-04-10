@@ -69,8 +69,8 @@ class DayOrder extends Command
         $imageUrl = 'https:' . $url3['url'];
         $ext = file_get_contents($imageUrl);
         $fileName = date('YmdHis', time()) . mt_rand(1000, 9999) . '.jpg';
-        $return = Storage::put("market/{$fileName}", $ext);
-        Log::info('一周门店总单数',[$return]);
+        $return  = Storage::put("market/{$fileName}", $ext);
+        Log::info('各门店当日销售情况',[$return]);
         $url = Storage::url("market/{$fileName}");
         if (empty($url)) {
             throw new Exception('获取的阿里云图片地址为空');
