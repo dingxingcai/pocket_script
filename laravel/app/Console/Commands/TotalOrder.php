@@ -71,7 +71,7 @@ class TotalOrder extends Command
         $fileName = date('YmdHis', time()) . '.jpg';
         Storage::put("market/{$fileName}", $ext);
         $url = Storage::url("market/{$fileName}");
-        $dingdingUrl = 'https://oapi.dingtalk.com/robot/send?access_token=409ba5c092db95fe4c21f22dbf78cdef4fd443eace1bac11dc2e3c049b225052';
+        $dingdingUrl = 'https://oapi.dingtalk.com/robot/send?access_token=300b7306d68e52ad00766e3813e21218b9d97aa11ed5bf7eb0ec72408080afc5';
         $dingdingParam = [
             'msgtype' => 'markdown',
             'markdown' => [

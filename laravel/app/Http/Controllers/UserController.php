@@ -140,47 +140,45 @@ class UserController extends Controller
 
     public function getInfo(Request $request)
     {
-        $url1 = 'https://api.cloudconvert.com/process';
-        $param1 = [
-            'apikey' => 'BZ8NOi8NKDxEqVJJEtC3pswwMuO2SQC3rIbFksvzuCUQM4f3KmlXV_j0tfXkYaGw1y3dJ1dnitkX3TzlR4V-kg',
-            'inputformat' => 'website',
-            'outputformat' => 'jpg'
-        ];
-        $result1 = Curl::curl($url1, $param1, true, true);
-        if ($result1 === false) {
-            throw new Exception('获取URL错误');
-        }
-
-        $url2 = $result1['url'];
-        $param2 = [
-            'wait' => true,
-            'input' => 'url',
-            'file' => 'http://md.sylicod.com/chart/#/?code=2',
-            'filename' => 'test.website',
-            'outputformat' => 'jpg'
-        ];
-
-        $result2 = Curl::curl('https:' . $url2, $param2, true, true);
-        if ($result2 === false) {
-            throw new Exception('获取图片地址错误');
-        }
-        $url3 = $result2['output'];
-        $imageUrl = 'https:' . $url3['url'];
-        $ext = file_get_contents($imageUrl);
-        $fileName = date('YmsHis', time()) . '.jpg';
-        Storage::put("market/{$fileName}", $ext);
-        $url = Storage::url("market/{$fileName}");
-        $dingdingUrl = 'https://oapi.dingtalk.com/robot/send?access_token=7ad3bfda982a862b96ec5d27312726dbb51018d90f6f531b1ab7cdd77dcdcc3b';
+//        $url1 = 'https://api.cloudconvert.com/process';
+//        $param1 = [
+//            'apikey' => 'BZ8NOi8NKDxEqVJJEtC3pswwMuO2SQC3rIbFksvzuCUQM4f3KmlXV_j0tfXkYaGw1y3dJ1dnitkX3TzlR4V-kg',
+//            'inputformat' => 'website',
+//            'outputformat' => 'jpg'
+//        ];
+//        $result1 = Curl::curl($url1, $param1, true, true);
+//        if ($result1 === false) {
+//            throw new Exception('获取URL错误');
+//        }
+//
+//        $url2 = $result1['url'];
+//        $param2 = [
+//            'wait' => true,
+//            'input' => 'url',
+//            'file' => 'http://md.sylicod.com/chart/#/?code=2',
+//            'filename' => 'test.website',
+//            'outputformat' => 'jpg'
+//        ];
+//
+//        $result2 = Curl::curl('https:' . $url2, $param2, true, true);
+//        if ($result2 === false) {
+//            throw new Exception('获取图片地址错误');
+//        }
+//        $url3 = $result2['output'];
+//        $imageUrl = 'https:' . $url3['url'];
+//        $ext = file_get_contents($imageUrl);
+//        $fileName = date('YmsHis', time()) . '.jpg';
+//        Storage::put("market/{$fileName}", $ext);
+//        $url = Storage::url("market/{$fileName}");
+        $dingdingUrl = 'https://oapi.dingtalk.com/robot/send?access_token=300b7306d68e52ad00766e3813e21218b9d97aa11ed5bf7eb0ec72408080afc5';
         $dingdingParam = [
-            'msgtype' => 'markdown',
-            'markdown' => [
-                'title' => '会员订单测试',
-                'text' => "![screenshot]({$url})"
+            'msgtype' => 'link',
+            'link' => [
+                'title' => '测试link消息标题',
+                'text' => "测试的，你点呀",
+                'picUrl' => 'http://sem.tanzhouedu.com/it/c++/pc3/img/course1.jpg',
+                'messageUrl' => 'http://laravelacademy.org/post/8484.html',
             ],
-            'at' => [
-                'atMobiles' => ['18502140603'],
-                'isAtAll' => false,
-            ]
 
 
         ];
@@ -194,5 +192,5 @@ class UserController extends Controller
         return true;
 
     }
-    
+
 }
