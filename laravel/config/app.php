@@ -117,7 +117,7 @@ return [
     'dingdingUrl' => 'https://oapi.dingtalk.com/robot/send?access_token=85e8b5eecad8b05412eb7fc3bccd79812dc5e5b115160f34521741f420d0f5f4',
 
     //云转换apikey
-    'apikey' => 'KxsT_Zjl3C521Y9RoUpSDtHZrRvFA3CZunFPYB7PjjGH6dWeDY9Df1fAoCAU8XtsnvbpLl3HDKF0VHf1zoklhw',
+    'apikey' => 'v67nUY6MYuqXEXaa2cTnk51dVGLmhT9bg2M3qqpAvxN0F3kmXTHnsizEW53Xdm_9JmSahYQ49a4ofv8zmznikw',
 
     /*
     |--------------------------------------------------------------------------
