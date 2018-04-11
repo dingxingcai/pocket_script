@@ -42,6 +42,9 @@ class Convert extends Command
      */
     public function handle()
     {
+
+        Cache::forget('dingImage');
+
         $images = [];
         for($i = 1;$i<4;$i++){
             $url1 = 'https://api.cloudconvert.com/process';
