@@ -39,7 +39,7 @@ class SendDingDing extends Command
     public function handle()
     {
 //        $images = ['201804110914497723.jpg', '201804110915037019.jpg', '201804110915173466.jpg'];
-        $images = Cache::get('dingImage');
+        $images = Cache::pull('dingImage');
         if(empty($images)){
             \Log::info('从缓存中没有获取到图片');
             exit;
@@ -62,7 +62,7 @@ class SendDingDing extends Command
             ];
 
             $result3 = Curl::curl($dingdingUrl, json_encode($dingdingParam), true, true, true);
-            \Log::info('测试发送图片',$result3);
+            \Log::info('测试发送图片'.$image,$result3);
         }
     }
 }

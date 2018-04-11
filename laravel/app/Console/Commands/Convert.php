@@ -43,7 +43,7 @@ class Convert extends Command
     public function handle()
     {
 
-        Cache::forget('dingImage');
+        Cache::pull('dingImage');
 
         $images = [];
         for($i = 1;$i<4;$i++){
@@ -80,6 +80,6 @@ class Convert extends Command
             Log::info('生成图片'.$i,[$return]);
         }
 
-        Cache::add('dingImage',json_encode($images),120);
+        Cache::put('dingImage',json_encode($images),120);
     }
 }

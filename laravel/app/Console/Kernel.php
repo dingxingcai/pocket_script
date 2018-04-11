@@ -31,8 +31,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('command:convert')->dailyAt("11:10");   //生成图片
-        $schedule->command('command:sendDingDing')->dailyAt("11:15");   //发送图片
+        $schedule->command('command:convert')->dailyAt("11:30");   //生成图片
+        $schedule->command('command:sendDingDing')->dailyAt("11:33");   //发送图片
     }
 
     /**
