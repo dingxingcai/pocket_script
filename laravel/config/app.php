@@ -111,10 +111,10 @@ return [
 
 
     //钉钉URL(会员测试)
-//    'dingdingUrl' => 'https://oapi.dingtalk.com/robot/send?access_token=409ba5c092db95fe4c21f22dbf78cdef4fd443eace1bac11dc2e3c049b225052',
+    'dingdingUrl' => 'https://oapi.dingtalk.com/robot/send?access_token=409ba5c092db95fe4c21f22dbf78cdef4fd443eace1bac11dc2e3c049b225052',
 
     //钉钉url测试(测试)
-    'dingdingUrl' => 'https://oapi.dingtalk.com/robot/send?access_token=85e8b5eecad8b05412eb7fc3bccd79812dc5e5b115160f34521741f420d0f5f4',
+//    'dingdingUrl' => 'https://oapi.dingtalk.com/robot/send?access_token=85e8b5eecad8b05412eb7fc3bccd79812dc5e5b115160f34521741f420d0f5f4',
 
     //云转换apikey
     'apikey' => 'v67nUY6MYuqXEXaa2cTnk51dVGLmhT9bg2M3qqpAvxN0F3kmXTHnsizEW53Xdm_9JmSahYQ49a4ofv8zmznikw',
