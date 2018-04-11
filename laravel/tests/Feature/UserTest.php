@@ -51,6 +51,10 @@ class UserTest extends TestCase
         ]);
     }
 
+    public function testMail(){
+        $this->call('post','/user/mail');
+    }
+
     public function testChangePwd()
     {
         $this->call('post', '/user/changePwd', [

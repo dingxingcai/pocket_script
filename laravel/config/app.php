@@ -110,8 +110,11 @@ return [
     'cipher' => 'AES-256-CBC',
 
 
-    //钉钉URL
-    'dingdingUrl' => 'https://oapi.dingtalk.com/robot/send?access_token=409ba5c092db95fe4c21f22dbf78cdef4fd443eace1bac11dc2e3c049b225052',
+    //钉钉URL(会员测试)
+//    'dingdingUrl' => 'https://oapi.dingtalk.com/robot/send?access_token=409ba5c092db95fe4c21f22dbf78cdef4fd443eace1bac11dc2e3c049b225052',
+
+    //钉钉url测试(测试)
+    'dingdingUrl' => 'https://oapi.dingtalk.com/robot/send?access_token=85e8b5eecad8b05412eb7fc3bccd79812dc5e5b115160f34521741f420d0f5f4',
 
     //云转换apikey
     'apikey' => 'KxsT_Zjl3C521Y9RoUpSDtHZrRvFA3CZunFPYB7PjjGH6dWeDY9Df1fAoCAU8XtsnvbpLl3HDKF0VHf1zoklhw',

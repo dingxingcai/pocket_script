@@ -27,6 +27,9 @@ Route::post('/user/login', "UserController@login");
 //测试
 Route::any('/user/test', "UserController@getInfo");
 
+//测试发送邮件
+Route::any('/user/mail', "TestController@sendMail");
+
 
 Route::group(['middleware' => ['user']], function () {
 

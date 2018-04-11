@@ -38,15 +38,19 @@ class SendDingDing extends Command
      */
     public function handle()
     {
-//        $images = ['201804101410405227.jpg', '201804101419424513.jpg', '201804101420223137.jpg', '201804101430072794.jpg'];
+//        $images = ['201804110914497723.jpg', '201804110915037019.jpg', '201804110915173466.jpg'];
         $images = Cache::get('dingImage');
+        if(empty($images)){
+            \Log::info('从缓存中没有获取到图片');
+            exit;
+        }
         foreach (json_decode($images,true) as $image) {
             $url = "https://pn-activity.oss-cn-shenzhen.aliyuncs.com/market/".$image;
             $dingdingUrl = config('app.dingdingUrl');
             $dingdingParam = [
                 'msgtype' => 'markdown',
                 'markdown' => [
-                    'title' => '',
+                    'title' => '订单和会员统计',
                     'text' => "![screenshot]({$url})"
                 ],
                 'at' => [

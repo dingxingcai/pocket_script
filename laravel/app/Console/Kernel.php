@@ -31,13 +31,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-//        $schedule->command('command:vip')->dailyAt("14:18");
-//        sleep(10);
-//        $schedule->command('command:dayOrder')->dailyAt("14:29");
-//        sleep(10);
-//        $schedule->command('command:totalOrder')->dailyAt("14:29");
-        $schedule->command('command:convert')->dailyAt("08:30");   //生成图片
-        $schedule->command('command:sendDingDing')->dailyAt("09:00");   //发送图片
+        $schedule->command('command:convert')->dailyAt("10:50");   //生成图片
+        $schedule->command('command:sendDingDing')->dailyAt("10:55");   //发送图片
     }
 
     /**

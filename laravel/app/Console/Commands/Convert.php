@@ -74,7 +74,7 @@ class Convert extends Command
             $fileName = date('YmdHis', time()) . mt_rand(1000, 9999) . '.jpg';
             $images[] = $fileName;
             $return  = Storage::put("market/{$fileName}", $ext);
-            Log::info('生成图片',[$return]);
+            Log::info('生成图片'.$i,[$return]);
         }
 
         Cache::add('dingImage',json_encode($images),120);
