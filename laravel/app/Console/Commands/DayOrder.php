@@ -75,7 +75,7 @@ class DayOrder extends Command
         if (empty($url)) {
             throw new Exception('获取的阿里云图片地址为空');
         }
-        $dingdingUrl = config('app.dingdingUrl');
+        $dingdingUrl = config('app.dingdingUrlDZ');
         $dingdingParam = [
             'msgtype' => 'markdown',
             'markdown' => [
@@ -92,7 +92,7 @@ class DayOrder extends Command
 
         $result3 = Curl::curl($dingdingUrl, json_encode($dingdingParam), true, true, true);
         if ($result3['errcode'] != 0) {
-            Log::info('vipOrder', ['会员数量发送钉钉失败']);
+            Log::info('DayOrder', ['店长群发送钉钉失败']);
         }
     }
 }
