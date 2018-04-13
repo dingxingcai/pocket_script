@@ -46,6 +46,13 @@ class VipQuery extends Query
         //七天新增的总会员数量
         $vips = DB::connection('sqlsrv')->select("select top 7 CONVERT(varchar(10), CreateDate, 23) as 'date', count(*) as 'vipNums' from nVipCardSign where createDate < CONVERT(varchar(30),getdate(),23)  GROUP BY CreateDate order by CreateDate desc;");
 
+
+        $info = [
+            'date' => '总计会员数',
+            'vipNums' => 5555
+        ];
+        $vips[] = $info;
+//        var_export($vips);die;
         return $vips;
     }
 }
