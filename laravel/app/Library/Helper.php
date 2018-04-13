@@ -87,7 +87,7 @@ class Helper
     {
         $num = false;
         if (is_numeric($num1) && is_numeric($num2)) {
-            $num = round(($num1 / $num2) * 100,3) . "%";
+            $num = round(($num1 / $num2) * 100,3);
             return $num;
         } else {
             return $num;

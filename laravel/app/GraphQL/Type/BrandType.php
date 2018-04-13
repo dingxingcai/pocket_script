@@ -45,7 +45,7 @@ class BrandType extends GraphQLType
                 'description' => '分类名称'
             ],
             'count' => [
-                'type' => Type::string(),
+                'type' => Type::float(),
                 'description' => '所占百分比'
             ]
         ];

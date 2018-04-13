@@ -45,7 +45,7 @@ class SaleType extends GraphQLType
                 'description' => '当天总计销售额'
             ],
             'count' => [
-                'type' => Type::string(),
+                'type' => Type::float(),
                 'description' => '所占百分比'
             ]
         ];
