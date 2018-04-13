@@ -110,7 +110,7 @@ return [
     'cipher' => 'AES-256-CBC',
 
 
-    //钉钉URL(会员测试)
+    //钉钉URL(会员体系群)
     'dingdingUrl' => 'https://oapi.dingtalk.com/robot/send?access_token=409ba5c092db95fe4c21f22dbf78cdef4fd443eace1bac11dc2e3c049b225052',
 
     //钉钉url测试(测试)
@@ -119,8 +119,22 @@ return [
     //店长群钉钉URL
     'dingdingUrlDZ' => 'https://oapi.dingtalk.com/robot/send?access_token=dcc15d24a6c3e30c59657c263cc52dcfb0bbd683a56aeef6e612aec567e19962',
 
+
+    //销售额占比，每日更新钉钉群
+    'dingBrandSale' => 'https://oapi.dingtalk.com/robot/send?access_token=9583ab5e540ba7a8e780882c67ef3743bf5b590b6a702530adbcb5257247d16c' ,
+
     //云转换apikey
-    'apikey' => 'v67nUY6MYuqXEXaa2cTnk51dVGLmhT9bg2M3qqpAvxN0F3kmXTHnsizEW53Xdm_9JmSahYQ49a4ofv8zmznikw',
+    'apikey' => 'KxsT_Zjl3C521Y9RoUpSDtHZrRvFA3CZunFPYB7PjjGH6dWeDY9Df1fAoCAU8XtsnvbpLl3HDKF0VHf1zoklhw',
+
+
+    //同步订单URL (正式)
+//    'syncUrl' => 'http://120.76.188.76:83/tdy/RetailBill/InsertRetailBill',
+
+    //同步订单URL (测试)
+    'syncUrl' => 'http://120.76.188.76:84/tdy/RetailBill/InsertRetailBill',
+
+    //同步订单秘钥
+    'syncKey' => 'grasp_tdy_bp2018',
 
     /*
     |--------------------------------------------------------------------------

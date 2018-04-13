@@ -6,14 +6,14 @@ use Illuminate\Console\Command;
 use App\Library\Curl;
 use Cache;
 
-class SendDingDing extends Command
+class SendBrandSale extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'command:sendDingDing';
+    protected $signature = 'command:sendBrandSale';
 
     /**
      * The console command description.
@@ -39,18 +39,18 @@ class SendDingDing extends Command
      */
     public function handle()
     {
-        $images = Cache::pull('dingImage');
+        $images = Cache::get('saleImage');
         if (empty($images)) {
             \Log::info('从缓存中没有获取到图片');
             exit;
         }
         foreach (json_decode($images, true) as $image) {
             $url = "https://pn-activity.oss-cn-shenzhen.aliyuncs.com/market/" . $image;
-            $dingdingUrl = config('app.dingdingUrl');
+            $dingdingUrl = config('app.dingBrandSale');
             $dingdingParam = [
                 'msgtype' => 'markdown',
                 'markdown' => [
-                    'title' => '订单和会员统计',
+                    'title' => '品类销售占比',
                     'text' => "![screenshot]({$url})"
                 ],
                 'at' => [
