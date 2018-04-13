@@ -46,7 +46,7 @@ class SaleType extends GraphQLType
             ],
             'count' => [
                 'type' => Type::string(),
-                '所占百分比'
+                'description' => '所占百分比'
             ]
         ];
     }

@@ -25,7 +25,7 @@ class BrandType extends GraphQLType
 
     protected $attributes = [
         'name' => 'brand',
-        'description' => 'vip'
+        'description' => 'brand'
     ];
 
 
@@ -38,7 +38,7 @@ class BrandType extends GraphQLType
             ],
             'money' => [
                 'type' => Type::float(),
-                'description' => '总会员数量'
+                'description' => '当天销售额'
             ],
             'name' => [
                 'type' => Type::string(),
@@ -46,7 +46,7 @@ class BrandType extends GraphQLType
             ],
             'count' => [
                 'type' => Type::string(),
-                '所占百分比'
+                'description' => '所占百分比'
             ]
         ];
     }
