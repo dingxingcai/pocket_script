@@ -76,6 +76,9 @@ class Convert extends Command
             $ext = file_get_contents($imageUrl);
             $fileName = date('YmdHis', time()) . mt_rand(1000, 9999) . '.jpg';
             $images[] = $fileName;
+            if($i = 1){
+                Cache::put('imageDZ',$fileName,120);
+            }
             $return  = Storage::put("market/{$fileName}", $ext);
             Log::info('生成图片'.$i,[$return]);
         }

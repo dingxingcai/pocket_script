@@ -7,6 +7,7 @@ use Illuminate\Console\Command;
 use Exception;
 use Illuminate\Support\Facades\Storage;
 use Log;
+use Cache;
 
 class DayOrder extends Command
 {
@@ -41,45 +42,18 @@ class DayOrder extends Command
      */
     public function handle()
     {
-        $url1 = 'https://api.cloudconvert.com/process';
-        $param1 = [
-            'apikey' => config('app.apikey'),
-            'inputformat' => 'website',
-            'outputformat' => 'jpg'
-        ];
-        $result1 = Curl::curl($url1, $param1, true, true);
-        if ($result1 === false || !isset($result1['url'])) {
-            throw new Exception('获取URL错误');
+
+        $image = Cache::get('imageDZ');
+        if(empty($image)){
+            Log::info('发送店长群图片获取为空',[]);
         }
 
-        $url2 = $result1['url'];
-        $param2 = [
-            'wait' => true,
-            'input' => 'url',
-            'file' => 'http://md.sylicod.com/chart/#/?code=1',
-            'filename' => 'test.website',
-            'outputformat' => 'jpg'
-        ];
-
-        $result2 = Curl::curl('https:' . $url2, $param2, true, true);
-        if ($result2 === false || !isset($result2['output'])) {
-            throw new Exception('获取图片地址错误');
-        }
-        $url3 = $result2['output'];
-        $imageUrl = 'https:' . $url3['url'];
-        $ext = file_get_contents($imageUrl);
-        $fileName = date('YmdHis', time()) . mt_rand(1000, 9999) . '.jpg';
-        $return  = Storage::put("market/{$fileName}", $ext);
-        Log::info('各门店当日销售情况',[$return]);
-        $url = Storage::url("market/{$fileName}");
-        if (empty($url)) {
-            throw new Exception('获取的阿里云图片地址为空');
-        }
+        $url = "https://pn-activity.oss-cn-shenzhen.aliyuncs.com/market/".$image;
         $dingdingUrl = config('app.dingdingUrlDZ');
         $dingdingParam = [
             'msgtype' => 'markdown',
             'markdown' => [
-                'title' => '各门店当日销售情况',
+                'title' => '门店当日销量统计',
                 'text' => "![screenshot]({$url})"
             ],
             'at' => [
@@ -91,8 +65,6 @@ class DayOrder extends Command
         ];
 
         $result3 = Curl::curl($dingdingUrl, json_encode($dingdingParam), true, true, true);
-        if ($result3['errcode'] != 0) {
-            Log::info('DayOrder', ['店长群发送钉钉失败']);
-        }
+        Log::info('发送店长群图片失败'.$image,$result3);
     }
 }
