@@ -108,6 +108,8 @@ return [
                 'vip' => App\GraphQL\Query\VipQuery::class,
                 'dayOrder' => App\GraphQL\Query\DayOrderQuery::class,
                 'totalOrder' => App\GraphQL\Query\TotalOrderQuery::class,
+                'brand' => App\GraphQL\Query\BrandQuery::class,  //饼状销售额占比
+                'sale' => App\GraphQL\Query\SaleQuery::class,    //折线图 音频类 销售额占比
             ],
             'mutation' => [
                 'createUser' => App\GraphQL\Mutation\CreateUserMutation::class,
@@ -151,6 +153,8 @@ return [
         'vip' => \App\GraphQL\Type\VipType::class,
         'dayOrder' => \App\GraphQL\Type\DayOrderType::class,
         'totalOrder' => \App\GraphQL\Type\TotalOrderType::class,
+        'brand' => \App\GraphQL\Type\BrandType::class,
+        'sale' => \App\GraphQL\Type\SaleType::class,
     ],
 
     // This callable will be passed the Error object for each errors GraphQL catch.
