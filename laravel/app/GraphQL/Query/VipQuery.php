@@ -9,6 +9,7 @@
 namespace App\GraphQL\Query;
 
 use App\BillIndex;
+use App\NVipCardSign;
 use App\User;
 use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Query;
@@ -46,13 +47,13 @@ class VipQuery extends Query
         //七天新增的总会员数量
         $vips = DB::connection('sqlsrv')->select("select top 7 CONVERT(varchar(10), CreateDate, 23) as 'date', count(*) as 'vipNums' from nVipCardSign where createDate < CONVERT(varchar(30),getdate(),23)  GROUP BY CreateDate order by CreateDate desc;");
 
-
+        $total = NVipCardSign::select('VipCardID')->count();
         $info = [
             'date' => '总计会员数',
-            'vipNums' => 5555
+            'vipNums' => $total
         ];
         $vips[] = $info;
-//        var_export($vips);die;
+
         return $vips;
     }
 }
