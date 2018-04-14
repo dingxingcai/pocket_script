@@ -45,12 +45,12 @@ class DayOrder extends Command
     public function handle()
     {
 
-        $image = Cache::get('imageDZ');
-        if(empty($image)){
-            Log::info('发送店长群图片获取为空',[]);
+        $image = Cache::pull('imageDZ');
+        if (empty($image)) {
+            Log::info('发送店长群图片获取为空', []);
         }
 
-        $url = "https://pn-activity.oss-cn-shenzhen.aliyuncs.com/market/".$image;
+        $url = "https://pn-activity.oss-cn-shenzhen.aliyuncs.com/market/" . $image;
         $dingdingUrl = config('app.dingdingUrl');
         $dingdingParam = [
             'msgtype' => 'markdown',
@@ -67,6 +67,6 @@ class DayOrder extends Command
         ];
 
         $result3 = Curl::curl($dingdingUrl, json_encode($dingdingParam), true, true, true);
-        Log::info('发送店长群图片失败'.$image,$result3);
+        Log::info('发送店长群图片失败' . $image, $result3);
     }
 }

@@ -43,7 +43,7 @@ class SendBrandSale extends Command
     {
         $images = Cache::get('saleImage');
         if (empty($images)) {
-            \Log::info('从缓存中没有获取到图片');
+            \Log::info('从缓存中没有获取到图片',[]);
             exit;
         }
         foreach (json_decode($images, true) as $image) {

@@ -46,7 +46,7 @@ class Convert extends Command
         Cache::pull('dingImage');
 
         $images = [];
-        for($i = 1;$i<4;$i++){
+        for ($i = 1; $i < 4; $i++) {
             $url1 = 'https://api.cloudconvert.com/process';
             $param1 = [
                 'apikey' => config('app.apikey'),
@@ -62,7 +62,7 @@ class Convert extends Command
             $param2 = [
                 'wait' => true,
                 'input' => 'url',
-                'file' => 'http://md.sylicod.com/chart/#/?code='.$i,
+                'file' => 'http://md.sylicod.com/chart/#/?code=' . $i,
                 'filename' => 'test.website',
                 'outputformat' => 'jpg'
             ];
@@ -76,13 +76,13 @@ class Convert extends Command
             $ext = file_get_contents($imageUrl);
             $fileName = date('YmdHis', time()) . mt_rand(1000, 9999) . '.jpg';
             $images[] = $fileName;
-            if($i = 1){
-                Cache::put('imageDZ',$fileName,120);
+            if ($i === 1) {
+                Cache::put('imageDZ', $fileName, 120);
             }
-            $return  = Storage::put("market/{$fileName}", $ext);
-            Log::info('生成图片'.$i,[$return]);
+            $return = Storage::put("market/{$fileName}", $ext);
+            Log::info('生成图片' . $i, [$return]);
         }
 
-        Cache::put('dingImage',json_encode($images),120);
+        Cache::put('dingImage', json_encode($images), 120);
     }
 }
