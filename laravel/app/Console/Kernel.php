@@ -32,11 +32,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('command:convert')->dailyAt("22:27");   //生成图片(会员体系)
-        $schedule->command('command:brandSale')->dailyAt("22:28");   //生成图片(销售占比图片)
-        $schedule->command('command:sendDingDing')->dailyAt("22:31");   //发送图片(会员体系群)
-        $schedule->command('command:sendBrandSale')->dailyAt("22:31");   //发送图片(销售额占比，发销售额占比群)
-        $schedule->command('command:dayOrder')->dailyAt("22:31");   //发送图片(店长群)
+        $schedule->command('command:convert')->dailyAt("23:05");   //生成图片(会员体系)
+        $schedule->command('command:brandSale')->dailyAt("23:05");   //生成图片(销售占比图片)
+        $schedule->command('command:sendDingDing')->dailyAt("23:10");   //发送图片(会员体系群)
+        $schedule->command('command:sendBrandSale')->dailyAt("23:10");   //发送图片(销售额占比，发销售额占比群)
+        $schedule->command('command:dayOrder')->dailyAt("23:10");   //发送图片(店长群)
     }
 
     /**
