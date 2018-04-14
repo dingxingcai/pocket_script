@@ -51,7 +51,7 @@ class DayOrder extends Command
         }
 
         $url = "https://pn-activity.oss-cn-shenzhen.aliyuncs.com/market/" . $image;
-        $dingdingUrl = config('app.dingdingUrl');
+        $dingdingUrl = config('app.dingdingUrlDZ');
         $dingdingParam = [
             'msgtype' => 'markdown',
             'markdown' => [

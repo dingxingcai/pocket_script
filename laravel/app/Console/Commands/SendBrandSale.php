@@ -41,14 +41,14 @@ class SendBrandSale extends Command
      */
     public function handle()
     {
-        $images = Cache::get('saleImage');
+        $images = Cache::pull('saleImage');
         if (empty($images)) {
-            \Log::info('从缓存中没有获取到图片',[]);
+            \Log::info('从缓存中没有获取到图片', []);
             exit;
         }
         foreach (json_decode($images, true) as $image) {
             $url = "https://pn-activity.oss-cn-shenzhen.aliyuncs.com/market/" . $image;
-            $dingdingUrl = config('app.dingdingUrl');
+            $dingdingUrl = config('app.dingBrandSale');
             $dingdingParam = [
                 'msgtype' => 'markdown',
                 'markdown' => [

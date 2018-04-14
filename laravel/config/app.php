@@ -111,10 +111,10 @@ return [
 
 
     //钉钉URL(会员体系群)
-//    'dingdingUrl' => 'https://oapi.dingtalk.com/robot/send?access_token=409ba5c092db95fe4c21f22dbf78cdef4fd443eace1bac11dc2e3c049b225052',
+    'dingdingUrl' => 'https://oapi.dingtalk.com/robot/send?access_token=409ba5c092db95fe4c21f22dbf78cdef4fd443eace1bac11dc2e3c049b225052',
 
     //钉钉url测试(测试)
-   'dingdingUrl' => 'https://oapi.dingtalk.com/robot/send?access_token=85e8b5eecad8b05412eb7fc3bccd79812dc5e5b115160f34521741f420d0f5f4',
+//   'dingdingUrl' => 'https://oapi.dingtalk.com/robot/send?access_token=85e8b5eecad8b05412eb7fc3bccd79812dc5e5b115160f34521741f420d0f5f4',
 
     //店长群钉钉URL
     'dingdingUrlDZ' => 'https://oapi.dingtalk.com/robot/send?access_token=dcc15d24a6c3e30c59657c263cc52dcfb0bbd683a56aeef6e612aec567e19962',
