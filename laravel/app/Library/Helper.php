@@ -83,15 +83,66 @@ class Helper
         return $account[$type];
     }
 
+
+    //计算百分数
     public static function getNum($num1, $num2)
     {
         $num = false;
         if (is_numeric($num1) && is_numeric($num2)) {
-            $num = round(($num1 / $num2) * 100,3);
+            $num = round(($num1 / $num2) * 100, 3);
             return $num;
         } else {
             return $num;
         }
+    }
+
+    //统计各个仓库的月目标
+    public static function getMonthTarGet()
+    {
+        return [
+            '0002200001' => [
+                'money' => 1000000
+            ],
+            '0002300001' => [
+                'money' => 500000
+            ],
+            '0002400001' => [
+                'money' => 250000
+            ],
+            '0002600001' => [
+                'money' => 700000
+            ],
+            '0002700001' => [
+                'money' => 400000
+            ],
+            '0002800001' => [
+                'money' => 350000
+            ],
+            '0003000001' => [
+                'money' => 900000
+            ],
+            '0003100001' => [
+                'money' => 450000
+            ],
+            '0003200001' => [
+                'money' => 1100000
+            ],
+            '0003400001' => [
+                'money' => 400000
+            ],
+            '0003700001' => [
+                'money' => 350000
+            ],
+            '0004100001' => [
+                'money' => 400000
+            ],
+            '0004300001' => [
+                'money' => 200000
+            ],
+            '0004400001' => [
+                'money' => 100000
+            ]
+        ];
     }
 
 

@@ -84,8 +84,8 @@ class UserTest extends TestCase
     public function testGraphNormal()
     {
         $res = $this->call('post', '/graphql', [
-            'query' => 'mutation($vip:String){testObject(vip:$vip){name,token,usercode}}',
-            'variables'=>'{"vip":"18611367408"}'
+            'query' => 'mutation($nId:Int,$vipNo:String,$goods:[goodsQty]){confirmOrder(vipNo:$vipNo,nId:$nId,goods:$goods){msg}}',
+            'variables'=>'{"vipNo":"10002","nId":12,"goods":[{"typeId":"0000100398","Qty":2},{"typeId":"0000100399","Qty":4}]}'
         ]);
     }
 }

@@ -51,7 +51,7 @@ class BrandSale extends Command
                 'outputformat' => 'jpg'
             ];
             $result1 = Curl::curl($url1, $param1, true, true, false);
-
+            var_export($result1);die;
             if ($result1 === false || !isset($result1['url'])) {
                 throw new Exception('获取URL错误');
             }

@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Storage;
 use Log;
 use Cache;
 
+
+//店长群
 class DayOrder extends Command
 {
     /**
@@ -49,7 +51,7 @@ class DayOrder extends Command
         }
 
         $url = "https://pn-activity.oss-cn-shenzhen.aliyuncs.com/market/".$image;
-        $dingdingUrl = config('app.dingdingUrlDZ');
+        $dingdingUrl = config('app.dingdingUrl');
         $dingdingParam = [
             'msgtype' => 'markdown',
             'markdown' => [

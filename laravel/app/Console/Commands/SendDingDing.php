@@ -6,6 +6,8 @@ use Illuminate\Console\Command;
 use App\Library\Curl;
 use Cache;
 
+
+//会员体系群
 class SendDingDing extends Command
 {
     /**

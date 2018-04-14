@@ -8,6 +8,7 @@
 
 namespace App\Library;
 
+use Exception;
 
 class Curl
 {
@@ -47,7 +48,6 @@ class Curl
             curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE); // 从证书中检查SSL加密算法是否存在
         }
 
-
         //钉钉消息需要设置请求头
         if ($header) {
             curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json;charset=utf-8'));
@@ -72,7 +72,7 @@ class Curl
         $response = curl_exec($ch);
 
         if ($response === FALSE) {
-            return false;
+            throw new Exception('CURL错误');
         }
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         $httpInfo = array_merge($httpInfo, curl_getinfo($ch));

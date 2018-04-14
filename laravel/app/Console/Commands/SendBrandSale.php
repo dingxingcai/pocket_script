@@ -6,6 +6,8 @@ use Illuminate\Console\Command;
 use App\Library\Curl;
 use Cache;
 
+
+//销售额占比
 class SendBrandSale extends Command
 {
     /**
@@ -46,7 +48,7 @@ class SendBrandSale extends Command
         }
         foreach (json_decode($images, true) as $image) {
             $url = "https://pn-activity.oss-cn-shenzhen.aliyuncs.com/market/" . $image;
-            $dingdingUrl = config('app.dingBrandSale');
+            $dingdingUrl = config('app.dingdingUrl');
             $dingdingParam = [
                 'msgtype' => 'markdown',
                 'markdown' => [

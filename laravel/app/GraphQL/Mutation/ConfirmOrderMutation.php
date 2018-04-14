@@ -8,6 +8,7 @@
 
 namespace App\GraphQL\Mutation;
 
+use App\Library\Curl;
 use App\NVipCardSign;
 use App\Order;
 use App\OrderDetail;
@@ -128,7 +129,10 @@ class ConfirmOrderMutation extends Mutation
                 ]
             );
 
-            //存储商品的信息
+            //同步订单需要的商品书库
+            $goods = [];
+
+            //存储订单商品具体的信息
             foreach ($goodsPrices as $value) {
 
                 OrderDetail::create(
@@ -144,8 +148,44 @@ class ConfirmOrderMutation extends Mutation
 
                     ]
                 );
+                $goodsDetail = [
+                    'pTypeId' => $value['typeId'],
+                    'Qty' => $value['Qty'],
+                    'retailPrice' => $value['price'],
+                    'discount' => $discount,
+                    'discountPrice' => $value['price'] * $discount,
+                    'totalMoney' => $value['price'] * $discount * $value['Qty']
+                ];
+
+                $goods[] = $goodsDetail;
+
+            }
 
 
+            //同步订单给管家婆
+            $key = config('app.syncKey');
+            $url = config('app.syncUrl');
+            $md5Param = "$key" . date('Y-m-d', time()) . "$vipCardId" . date('Ymd');
+            $param = [
+                'billDate' => date('Y-m-d', time()),
+                'bTypeid' => $posInfo->BtypeID,
+                'eTypeid' => $user->uid,
+                'kTypeid' => $posInfo->ktypeid,
+                'totalMoney' => $totalMoney,
+                'totalInMoney' => round($totalInMoney, 2),
+                'discountMoney' => round($totalDisMoney, 2),
+                'discount' => $discount,
+                'VipCardId' => $vipCardId,
+                'Qty' => $qty,
+                'aTypeId' => trim($args['nId']),
+                'Data' => $goods,
+                'signature' => strtoupper(md5($md5Param)),
+            ];
+
+            $result = Curl::curl($url, json_encode($param), true, false, true);
+
+            if (!isset($result['code']) || $result['code'] != 1) {
+                throw new Exception('录单失败,' . $result['Message']);
             }
 
         } catch (Exception $e) {
