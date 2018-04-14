@@ -46,14 +46,36 @@ class BrandQuery extends Query
     public function resolve($root, $args)
     {
 
-        //统计销售额
-        $brands = DB::connection('sqlsrv')->select("select CONVERT(varchar(10), b.billdate, 23) as 'date', p.ParID,sum(r.total) as  'money' 
-from billindex b left join retailBill r on b.BillNumberID = r.BillNumberID inner join ptype p on p.typeId = r.PtypeId 
-where  b.BillType = 305 and b.redword = 0 and  b.BillDate = CONVERT(varchar(30),getdate(),23)  group by p.ParID,b.BillDate;");
+        //统计销售额  (当天的)
+//        $brands = DB::connection('sqlsrv')->select("select CONVERT(varchar(10), b.billdate, 23) as 'date', p.ParID,sum(r.total) as  'money'
+//from billindex b left join retailBill r on b.BillNumberID = r.BillNumberID inner join ptype p on p.typeId = r.PtypeId
+//where  b.BillType = 305 and b.redword = 0 and  b.BillDate = CONVERT(varchar(30),getdate(),23)  group by p.ParID,b.BillDate;");
+//
+//        //统计总计的销售额
+//        $totalMoney = DB::connection('sqlsrv')->select("select  sum(TotalMoney) as 'totalMoney'  from billindex
+//where  BillType = 305 and RedWord = 0 and  BillDate = CONVERT(varchar(30),getdate(),23);");
+//
+//        foreach ($brands as &$brand) {
+//            $ptype = Ptype::select('FullName')->where('typeId', $brand->ParID)->first();
+//            $brand->name = $ptype->FullName;
+//            $brand->count = Helper::getNum($brand->money, $totalMoney[0]->totalMoney);
+//
+//        }
+//
+//        return $brands;
+
+
+        //一个月的销售额占比，统计的是到目前为止的
+        $brands = DB::connection('sqlsrv')->select("select  p.ParID,sum(r.total) as  'money'
+from billindex b left join retailBill r on b.BillNumberID = r.BillNumberID inner join ptype p on
+p.typeId = r.PtypeId
+where  b.BillType = 305 and b.redword = 0 and  b.BillDate <= CONVERT(varchar(30),getdate(),23)  
+and b.BillDate >= '2018-04-01' group by p.ParID;");
 
         //统计总计的销售额
         $totalMoney = DB::connection('sqlsrv')->select("select  sum(TotalMoney) as 'totalMoney'  from billindex 
-where  BillType = 305 and RedWord = 0 and  BillDate = CONVERT(varchar(30),getdate(),23);");
+where  BillType = 305 and RedWord = 0 and  BillDate <= CONVERT(varchar(30),getdate(),23)
+and BillDate > '2018-04-01';");
 
         foreach ($brands as &$brand) {
             $ptype = Ptype::select('FullName')->where('typeId', $brand->ParID)->first();
@@ -63,5 +85,7 @@ where  BillType = 305 and RedWord = 0 and  BillDate = CONVERT(varchar(30),getdat
         }
 
         return $brands;
+
+
     }
 }
