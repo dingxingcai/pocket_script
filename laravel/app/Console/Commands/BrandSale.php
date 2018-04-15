@@ -43,7 +43,7 @@ class BrandSale extends Command
     public function handle()
     {
         $saleImage = [];
-        for ($i = 4; $i < 6; $i++) {
+        for ($i = 4; $i < 7; $i++) {
             $url1 = 'https://api.cloudconvert.com/process';
             $param1 = [
                 'apikey' => config('app.apikey'),
