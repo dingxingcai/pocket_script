@@ -108,7 +108,8 @@ return [
                 'vip' => App\GraphQL\Query\VipQuery::class,
                 'dayOrder' => App\GraphQL\Query\DayOrderQuery::class,
                 'totalOrder' => App\GraphQL\Query\TotalOrderQuery::class,
-                'brand' => App\GraphQL\Query\BrandQuery::class,  //饼状销售额占比
+                'brand' => App\GraphQL\Query\BrandQuery::class,  //饼状销售额占比（前一天）
+                'brandMouth' => App\GraphQL\Query\BrandMouthQuery::class,  //饼状销售额占比（截止到当月的）
                 'sale' => App\GraphQL\Query\SaleQuery::class,    //折线图 音频类 销售额占比
             ],
             'mutation' => [
@@ -153,8 +154,8 @@ return [
         'vip' => \App\GraphQL\Type\VipType::class,
         'dayOrder' => \App\GraphQL\Type\DayOrderType::class,
         'totalOrder' => \App\GraphQL\Type\TotalOrderType::class,
-        'brand' => \App\GraphQL\Type\BrandType::class,
-        'sale' => \App\GraphQL\Type\SaleType::class,
+        'brand' => \App\GraphQL\Type\BrandType::class,  //前一天的各品牌销售额占比
+        'sale' => \App\GraphQL\Type\SaleType::class,    //15天的音频类销售占比
     ],
 
     // This callable will be passed the Error object for each errors GraphQL catch.
