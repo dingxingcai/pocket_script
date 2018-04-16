@@ -31,30 +31,31 @@ class TitleType extends GraphQLType
     public function fields()
     {
         return [
-            'item1' => [
+            'name' => [
                 'type' => Type::string(),
                 'description' => ''
             ],
-            'item2' => [
-                'type' => Type::string(),
-                'description' => ''
-            ],
-            'item3' => [
-                'type' => Type::string(),
-                'description' => ''
-            ],
-            'item4' => [
-                'type' => Type::string(),
-                'description' => ''
-            ],
-            'item5' => [
-                'type' => Type::string(),
-                'description' => ''
-            ],
-            'item6' => [
-                'type' => Type::string(),
-                'description' => ''
-            ]
+//            'item2' => [
+//                'type' => Type::string(),
+//                'description' => ''
+//            ],
+//            'item3' => [
+//                'type' => Type::string(),
+//                'description' => ''
+//            ],
+//            'item4' => [
+//                'type' => Type::string(),
+//                'description' => ''
+//            ],
+//            'item5' => [
+//                'type' => Type::string(),
+//                'description' => ''
+//            ],
+//            'item6' => [
+//                'type' => Type::string(),
+//                'description' => ''
+//            ],
+
         ];
     }
 

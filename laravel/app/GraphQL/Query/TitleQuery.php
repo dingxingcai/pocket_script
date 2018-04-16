@@ -32,7 +32,7 @@ class TitleQuery extends Query
 
     public function type()
     {
-        return GraphQL::type('title');
+        return Type::listOf(GraphqL::type('title'));
     }
 
 
@@ -44,7 +44,8 @@ class TitleQuery extends Query
 
     public function resolve($root, $args)
     {
-        return [
+        $names = [];
+        $infos = [
             'item1' => '门店',
             'item2' => '当天营业额(元)',
             'item3' => date('m', time()) . '月营业额(元)',
@@ -52,5 +53,11 @@ class TitleQuery extends Query
             'item5' => '当前时间达成率',
             'item6' => '进度对比营业额',
         ];
+        foreach ($infos as $item => $value) {
+            $info['name'] = $value;
+            $names[] = $info;
+        }
+
+        return $names;
     }
 }
