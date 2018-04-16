@@ -57,7 +57,7 @@ where  b.BillType = 305 and b.redword = 0 and  b.BillDate <= CONVERT(varchar(30)
 and b.BillDate >= '{$date}' group by p.ParID;");
 
         //统计总计的销售额
-        $totalMoney = DB::connection('sqlsrv')->select("select  sum(TotalMoney) as 'totalMoney'  from billindex 
+        $totalMoney = DB::connection('sqlsrv')->select("select  sum(TotalInMoney) as 'totalMoney'  from billindex 
 where  BillType = 305 and RedWord = 0 and  BillDate <= CONVERT(varchar(30),getdate(),23)
 and BillDate >= '{$date}';");
 

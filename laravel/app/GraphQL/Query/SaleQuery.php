@@ -54,7 +54,7 @@ and  b.BillDate <= CONVERT(varchar(30),getdate(),23)  group by p.ParID,b.BillDat
         foreach ($sales as &$sale) {
 
             //统计当天的总计的销售额
-            $totalMoney = DB::connection('sqlsrv')->select("select  sum(TotalMoney) as 'totalMoney'  from billindex 
+            $totalMoney = DB::connection('sqlsrv')->select("select  sum(TotalInMoney) as 'totalMoney'  from billindex 
 where  BillType = 305 and  BillDate = '{$sale->date}';");
             $sale->totalMoney = $totalMoney[0]->totalMoney;
             $sale->count = Helper::getNum($sale->money, $totalMoney[0]->totalMoney);

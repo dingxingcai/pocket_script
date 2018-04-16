@@ -184,7 +184,7 @@ class ConfirmOrderMutation extends Mutation
 
             $result = Curl::curl($url, json_encode($param), true, false, true);
 
-            if (!isset($result['code']) || $result['code'] != 1) {
+            if (!isset($result['Code']) || $result['Code'] != 1) {
                 throw new Exception('录单失败,' . $result['Message']);
             }
 
