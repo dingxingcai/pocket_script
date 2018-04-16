@@ -1,0 +1,14 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Stock extends Model
+{
+    protected $connection = 'sqlsrv';
+
+    protected $table = 'stock';
+
+    public $timestamps = false;
+}
