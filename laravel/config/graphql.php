@@ -111,6 +111,8 @@ return [
                 'brand' => App\GraphQL\Query\BrandQuery::class,  //饼状销售额占比（前一天）
                 'brandMouth' => App\GraphQL\Query\BrandMouthQuery::class,  //饼状销售额占比（截止到当月的）
                 'sale' => App\GraphQL\Query\SaleQuery::class,    //折线图 音频类 销售额占比
+                'zhengYL' => App\GraphQL\Query\ZhengYLQuery::class,  //郑伊露需要的数据
+                'title' => App\GraphQL\Query\TitleQuery::class,   //标题
             ],
             'mutation' => [
                 'createUser' => App\GraphQL\Mutation\CreateUserMutation::class,
@@ -156,6 +158,8 @@ return [
         'totalOrder' => \App\GraphQL\Type\TotalOrderType::class,
         'brand' => \App\GraphQL\Type\BrandType::class,  //前一天的各品牌销售额占比
         'sale' => \App\GraphQL\Type\SaleType::class,    //15天的音频类销售占比
+        'zhenYL' => \App\GraphQL\Type\ZhenYLType::class,    //郑伊露需要的数据
+        'title' => \App\GraphQL\Type\TitleType::class,    //标题
     ],
 
     // This callable will be passed the Error object for each errors GraphQL catch.

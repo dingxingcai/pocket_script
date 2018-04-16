@@ -11,6 +11,7 @@ namespace App\GraphQL\Query;
 use App\BillIndex;
 use App\Library\Helper;
 use App\NVipCardSign;
+use App\Stock;
 use App\User;
 use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Query;
@@ -33,7 +34,7 @@ class ZhengYLQuery extends Query
 
     public function type()
     {
-        return Type::listOf(GraphQL::type('return'));
+        return Type::listOf(GraphQL::type('zhenYL'));
     }
 
 
@@ -46,6 +47,70 @@ class ZhengYLQuery extends Query
     public function resolve($root, $args)
     {
 
+        $totalDays = date('t');                  //当前月总天数
+        $date = date('Y-m-1', time());  //每月的开始日期
+        $day = date('d', time());        //到目前为止的天数
+        $finishedCount = 0;                       //达成率
+        $diff = 0;                                //速度对比差值
+        $dayTotals = 0;                           //总计当天销售额
+        $totalTotalMoneys = 0;                   //总计当月销售额
+        $totalTarget = 0;                        //总计月任务
+        $totalDiff = 0;
 
+
+        $datas = [];
+        //获取月目标
+        $ktypeIds = Helper::getMonthTarGet();
+        foreach ($ktypeIds as $ktypeId => $value) {
+
+            //查询仓库名称
+            $stock = Stock::select('FullName')->where('typeId', $ktypeId)->first();
+            $info['stock'] = $stock->FullName;
+            //查询仓库的当天销售额
+            $dayMoney = DB::connection('sqlsrv')->select("select  sum(TotalMoney) as 'dayMoney'  from billindex
+where  BillType = 305 and RedWord = 0 and KtypeId = '{$ktypeId}' and draft = 0 and BillDate = CONVERT(varchar(30),getdate(),23);");
+            if ($dayMoney[0]->dayMoney) {
+                $dayMoney = $dayMoney[0]->dayMoney;
+            } else {
+                $dayMoney = 0;
+            }
+
+            $dayTotals += $dayMoney;
+
+            $info['dayMoney'] = $dayMoney;
+            //获取本月到目前为止的总销售额
+            $totalMoney = DB::connection('sqlsrv')->select("select  sum(TotalInMoney) as 'totalMoney'  from billindex 
+where  BillType = 305 and RedWord = 0 and KtypeId = '{$ktypeId}' and ifcheck = 't' and draft = 0 and  BillDate <= CONVERT(varchar(30),getdate(),23)
+and BillDate >= '{$date}';");
+            if ($totalMoney[0]->totalMoney) {
+                $totalMoney = $totalMoney[0]->totalMoney;
+            } else {
+                $totalMoney = 0;
+            }
+
+            $totalTotalMoneys += $totalMoney;
+            $info['totalMoney'] = $totalMoney;
+            $info['target'] = $value['money'];
+            $info['finishedCount'] = round(($totalMoney / $value['money']) * 100, 2) . '%';
+
+            $diff = round($totalMoney - (($value['money'] / $totalDays) * $day), 0);
+
+            $totalDiff += $diff;
+            $totalTarget += $value['money'];
+
+            $info['diff'] = $diff;
+            $info['title'] = date('Y-m-d H:i:s') . '门店销售统计数据';
+            $datas[] = $info;
+
+        }
+
+        $total['stock'] = '合计';
+        $total['dayMoney'] = round($dayTotals, 2);
+        $total['totalMoney'] = round($totalTotalMoneys, 2);
+        $total['target'] = $totalTarget;
+        $total['finishedCount'] = round(($totalTotalMoneys / $totalTarget) * 100, 2) . '%';
+        $total['diff'] = $totalDiff;
+        $datas[] = $total;
+        return $datas;
     }
 }
