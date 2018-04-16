@@ -39,6 +39,8 @@ class TestCommand extends Command
      */
     public function handle()
     {
-        Log::info("这是测试的定时任务", ['name' => time()]);
+        $em = Employee::select('UserCode')->where('typeId', '00001')->get();
+        echo $em;
+
     }
 }
