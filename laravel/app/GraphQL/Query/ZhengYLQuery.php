@@ -69,7 +69,7 @@ class ZhengYLQuery extends Query
             $info['stock'] = $stock[1];
             //查询仓库的当天销售额
             $dayMoney = DB::connection('sqlsrv')->select("select  sum(TotalMoney) as 'dayMoney'  from billindex
-where  BillType = 305 or BillType = 215 and RedWord = 0 and KtypeId = '{$ktypeId}' and draft = 0 and BillDate = CONVERT(varchar(30),getdate(),23);");
+where  (BillType = 305 or BillType = 215) and RedWord = 0 and KtypeId = '{$ktypeId}' and draft = 0 and BillDate = CONVERT(varchar(30),getdate(),23);");
             if ($dayMoney[0]->dayMoney) {
                 $dayMoney = $dayMoney[0]->dayMoney;
             } else {
@@ -81,7 +81,7 @@ where  BillType = 305 or BillType = 215 and RedWord = 0 and KtypeId = '{$ktypeId
             $info['dayMoney'] = $dayMoney;
             //获取本月到目前为止的总销售额
             $totalMoney = DB::connection('sqlsrv')->select("select  sum(TotalInMoney) as 'totalMoney'  from billindex 
-where  BillType = 305 or BillType = 215 and RedWord = 0 and KtypeId = '{$ktypeId}' and ifcheck = 't' and draft = 0 and  BillDate <= CONVERT(varchar(30),getdate(),23)
+where  (BillType = 305 or BillType = 215) and RedWord = 0 and KtypeId = '{$ktypeId}' and ifcheck = 't' and draft = 0 and  BillDate <= CONVERT(varchar(30),getdate(),23)
 and BillDate >= '{$date}';");
             if ($totalMoney[0]->totalMoney) {
                 $totalMoney = $totalMoney[0]->totalMoney;
