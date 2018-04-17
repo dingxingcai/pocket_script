@@ -22,6 +22,8 @@ class Kernel extends ConsoleKernel
         \App\Console\Commands\SendDingDing::class,
         \App\Console\Commands\Convert::class,
         \App\Console\Commands\SendBrandSale::class,
+        \App\Console\Commands\ZhenYL::class,
+        \App\Console\Commands\SendZhenYL::class,
     ];
 
     /**

@@ -110,11 +110,11 @@ class ConfirmOrderMutation extends Mutation
 
         DB::beginTransaction();
         try {
-
+            $orderId = date('YmdHi') . mt_rand(100, 999);
             //存入主订单
             $order = Order::create(
                 [
-                    "orderId" => time(),
+                    "orderId" => $orderId,
                     'billDate' => date('Y-m-d H:i:s', time()),
                     'bTypeId' => $posInfo->BtypeID,    //往来单位
                     'eTypeId' => $user->uid,
@@ -162,37 +162,42 @@ class ConfirmOrderMutation extends Mutation
             }
 
 
-            //同步订单给管家婆
-            $key = config('app.syncKey');
-            $url = config('app.syncUrl');
-            $md5Param = "$key" . date('Y-m-d', time()) . "$vipCardId" . date('Ymd');
-            $param = [
-                'billDate' => date('Y-m-d', time()),
-                'bTypeid' => $posInfo->BtypeID,
-                'eTypeid' => $user->uid,
-                'kTypeid' => $posInfo->ktypeid,
-                'totalMoney' => $totalMoney,
-                'totalInMoney' => round($totalInMoney, 2),
-                'discountMoney' => round($totalDisMoney, 2),
-                'discount' => $discount,
-                'VipCardId' => $vipCardId,
-                'Qty' => $qty,
-                'aTypeId' => trim($args['nId']),
-                'Data' => $goods,
-                'signature' => strtoupper(md5($md5Param)),
-            ];
-
-            $result = Curl::curl($url, json_encode($param), true, false, true);
-
-            if (!isset($result['Code']) || $result['Code'] != 1) {
-                throw new Exception('录单失败,' . $result['Message']);
-            }
-
         } catch (Exception $e) {
             DB::rollBack();
             throw new Exception($e->getMessage());
         }
         DB::commit();
+
+
+        //同步订单给管家婆
+        $key = config('app.syncKey');
+        $url = config('app.syncUrl');
+        $md5Param = "$key" . date('Y-m-d', time()) . "$vipCardId" . date('Ymd');
+        $param = [
+            'billDate' => date('Y-m-d', time()),
+            'bTypeid' => $posInfo->BtypeID,
+            'eTypeid' => $user->uid,
+            'kTypeid' => $posInfo->ktypeid,
+            'totalMoney' => $totalMoney,
+            'totalInMoney' => round($totalInMoney, 2),
+            'discountMoney' => round($totalDisMoney, 2),
+            'discount' => $discount,
+            'VipCardId' => $vipCardId,
+            'Qty' => $qty,
+            'aTypeId' => trim($args['nId']),
+            'Data' => $goods,
+            'signature' => strtoupper(md5($md5Param)),
+        ];
+
+        $result = Curl::curl($url, json_encode($param), true, false, true);
+
+        if (!isset($result['Code']) || $result['Code'] != 1) {
+            throw new Exception('录单失败,' . $result['Message']);
+        }
+
+        //修改order的status=1,同步订单成功
+        Order::where('orderId', $orderId)->update(['status' => 1]);
+
 
         return ['msg' => '录单成功', 'code' => 200];
 

@@ -121,7 +121,10 @@ return [
 
 
     //销售额占比，每日更新钉钉群
-    'dingBrandSale' => 'https://oapi.dingtalk.com/robot/send?access_token=9583ab5e540ba7a8e780882c67ef3743bf5b590b6a702530adbcb5257247d16c' ,
+    'dingBrandSale' => 'https://oapi.dingtalk.com/robot/send?access_token=9583ab5e540ba7a8e780882c67ef3743bf5b590b6a702530adbcb5257247d16c',
+
+    //郑伊露需要的数据
+    'dingZhenYL' => 'https://oapi.dingtalk.com/robot/send?access_token=35a8a1c16a0c51dbc898a2d2db4d0e785ed075b42423afb547a64bba63d51a68',
 
     //云转换apikey
     'apikey' => 'D5El15hkpWBNM6-Wha-UnHSJ3uXjlYlU_5TPp5lJ8bYAdTiCTcNey5pO0U3afWlMnsjV4eCJq6v48xVcHQxpdg',
