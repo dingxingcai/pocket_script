@@ -53,7 +53,9 @@ class ZhengYLQuery extends Query
         $finishedCount = 0;                       //达成率
         $diff = 0;                                //速度对比差值
         $dayTotals = 0;                           //总计当天销售额
+        $dayRefundTotals = 0;                    //总计当天总的退货金额
         $totalTotalMoneys = 0;                   //总计当月销售额
+        $totalRefundMoneys = 0;                   //总计当月总的退货金额
         $totalTarget = 0;                        //总计月任务
         $totalDiff = 0;
 
@@ -69,16 +71,29 @@ class ZhengYLQuery extends Query
             $info['stock'] = $stock[1];
             //查询仓库的当天销售额
             $dayMoney = DB::connection('sqlsrv')->select("select  sum(TotalMoney) as 'dayMoney'  from billindex
-where  (BillType = 305 or BillType = 215) and RedWord = 0 and KtypeId = '{$ktypeId}' and draft = 0 and BillDate = CONVERT(varchar(30),getdate(),23);");
+where  BillType = 305  and RedWord = 0 and KtypeId = '{$ktypeId}' and draft = 0 and BillDate = CONVERT(varchar(30),getdate(),23);");
             if ($dayMoney[0]->dayMoney) {
                 $dayMoney = $dayMoney[0]->dayMoney;
             } else {
                 $dayMoney = 0;
             }
 
+
+            //查询仓库的当天零售退货单
+            $dayRegundMoney = DB::connection('sqlsrv')->select("select  sum(TotalMoney) as 'dayMoney'  from billindex
+where  BillType = 215 and RedWord = 0 and KtypeId = '{$ktypeId}' and draft = 0 and BillDate = CONVERT(varchar(30),getdate(),23);");
+            if ($dayRegundMoney[0]->dayMoney) {
+                $dayRegundMoney = $dayRegundMoney[0]->dayMoney;
+            } else {
+                $dayRegundMoney = 0;
+            }
+            $dayRefundTotals += $dayRegundMoney;
+
             $dayTotals += $dayMoney;
 
-            $info['dayMoney'] = $dayMoney;
+            $info['dayMoney'] = $dayMoney - $dayRegundMoney;
+
+
             //获取本月到目前为止的总销售额
             $totalMoney = DB::connection('sqlsrv')->select("select  sum(TotalInMoney) as 'totalMoney'  from billindex 
 where  (BillType = 305 or BillType = 215) and RedWord = 0 and KtypeId = '{$ktypeId}' and ifcheck = 't' and draft = 0 and  BillDate <= CONVERT(varchar(30),getdate(),23)
@@ -89,8 +104,20 @@ and BillDate >= '{$date}';");
                 $totalMoney = 0;
             }
 
+
+            //获取本月到目前为止的总零售单退货金额
+            $totalRefundMoney = DB::connection('sqlsrv')->select("select  sum(TotalInMoney) as 'totalMoney'  from billindex 
+where  BillType = 215 and RedWord = 0 and KtypeId = '{$ktypeId}' and ifcheck = 't' and draft = 0 and  BillDate <= CONVERT(varchar(30),getdate(),23)
+and BillDate >= '{$date}';");
+            if ($totalRefundMoney[0]->totalMoney) {
+                $totalRefundMoney = $totalRefundMoney[0]->totalMoney;
+            } else {
+                $totalRefundMoney = 0;
+            }
+            $totalRefundMoneys += $totalRefundMoney;
+
             $totalTotalMoneys += $totalMoney;
-            $info['totalMoney'] = $totalMoney;
+            $info['totalMoney'] = $totalMoney - $totalRefundMoney;
             $info['target'] = $value['money'];
             $info['finishedCount'] = round(($totalMoney / $value['money']) * 100, 2) . '%';
 
@@ -106,8 +133,8 @@ and BillDate >= '{$date}';");
         }
 
         $total['stock'] = '合计';
-        $total['dayMoney'] = round($dayTotals, 2);
-        $total['totalMoney'] = round($totalTotalMoneys, 2);
+        $total['dayMoney'] = round($dayTotals - $dayRefundTotals, 2);
+        $total['totalMoney'] = round($totalTotalMoneys - $totalRefundMoneys, 2);
         $total['target'] = $totalTarget;
         $total['finishedCount'] = round(($totalTotalMoneys / $totalTarget) * 100, 2) . '%';
         $total['diff'] = $totalDiff;
