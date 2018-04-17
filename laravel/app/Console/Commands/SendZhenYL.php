@@ -43,7 +43,7 @@ class SendZhenYL extends Command
     {
         $images = Cache::pull('saleImage');
         if (empty($images)) {
-            $image = '201804161754265925.jpg';
+            $image = '201804171141177565.jpg';
 //            \Log::info('从缓存中没有获取到图片', []);
 //            exit;
         }
