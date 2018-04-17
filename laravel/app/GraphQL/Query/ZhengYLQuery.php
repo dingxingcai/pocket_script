@@ -91,7 +91,7 @@ where  BillType = 215 and  KtypeId = '{$ktypeId}'  and BillDate = CONVERT(varcha
 
             $dayTotals += $dayMoney;
 
-            $info['dayMoney'] = $dayMoney - $dayRegundMoney;
+            $info['dayMoney'] = round($dayMoney - $dayRegundMoney, 2);
 
 
             //获取本月到目前为止的总销售额
