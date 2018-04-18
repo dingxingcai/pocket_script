@@ -39,8 +39,9 @@ class TestCommand extends Command
      */
     public function handle()
     {
-        $em = Employee::select('UserCode')->where('typeId', '00001')->get();
-        echo $em;
+//        $em = Employee::select('UserCode')->where('typeId', '00001')->get();
+//        echo $em;
 
+        Log::info('ceshi666', ['ceshi' => '888']);
     }
 }
