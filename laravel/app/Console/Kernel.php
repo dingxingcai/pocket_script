@@ -41,8 +41,6 @@ class Kernel extends ConsoleKernel
         $schedule->command('command:brandSale')->dailyAt("22:55");   //生成图片(销售占比图片)
         $schedule->command('command:sendBrandSale')->dailyAt("23:00");   //发送图片(销售额占比，发销售额占比群)
 
-
-        $schedule->command('command:TestCommand')->everyMinute();
     }
 
     /**
