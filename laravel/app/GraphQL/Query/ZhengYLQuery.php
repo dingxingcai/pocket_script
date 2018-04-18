@@ -117,7 +117,7 @@ and BillDate >= '{$date}';");
             $totalRefundMoneys += $totalRefundMoney;
 
             $totalTotalMoneys += $totalMoney;
-            $info['totalMoney'] = $totalMoney - $totalRefundMoney;
+            $info['totalMoney'] = round($totalMoney - $totalRefundMoney, 2);
             $info['target'] = $value['money'];
             $info['finishedCount'] = round((($totalMoney - $totalRefundMoney) / $value['money']) * 100, 2) . '%';
 
