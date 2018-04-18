@@ -68,7 +68,8 @@ class ZhengYLQuery extends Query
             //查询仓库名称
             $stock = Stock::select('FullName')->where('typeId', $ktypeId)->first();
             $stock = explode('|', $stock->FullName);
-            $info['stock'] = $stock[1];
+            $sto = explode('店', $stock[1]);
+            $info['stock'] = $sto[0].'店';
             //查询仓库的当天销售额
             $dayMoney = DB::connection('sqlsrv')->select("select  sum(TotalMoney) as 'dayMoney'  from billindex
 where  BillType = 305 and  KtypeId = '{$ktypeId}'  and RedWord = 0 and  BillDate = CONVERT(varchar(30),getdate(),23);");
