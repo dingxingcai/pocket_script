@@ -70,7 +70,7 @@ class ZhengYLQuery extends Query
             $stock = explode('|', $stock->FullName);
             $info['stock'] = $stock[1];
             //查询仓库的当天销售额
-            $dayMoney = DB::connection('sqlsrv')->select("select  sum(TotalInMoney) as 'dayMoney'  from billindex
+            $dayMoney = DB::connection('sqlsrv')->select("select  sum(TotalMoney) as 'dayMoney'  from billindex
 where  BillType = 305 and  KtypeId = '{$ktypeId}'  and RedWord = 0 and  BillDate = CONVERT(varchar(30),getdate(),23);");
             if ($dayMoney[0]->dayMoney) {
                 $dayMoney = $dayMoney[0]->dayMoney;
@@ -80,7 +80,7 @@ where  BillType = 305 and  KtypeId = '{$ktypeId}'  and RedWord = 0 and  BillDate
 
 
             //查询仓库的当天零售退货单
-            $dayRegundMoney = DB::connection('sqlsrv')->select("select  sum(TotalInMoney) as 'dayMoney'  from billindex
+            $dayRegundMoney = DB::connection('sqlsrv')->select("select  sum(TotalMoney) as 'dayMoney'  from billindex
 where  BillType = 215 and  KtypeId = '{$ktypeId}' and RedWord = 0   and BillDate = CONVERT(varchar(30),getdate(),23);");
             if ($dayRegundMoney[0]->dayMoney) {
                 $dayRegundMoney = $dayRegundMoney[0]->dayMoney;
@@ -95,7 +95,7 @@ where  BillType = 215 and  KtypeId = '{$ktypeId}' and RedWord = 0   and BillDate
 
 
             //获取本月到目前为止的总销售额
-            $totalMoney = DB::connection('sqlsrv')->select("select  sum(TotalInMoney) as 'totalMoney'  from billindex 
+            $totalMoney = DB::connection('sqlsrv')->select("select  sum(TotalMoney) as 'totalMoney'  from billindex 
 where  BillType = 305  and  KtypeId = '{$ktypeId}' and RedWord = 0   and  BillDate <= CONVERT(varchar(30),getdate(),23)
 and BillDate >= '{$date}';");
             if ($totalMoney[0]->totalMoney) {
@@ -106,7 +106,7 @@ and BillDate >= '{$date}';");
 
 
             //获取本月到目前为止的总零售单退货金额
-            $totalRefundMoney = DB::connection('sqlsrv')->select("select  sum(TotalInMoney) as 'totalMoney'  from billindex 
+            $totalRefundMoney = DB::connection('sqlsrv')->select("select  sum(TotalMoney) as 'totalMoney'  from billindex 
 where  BillType = 215 and RedWord = 0 and KtypeId = '{$ktypeId}'  and BillDate <= CONVERT(varchar(30),getdate(),23)
 and BillDate >= '{$date}';");
             if ($totalRefundMoney[0]->totalMoney) {
