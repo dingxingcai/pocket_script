@@ -110,7 +110,7 @@ class ConfirmOrderMutation extends Mutation
 
         DB::beginTransaction();
         try {
-            $orderId = date('YmdHi') . mt_rand(100, 999);
+            $orderId = date('YmdHis') . mt_rand(100, 999);
             //存入主订单
             $order = Order::create(
                 [
