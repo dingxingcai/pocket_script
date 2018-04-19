@@ -54,6 +54,7 @@ class ZhenYL extends Command
             throw new Exception('获取URL错误');
         }
 
+
         $url2 = $result1['url'];
         $param2 = [
             'wait' => true,
@@ -74,6 +75,30 @@ class ZhenYL extends Command
         $fileName = date('YmdHis', time()) . mt_rand(1000, 9999) . '.jpg';
         $saleImage[] = $fileName;
         $return = Storage::put("market/{$fileName}", $ext);
+
         Log::info('生成郑伊露需要的图片', [$return]);
+
+        if (!$return) {
+            throw new Exception('生成郑伊露需要的图片错误');
+        }
+
+        $url = "https://pn-activity.oss-cn-shenzhen.aliyuncs.com/market/" . $fileName;
+        $dingdingUrl = config('app.dingZhenYL');
+        $dingdingParam = [
+            'msgtype' => 'markdown',
+            'markdown' => [
+                'title' => '实时销售额',
+                'text' => "![screenshot]({$url})"
+            ],
+            'at' => [
+                'atMobiles' => [''],
+                'isAtAll' => false,
+            ]
+
+
+        ];
+
+        $result3 = Curl::curl($dingdingUrl, json_encode($dingdingParam), true, true, true);
+        \Log::info('发送郑伊露报表群失败' . $fileName, $result3);
     }
 }
