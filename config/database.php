@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'dc'),
 
     /*
     |--------------------------------------------------------------------------
@@ -39,13 +39,28 @@ return [
             'prefix' => '',
         ],
 
-        'mysql' => [
+        'dc' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'sa'),
-            'username' => env('DB_USERNAME', 'homesteas'),
-            'password' => env('DB_PASSWORD', 'homesteas'),
+            'host' => env('DB_DC_HOST', '127.0.0.1'),
+            'port' => env('DB_DC_PORT', '3306'),
+            'database' => env('DB_DC_DATABASE', 'sa'),
+            'username' => env('DB_DC_USERNAME', 'homesteas'),
+            'password' => env('DB_DC_PASSWORD', 'homesteas'),
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
+
+        'zulin' => [
+            'driver' => 'mysql',
+            'host' => env('DB_ZULIN_HOST', '127.0.0.1'),
+            'port' => env('DB_ZULIN_PORT', '3306'),
+            'database' => env('DB_ZULIN_DATABASE', 'sa'),
+            'username' => env('DB_ZULIN_USERNAME', 'homesteas'),
+            'password' => env('DB_ZULIN_PASSWORD', 'homesteas'),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
@@ -67,13 +82,14 @@ return [
             'sslmode' => 'prefer',
         ],
 
-        'sqlsrv' => [
+//        管家婆db
+        'gjp' => [
             'driver' => 'sqlsrv',
-            'host' => env('SQLSERVER_HOST', 'localhost'),
-            'port' => env('SQLSERVER_PORT', '1433'),
-            'database' => env('SQLSERVER_DATABASE', 'forge'),
-            'username' => env('SQLSERVER_USERNAME', 'forge'),
-            'password' => env('SQLSERVER_PASSWORD', ''),
+            'host' => env('GJP_SQLSERVER_HOST', 'localhost'),
+            'port' => env('GJP_SQLSERVER_PORT', '1433'),
+            'database' => env('GJP_SQLSERVER_DATABASE', 'forge'),
+            'username' => env('GJP_SQLSERVER_USERNAME', 'forge'),
+            'password' => env('GJP_SQLSERVER_PASSWORD', ''),
             'charset' => 'utf8',
             'prefix' => '',
         ],
