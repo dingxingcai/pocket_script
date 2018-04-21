@@ -234,7 +234,7 @@ class ETL
         isset($cfg['before']) && is_callable($cfg['before']) && $etl->setBefore($cfg['before']);
         isset($cfg['after']) && is_callable($cfg['after']) && $etl->setAfter($cfg['after']);
         isset($cfg['fail']) && is_callable($cfg['fail']) && $etl->setFail($cfg['fail']);
-        isset($cfg['before_push']) && is_callable($cfg['before_push']) && $etl->setBeforePush($cfg['before_push']);
+        isset($cfg['beforePush']) && is_callable($cfg['beforePush']) && $etl->setBeforePush($cfg['beforePush']);
 
         if(isset($cfg['transactions'])){
             $transactions = is_array($cfg['transactions']) ?: [$cfg['transactions']];

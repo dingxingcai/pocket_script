@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use APP\Console\Commands\ETL\ExportCustom;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
