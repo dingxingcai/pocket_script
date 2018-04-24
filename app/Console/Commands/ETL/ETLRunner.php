@@ -40,6 +40,7 @@ class ETLRunner extends Command
     public function handle()
     {
         $opsQueues = $this->option('queue');
+
         $etlQueue = explode(',', $opsQueues);
 
         foreach($etlQueue as $name){

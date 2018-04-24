@@ -7,28 +7,24 @@ use \App\ETL\Output\CompositeSerially;
 use \App\Utility\EtlConstant;
 
 $sql = <<<SQL
-SELECT 
-'ZULIN' as business_type,
-o.id as business_id,
-o.id as order_id,
-o.customerId,
-o.inStoreId,
-o.outStoreId,
-o.paymentId,
-o.goodsId,
-g.code,
-u.phone AS vip_telephone,
-o.state AS business_status,
-o.createdAt AS ts_created,
-o.updatedAt 
-FROM `order` o 
-LEFT JOIN goods g ON o.goodsId=g.id
-LEFT JOIN `user` u ON o.customerId=u.id
-WHERE o.updatedAt BETWEEN :timeBegin AND :timeEnd LIMIT :limit offset :offset
+select 
+'ZL'as 'business_type',
+o.orderNo as 'business_id',
+o.state as 'business_status',
+o.createdAt as 'ts_created',
+o.rentTotal,
+o.deposit,
+o.discountAmount,
+o.paymentTotal,
+o.outStoreId as 'store_code',
+o.outStaffId as 'sales_code',
+u.phone as 'vip_telephone' from `order` o 
+left join `user` u on u.id = o.customerId
+where o.updatedAt BETWEEN :timeBegin AND :timeEnd LIMIT :limit offset :offset
 ;
 SQL;
 
-$identity = EtlConstant::FETCH_ZULIN_ORDER;
+$identity = EtlConstant::FETCH_ZULIN_ORDER1;
 
 return
     [
@@ -40,8 +36,8 @@ return
 
             return new CompositeSerially([
                 'order' => new MysqlInsertUpdateWithPdo($dc, 'fact_order',
-                    ['oid', 'business_type', 'business_id', 'ts_created', 'business_status', 'vip_telephone', 'sales_code'],
-                    ['business_status']),
+                    ['oid', 'business_type', 'business_id', 'ts_created', 'business_status', 'vip_telephone','store_code', 'sales_code','price_actual', 'price_original', 'price_payed'],
+                    ['business_status','oid']),
                 'exp' => new MysqlInsertUpdateWithPdo($dc, 'fact_exp_zulin',
                     ['oid', 'order_id'],
                     ['oid', 'order_id'])
@@ -49,7 +45,13 @@ return
                 $res = ['order' => [], 'exp' => []];
                 foreach ($aData as $data) {
                     empty($data['sales_code']) && $data['sales_code'] = '';
-                    $data['oid'] = 'ZULIN' . $data['business_id'];
+                    $data['oid'] = 'ZL' . $data['business_id'];
+
+                    $data['price_original'] = $data['rentTotal'] + $data['deposit'];
+                    $data['price_actual'] = $data['price_original'] - $data['discountAmount'];
+                    $data['price_payed'] = $data['paymentTotal'];
+
+                    $data['order_id'] = $data['business_id'];
                     $res['order'][] = $data;
                     $res['exp'][] = $data;
                 }
@@ -63,7 +65,7 @@ return
                 function (EtlRunRecord $record=null, EtlRunRecord $lastRecord=null){
                     $record->params = [
                         'timeBegin' => '2018-04-01',
-                        'timeEnd' => '2018-04-21'
+                        'timeEnd' => '2018-04-25'
                     ];
                     $record->marker = 0;
 
@@ -89,6 +91,6 @@ return
         'fail' => function (ETL $etl, \Exception $e) use ($identity) {
             EtlRunRecord::fail($identity, $etl);
         },
-        'limit' => 1,
-        'upper' => 2
+        'limit' => 10,
+        'upper' => 100
     ];
