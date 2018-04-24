@@ -1,6 +1,8 @@
 <?php
 namespace App\ETL\Output;
 
+use App\ETL\Util;
+
 class XlsxSingleSheet implements IOutput
 {
     private $hasWriterHeader = false;
@@ -28,7 +30,7 @@ class XlsxSingleSheet implements IOutput
         foreach ($aData as $data) {
             $datatmp = array();
             foreach ($data as $k => $v) {
-                $datatmp[$k] = $this->filterEmoji($v);
+                $datatmp[$k] = Util::removeEmoji($v);
                 if ($datatmp[$k] != $v) {
                     print_r(array($datatmp[$k], $v));
                 }
@@ -46,24 +48,5 @@ class XlsxSingleSheet implements IOutput
             mkdir($dir, 0777, true);
         }
         $this->writer->writeToFile($this->filename);
-    }
-
-    function filterEmoji($str)
-    {
-        $str = preg_replace_callback(
-            '/./u',
-            function (array $match) {
-                if (preg_match('/[\b]/u', $match[0])) {
-                    return '';
-                }
-                //debug
-//                if(strlen($match[0])==1&&!preg_match('/[0-9a-zA-Z-_\:\.\?\@ ]/u',$match[0])){
-//                    echo sprintf("%s|%s",$match[0],urlencode($match[0]));
-//                }
-                return strlen($match[0]) >= 4 ? '' : $match[0];
-            },
-            $str);
-
-        return $str;
     }
 }
