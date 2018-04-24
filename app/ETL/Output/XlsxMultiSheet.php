@@ -1,6 +1,8 @@
 <?php
 namespace App\ETL\Output;
 
+use App\ETL\Util;
+
 class XlsxMultiSheet implements IOutput
 {
     private $filename = null;
@@ -25,7 +27,7 @@ class XlsxMultiSheet implements IOutput
             foreach($aData as $data){
                 $datatmp = array();
                 foreach ($data as $k => $v) {
-                    $datatmp[$k] = (string)\Snape\Utility\EmojiHelper::removeEmoji($v);
+                    $datatmp[$k] = Util::removeEmoji($v);
                 }
                 $this->writer->writeSheetRow($key, $datatmp);
             }
