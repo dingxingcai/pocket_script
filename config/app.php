@@ -196,7 +196,6 @@ return [
         App\Providers\RouteServiceProvider::class,
         Graphiql\GraphiqlServiceProvider::class,
         Jacobcyl\AliOSS\AliOssServiceProvider::class,
-
     ],
 
     /*
@@ -246,7 +245,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'GraphQL' => Rebing\GraphQL\Support\Facades\GraphQL::class,
-        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
     ],
 
 ];

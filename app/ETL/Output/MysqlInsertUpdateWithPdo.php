@@ -60,14 +60,8 @@ class MysqlInsertUpdateWithPdo implements IOutput
         $updateSql = " ON DUPLICATE KEY UPDATE " . implode(',', $updateSqlArray);
 
         $execSql = $insertQueryPrefix . $insertSql . $updateSql;
-        try{
-            $this->pdo->exec($execSql);
-        }catch (\Exception $e){
-            \Log::info("MysqlInsertWithPdoError:{$e->getMessage()} : {$execSql}");
-            if(!$this->handleException){
-                throw $e;
-            };
-        }
+
+        $this->pdo->exec($execSql);
     }
 
     protected function dealValue(&$value)
