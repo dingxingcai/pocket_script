@@ -53,8 +53,8 @@ class YouZanTest extends TestCase
         $apiVersion = '3.0.0';
 
         $params = [
-            'end_update' => '2018-05-06',
-            'start_update' => '2018-02-06',
+            'end_created' => '2018-04-30 15:00',
+            'start_created' => '2018-04-30 14:00',
             'page_size' => 10,
             'page_no' => 1
         ];
