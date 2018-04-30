@@ -50,8 +50,8 @@ return
                 $etl,
                 function (EtlRunRecord $record=null, EtlRunRecord $lastRecord=null){
                     $record->params = [
-                        'start_created' => !empty($lastRecord) ? $lastRecord->params['dateEnd'] : '2018-02-06',
-                        'end_created' => date("Y-m-d H:i:s")
+                        'start_update' => !empty($lastRecord) ? $lastRecord->params['end_update'] : '2018-02-06',
+                        'end_update' => date("Y-m-d H:i:s")
                     ];
 
                     $record->marker = 1;
@@ -64,18 +64,19 @@ return
                 $record->marker = 1;
                 $record->state = EtlRunRecord::STATE_RUNNING;
 
-//                $timeBegin = min(time(), strtotime($record->params['end_created']));
-//                $timeEnd = min(time(), strtotime('+1 day', $timeBegin));
-//
-//                $record->params = [
-//                    'start_created' => date('Y-m-d H:i:s', $timeBegin),
-//                    'end_created' => date('Y-m-d H:i:s', $timeEnd),
-//                ];
+                $timeBegin = min(time(), strtotime($record->params['end_update']));
+                $timeEnd = strtotime('+5 minute', $timeBegin);
+
+                $record->params = [
+                    'start_update' => date('Y-m-d H:i:s', $timeBegin),
+                    'end_update' => date('Y-m-d H:i:s', $timeEnd),
+                ];
+
             });
         },
         'fail' => function (ETL $etl, \Exception $e) use ($identity) {
             EtlRunRecord::fail($identity, $etl);
         },
         'limit' => 100,
-        'upper' => 1000
+        'upper' => 10000
     ];
