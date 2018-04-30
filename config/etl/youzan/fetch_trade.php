@@ -6,7 +6,6 @@ use App\ETL\Output\MysqlInsertUpdateWithPdo;
 use \App\ETL\Output\CompositeSerially;
 
 $identity = 'etl.youzan.fetch_trade';
-
 return
     [
         'input' => function() use ($sql){
@@ -51,9 +50,10 @@ return
                 $etl,
                 function (EtlRunRecord $record=null, EtlRunRecord $lastRecord=null){
                     $record->params = [
-                        'start_created' => '2018-02-06',
-                        'end_created' => '2018-04-30'
+                        'start_created' => !empty($lastRecord) ? $lastRecord->params['dateEnd'] : '2018-02-06',
+                        'end_created' => date("Y-m-d H:i:s")
                     ];
+
                     $record->marker = 1;
                 },
                 null
@@ -64,13 +64,13 @@ return
                 $record->marker = 1;
                 $record->state = EtlRunRecord::STATE_RUNNING;
 
-                $timeBegin = min(time(), strtotime($record->params['end_created']));
-                $timeEnd = min(time(), strtotime('+1 day', $timeBegin));
-
-                $record->params = [
-                    'start_created' => date('Y-m-d H:i:s', $timeBegin),
-                    'end_created' => date('Y-m-d H:i:s', $timeEnd),
-                ];
+//                $timeBegin = min(time(), strtotime($record->params['end_created']));
+//                $timeEnd = min(time(), strtotime('+1 day', $timeBegin));
+//
+//                $record->params = [
+//                    'start_created' => date('Y-m-d H:i:s', $timeBegin),
+//                    'end_created' => date('Y-m-d H:i:s', $timeEnd),
+//                ];
             });
         },
         'fail' => function (ETL $etl, \Exception $e) use ($identity) {
