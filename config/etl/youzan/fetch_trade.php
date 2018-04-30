@@ -52,7 +52,7 @@ return
                 function (EtlRunRecord $record=null, EtlRunRecord $lastRecord=null){
                     $record->params = [
                         'start_created' => '2018-02-06',
-                        'end_created' => '2018-05-06'
+                        'end_created' => '2018-04-30'
                     ];
                     $record->marker = 1;
                 },
