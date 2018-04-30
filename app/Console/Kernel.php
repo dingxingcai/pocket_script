@@ -16,7 +16,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         //
         \App\Console\Commands\Upload::class,
-        \App\Console\Commands\TestCommand::class,
+//        \App\Console\Commands\TestCommand::class,
         \App\Console\Commands\Vip::class,
         \App\Console\Commands\DayOrder::class,
         \App\Console\Commands\BrandSale::class,
