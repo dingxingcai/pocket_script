@@ -44,6 +44,26 @@ class YouZanTest extends TestCase
         var_dump($response);
     }
 
+    public function testTradeListByStartUpdate()
+    {
+        $accessToken = YouZanService::accessToken();
+        $client = new Client($accessToken);
+
+        $method = 'youzan.trades.sold.get';
+        $apiVersion = '3.0.0';
+
+        $params = [
+            'end_update' => '2018-05-06',
+            'start_update' => '2018-02-06',
+            'page_size' => 10,
+            'page_no' => 1
+        ];
+
+
+        $response = $client->get($method, $apiVersion, $params);
+        var_dump($response);
+    }
+
     public function testCardList()
     {
         $accessToken = YouZanService::accessToken();

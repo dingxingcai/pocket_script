@@ -29,7 +29,7 @@ class YouZanApi implements IInput
 
         $result = call_user_func($this->resultParser, $rawRes);
 
-        $this->marker += count($result);
+        $this->marker += 1;
         return $result;
     }
 }

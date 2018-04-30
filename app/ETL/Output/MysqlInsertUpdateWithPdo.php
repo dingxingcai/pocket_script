@@ -43,6 +43,10 @@ class MysqlInsertUpdateWithPdo implements IOutput
         $insertSqlArray = array();
         foreach($data as $singleData){
             $singleData = array_only($singleData, $this->columns);
+            $diffKeys = array_diff($this->columns, array_keys($singleData));
+            if(!empty($diffKeys)){
+                throw new \Exception("KeysNumUnEqual" . json_encode($diffKeys));
+            }
 
             array_walk($singleData, array($this, 'dealValue'));
 
