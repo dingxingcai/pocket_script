@@ -4,6 +4,7 @@ namespace APP\Console\Commands\Export;
 
 use App\ETL\ETL;
 use App\ETL\Input\PdoWithLaravel;
+use App\ETL\Output\MergedArray;
 use App\ETL\Output\XlsxSingleSheet;
 use Illuminate\Console\Command;
 use Illuminate\Mail\Message;
@@ -68,9 +69,12 @@ class ExportCustom extends Command
             'input' => function () use ($db, $sql) {
                 return new PdoWithLaravel($db, $sql);
             },
-            'output' => function () use ($xlsxPath) {
-                return new XlsxSingleSheet($xlsxPath);
+            'output' => function () use (&$outputData) {
+                return new MergedArray($outputData);
             },
+//            'output' => function () use ($xlsxPath) {
+//                return new XlsxSingleSheet($xlsxPath);
+//            },
             'before' => function () use ($db, $preparationSql) {
                 if ($preparationSql) {
                     $sqls = explode(';', $preparationSql);
@@ -81,16 +85,19 @@ class ExportCustom extends Command
                     }
                 }
             },
-            'beforePush' => function($etl, $aData) use(&$outputData){
-                foreach ($aData as $data){
-                    $outputData[] = $data;
-                }
-            },
+//            'beforePush' => function($etl, $aData) use(&$outputData){
+//                foreach ($aData as $data){
+//                    $outputData[] = $data;
+//                }
+//            },
             'limit' => $step,
             'upper' => 10000000
         ];
         $etl = ETL::constructFromCfg($cfg);
         $etl->run();
+
+        $writer = new XlsxSingleSheet($xlsxPath);
+        $writer->push($outputData);
 
         /**
          * 发送邮件

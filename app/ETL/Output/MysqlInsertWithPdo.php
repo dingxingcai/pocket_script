@@ -51,20 +51,7 @@ class MysqlInsertWithPdo implements IOutput
         \Log::info("start insert data to mysql : " . count($insertSqlArray));
 
         $execSql = $insertQueryPrefix . $insertSql;
-        $try = 0;
-        while (true){
-            try{
-                $this->pdo->exec($execSql);
-                break;
-            }catch (\Exception $e){
-                \Log::info("MysqlInsertWithPdoError:{$e->getMessage()} : {$execSql}");
-                if(!$this->handleException && $try >= 3) {
-                    throw $e;
-                }
-
-                $try++;
-            }
-        }
+        $this->pdo->exec($execSql);
     }
 
     protected function dealValue(&$value)

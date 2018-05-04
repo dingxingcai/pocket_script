@@ -43,6 +43,10 @@ class MysqlInsertUpdateWithPdo implements IOutput
         $insertSqlArray = array();
         foreach($data as $singleData){
             $singleData = array_only($singleData, $this->columns);
+            $diffKeys = array_diff($this->columns, array_keys($singleData));
+            if(!empty($diffKeys)){
+                throw new \Exception("KeysNumUnEqual" . json_encode($diffKeys));
+            }
 
             array_walk($singleData, array($this, 'dealValue'));
 
@@ -60,14 +64,8 @@ class MysqlInsertUpdateWithPdo implements IOutput
         $updateSql = " ON DUPLICATE KEY UPDATE " . implode(',', $updateSqlArray);
 
         $execSql = $insertQueryPrefix . $insertSql . $updateSql;
-        try{
-            $this->pdo->exec($execSql);
-        }catch (\Exception $e){
-            \Log::info("MysqlInsertWithPdoError:{$e->getMessage()} : {$execSql}");
-            if(!$this->handleException){
-                throw $e;
-            };
-        }
+
+        $this->pdo->exec($execSql);
     }
 
     protected function dealValue(&$value)

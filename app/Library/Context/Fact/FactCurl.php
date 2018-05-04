@@ -31,7 +31,7 @@ class FactCurl extends FactBase
         $ops = curl_getinfo($ch);
 
         $ops['request'] = $request;
-        $ops['response'] = $response;
+        $ops['response'] = strlen($response) <= 1024 ? $response : substr($response, 0, 1024);
         $ops['errno'] = curl_errno($ch);
         $ops['error'] = curl_error($ch);
 
