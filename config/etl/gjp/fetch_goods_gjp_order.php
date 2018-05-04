@@ -12,12 +12,13 @@ $sql = <<<SQL
 select top :limit * from  
 (select ROW_NUMBER() OVER (ORDER BY b.BillNumberId asc) AS RowNumber,
 'GJP' as business_type,
-b.billnumberId as 'business_id',
+b.BillCode as 'business_id',
 p.UserCode as 'sku_code',
 r.Qty as 'quantity',
 r.SalePrice as 'price_original',
 r.DiscountPrice as 'price_actual',
-r.total as 'price_payed'
+r.total as 'price_payed',
+r.ETypeID as 'sales_code'
 FROM BillIndex b 
 inner join retailBill r on r.BillNumberId = b.BillNumberId 
 inner join ptype p on r.PtypeId = p.typeId  
@@ -26,7 +27,7 @@ A.RowNumber > (:offset -1)
 ;
 SQL;
 
-$identity = EtlConstant::FETCH_GJP_SKU_ORDER;
+$identity = EtlConstant::FETCH_GOODS_GJP_ORDER;
 
 return
     [
@@ -38,7 +39,7 @@ return
 
             return new CompositeSerially([
                 'sku' => new MysqlInsertWithPdo($dc, 'fact_order_sku',
-                    ['oid', 'business_type', 'sku_code', 'quantity', 'price_actual', 'price_original', 'price_payed'])
+                    ['oid', 'business_type', 'sku_code', 'quantity', 'price_actual', 'price_original', 'price_payed' , 'sales_code'])
             ], function ($aData) {
                 $res = ['sku' => []];
                 foreach ($aData as $data) {
@@ -56,7 +57,7 @@ return
                 function (EtlRunRecord $record = null, EtlRunRecord $lastRecord = null) {
                     $record->params = [
                         'timeBegin' => '2018-01-01 00:00:00',
-                        'timeEnd' => '2018-04-24 12:00:00'
+                        'timeEnd' => '2018-04-28 12:00:00'
                     ];
                     $record->marker = 1;
 
@@ -82,6 +83,6 @@ return
         'fail' => function (ETL $etl, \Exception $e) use ($identity) {
             EtlRunRecord::fail($identity, $etl);
         },
-        'limit' => 300,
+        'limit' => 30,
         'upper' => 300000
     ];

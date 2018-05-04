@@ -18,26 +18,10 @@ class UserTest extends TestCase
      */
     public function testUser()
     {
-
-
-//        $s1 = Cache::add('8', ['name' => 666, 'sex' => '男'], 5);
-//        $nr = Cache::get('8');
-//        $n = $nr['name'];
-        $s = 666;
-        $url = "www.baidu.com/user?test=666&a=gddsf";
-        $url = urlencode($url);
-        $m = [
-            'name' => '666',
-            'type' => 'hh'
-        ];
-
-        $this->post('/add/vip', [
-            'name' => '666',
-            'id' => 10,
-        ]);
-        $key = md5($s);
-
-        return response($m);
+        $startdate=strtotime("2012-01-01 12:00:12");
+        $enddate=strtotime("2012-01-14 14:00:34");
+        $days=round(($enddate-$startdate)/86400)+1;
+        echo $days;
 
     }
 

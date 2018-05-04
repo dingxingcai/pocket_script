@@ -14,6 +14,9 @@ o.state as 'business_status',
 o.createdAt as 'ts_created',
 o.rentTotal,
 o.deposit,
+o.lateFee,
+o.otherFee,
+o.compensation,
 o.discountAmount,
 o.paymentTotal,
 o.outStoreId as 'store_code',
@@ -24,7 +27,7 @@ where o.updatedAt BETWEEN :timeBegin AND :timeEnd LIMIT :limit offset :offset
 ;
 SQL;
 
-$identity = EtlConstant::FETCH_ZULIN_ORDER1;
+$identity = EtlConstant::FETCH_ZULIN_ORDER;
 
 return
     [
@@ -37,7 +40,7 @@ return
             return new CompositeSerially([
                 'order' => new MysqlInsertUpdateWithPdo($dc, 'fact_order',
                     ['oid', 'business_type', 'business_id', 'ts_created', 'business_status', 'vip_telephone','store_code', 'sales_code','price_actual', 'price_original', 'price_payed'],
-                    ['business_status','oid']),
+                    ['business_status','price_actual','price_payed','price_original']),
                 'exp' => new MysqlInsertUpdateWithPdo($dc, 'fact_exp_zulin',
                     ['oid', 'order_id'],
                     ['oid', 'order_id'])
@@ -49,7 +52,7 @@ return
 
                     $data['price_original'] = $data['rentTotal'] + $data['deposit'];
                     $data['price_actual'] = $data['price_original'] - $data['discountAmount'];
-                    $data['price_payed'] = $data['paymentTotal'];
+                    $data['price_payed'] = $data['rentTotal'] + $data['deposit'] - $data['discountAmount'] + $data['lateFee'] + $data['compensation'] + $data['otherFee'];
 
                     $data['order_id'] = $data['business_id'];
                     $res['order'][] = $data;
@@ -91,6 +94,6 @@ return
         'fail' => function (ETL $etl, \Exception $e) use ($identity) {
             EtlRunRecord::fail($identity, $etl);
         },
-        'limit' => 10,
-        'upper' => 100
+        'limit' => 30,
+        'upper' => 300000
     ];

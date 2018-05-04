@@ -84,6 +84,19 @@ class Helper
     }
 
 
+    //计算两个日期的天数
+    public static function getDiffDate($startDay, $endDay)
+    {
+        if (empty($startDay) || empty($endDay)) {
+            return 0;
+        }
+        $startdate = strtotime($startDay);
+        $enddate = strtotime($endDay);
+        $days = round(($enddate - $startdate) / 86400) + 1;
+        return $days;
+    }
+
+
     //计算百分数
     public static function getNum($num1, $num2)
     {
