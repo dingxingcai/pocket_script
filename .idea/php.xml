@@ -190,12 +190,15 @@
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
       <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/laravel/vendor/noh4ck/graphiql" />
+      <path value="$PROJECT_DIR$/laravel/vendor/aliyuncs/oss-sdk-php" />
+      <path value="$PROJECT_DIR$/laravel/vendor/jacobcyl/ali-oss-storage" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
   <component name="PhpUnit">
     <phpunit_settings>
-      <PhpUnitSettings load_method="CUSTOM_LOADER" custom_loader_path="/Users/xm/www/pocket_script/laravel/vendor/autoload.php" />
+      <PhpUnitSettings load_method="CUSTOM_LOADER" custom_loader_path="$PROJECT_DIR$/vendor/autoload.php" phpunit_phar_path="$PROJECT_DIR$/phpunit.phar" />
     </phpunit_settings>
   </component>
 </project>

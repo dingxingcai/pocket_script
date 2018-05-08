@@ -50,7 +50,7 @@ return
                 function (EtlRunRecord $record = null, EtlRunRecord $lastRecord = null) {
                     $record->params = [
                         'timeBegin' => '2018-01-01 00:00:00',
-                        'timeEnd' => '2018-04-25 12:00:00'
+                        'timeEnd' => '2018-05-08 13:40:00'
                     ];
                     $record->marker = 1;
 
@@ -65,7 +65,7 @@ return
                 $record->state = EtlRunRecord::STATE_RUNNING;
 
                 $timeBegin = min(time(), strtotime($record->params['timeEnd']));
-                $timeEnd = min(time(), strtotime('+1 day', $timeBegin));
+                $timeEnd = strtotime('+5 minute', $timeBegin);
 
                 $record->params = [
                     'timeBegin' => date('Y-m-d H:i:s', $timeBegin),
